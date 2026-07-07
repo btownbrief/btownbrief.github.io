@@ -96,7 +96,7 @@
       "name": "Trivia Ladder",
       "emoji": "🪜",
       "pitch": "Climb the Burlington trivia ladder — one wrong rung and you fall.",
-      "live": false
+      "live": true
     },
     {
       "slug": "news-quiz",
