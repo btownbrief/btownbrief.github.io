@@ -82,14 +82,14 @@
       "name": "Tap the Maple",
       "emoji": "🍁",
       "pitch": "Knife-Hit sugaring season — tap taps into the maple, don't hit the taps.",
-      "live": false
+      "live": true
     },
     {
       "slug": "where-in-btown",
       "name": "Where in Btown?",
       "emoji": "📍",
       "pitch": "One local photo, one guess: name the Burlington spot.",
-      "live": false
+      "live": true
     },
     {
       "slug": "trivia-ladder",
