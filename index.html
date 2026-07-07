@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d1b2a">
+<title>Btown Games — the Btown Brief Arcade</title>
+<meta name="description" content="A scrappy little Burlington arcade from the Btown Brief. Church St Surfers, FILED!, Btown Wordle and more — free browser games with monthly leaderboards.">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Btown Games">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Btown Games">
+<meta property="og:title" content="Btown Games — the Btown Brief Arcade">
+<meta property="og:description" content="A scrappy little Burlington arcade from the Btown Brief. Free browser games with monthly leaderboards — get named champion in the newsletter.">
+<meta property="og:url" content="https://play.btownbrief.com/">
+<meta property="og:image" content="https://play.btownbrief.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Btown Games — the Btown Brief Arcade">
+<meta name="twitter:description" content="Burlington's browser arcade. Free games, monthly leaderboards, champions named in the Btown Brief.">
+<meta name="twitter:image" content="https://play.btownbrief.com/og-image.png">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="scanlines" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="coin">🪙</div>
+    <h1 class="wordmark"><span class="w1">BTOWN</span><span class="w2">GAMES</span></h1>
+    <p class="hero-sub">The <strong>Btown Brief</strong> arcade — a scrappy little corner of Burlington, VT.</p>
+    <div id="greeting" class="greeting"></div>
+  </div>
+</header>
+
+<main>
+  <section class="cabinets" aria-label="Games">
+    <div id="grid" class="grid">
+      <p class="load-error">Loading the arcade…</p>
+    </div>
+  </section>
+
+  <section class="newsletter" aria-label="Btown Brief newsletter">
+    <div class="news-inner">
+      <div class="news-badge">📬 THE BTOWN BRIEF</div>
+      <h2 class="news-head">All of this is powered by the Btown Brief.</h2>
+      <p class="news-body">
+        The twice-weekly Burlington newsletter — the good stuff happening around town,
+        plus the headlines that end up inside these games. It's free, it's local, it's why
+        this arcade exists.
+      </p>
+      <a class="news-cta" href="https://www.btownbrief.com" target="_blank" rel="noopener">
+        Get the Brief — free →
+      </a>
+      <p class="news-fine">Monthly champions get named in the newsletter. Yes, really.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p class="foot-line">New games added constantly. Monthly leaderboards reset on the 1st — champions get named in the Brief.</p>
+  <p class="foot-sub">Showing <span id="month-label">this month's</span> champs · <a href="https://www.btownbrief.com" target="_blank" rel="noopener">btownbrief.com</a></p>
+</footer>
+
+<script type="module" src="hub.js"></script>
+</body>
+</html>
