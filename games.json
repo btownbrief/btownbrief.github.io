@@ -103,7 +103,7 @@
       "name": "News Quiz",
       "emoji": "🗞️",
       "pitch": "How closely did you actually read this week's Btown Brief?",
-      "live": false
+      "live": true
     }
   ]
 }
