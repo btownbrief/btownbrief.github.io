@@ -104,6 +104,13 @@
       "emoji": "🗞️",
       "pitch": "How closely did you actually read this week's BTown Brief?",
       "live": true
+    },
+    {
+      "slug": "archive",
+      "name": "The Archive",
+      "emoji": "📰",
+      "pitch": "Every Btown Brief ever, searchable. Find that story you half-remember.",
+      "live": true
     }
   ]
 }
