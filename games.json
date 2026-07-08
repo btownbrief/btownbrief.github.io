@@ -36,6 +36,13 @@
    "live": true
   },
   {
+   "slug": "trivia-ladder",
+   "name": "Trivia Ladder",
+   "emoji": "🪜",
+   "pitch": "Climb the Burlington trivia ladder: one wrong rung and you fall.",
+   "live": true
+  },
+  {
    "slug": "where-in-btown",
    "name": "Where in BTown?",
    "emoji": "📍",
@@ -54,13 +61,6 @@
    "name": "Rank What You Know",
    "emoji": "🔢",
    "pitch": "Put Burlington things in the right order. Sounds easy. It isn't.",
-   "live": true
-  },
-  {
-   "slug": "caption-this",
-   "name": "Caption This",
-   "emoji": "💬",
-   "pitch": "BTown's weekly caption contest: swipe on the funniest, or write your own.",
    "live": true
   },
   {
@@ -85,13 +85,6 @@
    "live": true
   },
   {
-   "slug": "trivia-ladder",
-   "name": "Trivia Ladder",
-   "emoji": "🪜",
-   "pitch": "Climb the Burlington trivia ladder: one wrong rung and you fall.",
-   "live": true
-  },
-  {
    "slug": "news-quiz",
    "name": "News Quiz",
    "emoji": "🗞️",
@@ -110,6 +103,13 @@
    "name": "Pothole Patrol",
    "emoji": "🕳️",
    "pitch": "Patch Burlington's potholes before mud season swallows the street.",
+   "live": true
+  },
+  {
+   "slug": "caption-this",
+   "name": "Caption This",
+   "emoji": "💬",
+   "pitch": "BTown's weekly caption contest: swipe on the funniest, or write your own.",
    "live": true
   }
  ]
