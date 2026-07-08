@@ -1,116 +1,116 @@
 {
-  "games": [
-    {
-      "slug": "church-street-runner",
-      "name": "Church Street Runners",
-      "emoji": "🏃",
-      "pitch": "Run down Church Street Marketplace: dodge dogs, grab creemees, catch live headlines.",
-      "live": true
-    },
-    {
-      "slug": "filed",
-      "name": "FILED!",
-      "emoji": "🗄️",
-      "pitch": "Two thumbs, one goal: survive the World's Tallest Filing Cabinet.",
-      "live": true
-    },
-    {
-      "slug": "flappy-champ",
-      "name": "Flappy Champ",
-      "emoji": "🐉",
-      "pitch": "Flap Champ, Lake Champlain's monster, through the schooner sails.",
-      "live": true
-    },
-    {
-      "slug": "creemee-drop",
-      "name": "Creemee Drop",
-      "emoji": "🍦",
-      "pitch": "Catch falling swirls and stack Vermont soft-serve to the sky.",
-      "live": true
-    },
-    {
-      "slug": "pothole-patrol",
-      "name": "Pothole Patrol",
-      "emoji": "🕳️",
-      "pitch": "Patch Burlington's potholes before mud season swallows the street.",
-      "live": true
-    },
-    {
-      "slug": "real-or-fake",
-      "name": "Real or Fake",
-      "emoji": "📰",
-      "pitch": "Actual Burlington headline, or did we make it up? Trust your gut.",
-      "live": true
-    },
-    {
-      "slug": "btown-wordle",
-      "name": "BTown Wordle",
-      "emoji": "🟩",
-      "pitch": "A fresh Burlington-flavored word puzzle every single day.",
-      "live": true
-    },
-    {
-      "slug": "earlier-or-later",
-      "name": "Earlier or Later",
-      "emoji": "⏳",
-      "pitch": "Two moments in Burlington history: which one happened first?",
-      "live": true
-    },
-    {
-      "slug": "higher-or-lower",
-      "name": "Higher or Lower",
-      "emoji": "📊",
-      "pitch": "One Burlington stat, then another. Guess higher or lower and keep the streak.",
-      "live": true
-    },
-    {
-      "slug": "caption-this",
-      "name": "Caption This",
-      "emoji": "💬",
-      "pitch": "BTown's weekly caption contest: swipe on the funniest, or write your own.",
-      "live": true
-    },
-    {
-      "slug": "rank-what-you-know",
-      "name": "Rank What You Know",
-      "emoji": "🔢",
-      "pitch": "Put Burlington things in the right order. Sounds easy. It isn't.",
-      "live": true
-    },
-    {
-      "slug": "tap-the-maple",
-      "name": "Tap the Maple",
-      "emoji": "🍁",
-      "pitch": "Knife-Hit sugaring season: tap taps into the maple, don't hit the taps.",
-      "live": true
-    },
-    {
-      "slug": "where-in-btown",
-      "name": "Where in BTown?",
-      "emoji": "📍",
-      "pitch": "One local photo, one guess: name the Burlington spot.",
-      "live": true
-    },
-    {
-      "slug": "trivia-ladder",
-      "name": "Trivia Ladder",
-      "emoji": "🪜",
-      "pitch": "Climb the Burlington trivia ladder: one wrong rung and you fall.",
-      "live": true
-    },
-    {
-      "slug": "news-quiz",
-      "name": "News Quiz",
-      "emoji": "🗞️",
-      "pitch": "How closely did you actually read this week's BTown Brief?",
-      "live": true
-    },
-    {
-      "slug": "archive",
-      "name": "The Archives",
-      "emoji": "📰",
-      "pitch": "More of a reader? Search every Btown Brief ever written — find that story you half-remember.",
-      "live": true
-    }
-  ]
+ "games": [
+  {
+   "slug": "church-street-runner",
+   "name": "Church Street Runners",
+   "emoji": "🏃",
+   "pitch": "Run down Church Street Marketplace: dodge dogs, grab creemees, catch live headlines.",
+   "live": true
+  },
+  {
+   "slug": "filed",
+   "name": "FILED!",
+   "emoji": "🗄️",
+   "pitch": "Two thumbs, one goal: survive the World's Tallest Filing Cabinet.",
+   "live": true
+  },
+  {
+   "slug": "flappy-champ",
+   "name": "Flappy Champ",
+   "emoji": "🐉",
+   "pitch": "Flap Champ, Lake Champlain's monster, through the schooner sails.",
+   "live": true
+  },
+  {
+   "slug": "archive",
+   "name": "The Archives",
+   "emoji": "📰",
+   "pitch": "More of a reader? Search every Btown Brief ever written — find that story you half-remember.",
+   "live": true
+  },
+  {
+   "slug": "btown-wordle",
+   "name": "BTown Wordle",
+   "emoji": "🟩",
+   "pitch": "A fresh Burlington-flavored word puzzle every single day.",
+   "live": true
+  },
+  {
+   "slug": "real-or-fake",
+   "name": "Real or Fake",
+   "emoji": "📰",
+   "pitch": "Actual Burlington headline, or did we make it up? Trust your gut.",
+   "live": true
+  },
+  {
+   "slug": "earlier-or-later",
+   "name": "Earlier or Later",
+   "emoji": "⏳",
+   "pitch": "Two moments in Burlington history: which one happened first?",
+   "live": true
+  },
+  {
+   "slug": "higher-or-lower",
+   "name": "Higher or Lower",
+   "emoji": "📊",
+   "pitch": "One Burlington stat, then another. Guess higher or lower and keep the streak.",
+   "live": true
+  },
+  {
+   "slug": "caption-this",
+   "name": "Caption This",
+   "emoji": "💬",
+   "pitch": "BTown's weekly caption contest: swipe on the funniest, or write your own.",
+   "live": true
+  },
+  {
+   "slug": "rank-what-you-know",
+   "name": "Rank What You Know",
+   "emoji": "🔢",
+   "pitch": "Put Burlington things in the right order. Sounds easy. It isn't.",
+   "live": true
+  },
+  {
+   "slug": "tap-the-maple",
+   "name": "Tap the Maple",
+   "emoji": "🍁",
+   "pitch": "Knife-Hit sugaring season: tap taps into the maple, don't hit the taps.",
+   "live": true
+  },
+  {
+   "slug": "where-in-btown",
+   "name": "Where in BTown?",
+   "emoji": "📍",
+   "pitch": "One local photo, one guess: name the Burlington spot.",
+   "live": true
+  },
+  {
+   "slug": "trivia-ladder",
+   "name": "Trivia Ladder",
+   "emoji": "🪜",
+   "pitch": "Climb the Burlington trivia ladder: one wrong rung and you fall.",
+   "live": true
+  },
+  {
+   "slug": "news-quiz",
+   "name": "News Quiz",
+   "emoji": "🗞️",
+   "pitch": "How closely did you actually read this week's BTown Brief?",
+   "live": true
+  },
+  {
+   "slug": "creemee-drop",
+   "name": "Creemee Drop",
+   "emoji": "🍦",
+   "pitch": "Catch falling swirls and stack Vermont soft-serve to the sky.",
+   "live": true
+  },
+  {
+   "slug": "pothole-patrol",
+   "name": "Pothole Patrol",
+   "emoji": "🕳️",
+   "pitch": "Patch Burlington's potholes before mud season swallows the street.",
+   "live": true
+  }
+ ]
 }
