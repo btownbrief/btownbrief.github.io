@@ -3,8 +3,8 @@
     {
       "slug": "church-street-runner",
       "name": "Church Street Runners",
-      "emoji": "🏄",
-      "pitch": "Surf Church Street Marketplace — dodge dogs, grab creemees, catch live headlines.",
+      "emoji": "🏃",
+      "pitch": "Run down Church Street Marketplace: dodge dogs, grab creemees, catch live headlines.",
       "live": true
     },
     {
@@ -44,7 +44,7 @@
     },
     {
       "slug": "btown-wordle",
-      "name": "Btown Wordle",
+      "name": "BTown Wordle",
       "emoji": "🟩",
       "pitch": "A fresh Burlington-flavored word puzzle every single day.",
       "live": true
@@ -53,7 +53,7 @@
       "slug": "earlier-or-later",
       "name": "Earlier or Later",
       "emoji": "⏳",
-      "pitch": "Two moments in Burlington history — which one happened first?",
+      "pitch": "Two moments in Burlington history: which one happened first?",
       "live": true
     },
     {
@@ -67,7 +67,7 @@
       "slug": "caption-this",
       "name": "Caption This",
       "emoji": "💬",
-      "pitch": "Btown's weekly caption contest — swipe on the funniest, or write your own.",
+      "pitch": "BTown's weekly caption contest: swipe on the funniest, or write your own.",
       "live": true
     },
     {
@@ -81,12 +81,12 @@
       "slug": "tap-the-maple",
       "name": "Tap the Maple",
       "emoji": "🍁",
-      "pitch": "Knife-Hit sugaring season — tap taps into the maple, don't hit the taps.",
+      "pitch": "Knife-Hit sugaring season: tap taps into the maple, don't hit the taps.",
       "live": true
     },
     {
       "slug": "where-in-btown",
-      "name": "Where in Btown?",
+      "name": "Where in BTown?",
       "emoji": "📍",
       "pitch": "One local photo, one guess: name the Burlington spot.",
       "live": true
@@ -95,14 +95,14 @@
       "slug": "trivia-ladder",
       "name": "Trivia Ladder",
       "emoji": "🪜",
-      "pitch": "Climb the Burlington trivia ladder — one wrong rung and you fall.",
+      "pitch": "Climb the Burlington trivia ladder: one wrong rung and you fall.",
       "live": true
     },
     {
       "slug": "news-quiz",
       "name": "News Quiz",
       "emoji": "🗞️",
-      "pitch": "How closely did you actually read this week's Btown Brief?",
+      "pitch": "How closely did you actually read this week's BTown Brief?",
       "live": true
     }
   ]
