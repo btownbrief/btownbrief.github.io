@@ -107,9 +107,9 @@
     },
     {
       "slug": "archive",
-      "name": "The Archive",
+      "name": "The Archives",
       "emoji": "📰",
-      "pitch": "Every Btown Brief ever, searchable. Find that story you half-remember.",
+      "pitch": "More of a reader? Search every Btown Brief ever written — find that story you half-remember.",
       "live": true
     }
   ]
