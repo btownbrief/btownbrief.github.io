@@ -191,6 +191,19 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 14px 40px; }
 /* ---------- footer ---------- */
 .foot { text-align: center; padding: 28px 18px 40px; color: var(--muted); }
 .foot-line { margin: 0 auto; font-size: 13.5px; max-width: 52ch; line-height: 1.5; }
+.about-box {
+  max-width: 30ch; margin: 0 auto 22px; padding: 18px 22px;
+  border: 2px solid var(--maple); border-radius: 14px;
+  background: rgba(255,90,60,.08);
+  box-shadow: 0 0 0 1px var(--line), 0 6px 20px rgba(0,0,0,.25);
+}
+.about-line { margin: 0; color: var(--ink); font-size: 18px; font-weight: 700; line-height: 1.35; }
+.about-link {
+  display: inline-block; margin-top: 12px; padding: 9px 18px;
+  border-radius: 999px; font-size: 15px; font-weight: 800; text-decoration: none;
+  color: #1b0f0c; background: linear-gradient(90deg, var(--maple), var(--maple-2));
+}
+.about-link:hover { filter: brightness(1.08); }
 .foot-sub { margin: 8px 0 0; font-size: 12.5px; }
 .foot-sub a { color: var(--lake); text-decoration: none; }
 .foot-sub a:hover { text-decoration: underline; }
