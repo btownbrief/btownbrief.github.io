@@ -15,10 +15,10 @@
    "live": true
   },
   {
-   "slug": "flappy-champ",
-   "name": "Flappy Champ",
-   "emoji": "🐉",
-   "pitch": "Flap Champ, Lake Champlain's monster, through the schooner sails.",
+   "slug": "champlain-glider",
+   "name": "Champlain Glider",
+   "emoji": "🐦",
+   "pitch": "Dive the hills, ride the sunset across Vermont, and outrun the night.",
    "live": true
   },
   {
@@ -89,6 +89,13 @@
    "name": "News Quiz",
    "emoji": "🗞️",
    "pitch": "How closely did you actually read this week's BTown Brief?",
+   "live": true
+  },
+  {
+   "slug": "flappy-champ",
+   "name": "Flappy Champ",
+   "emoji": "🐉",
+   "pitch": "Flap Champ, Lake Champlain's monster, through the schooner sails.",
    "live": true
   },
   {
