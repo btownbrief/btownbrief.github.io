@@ -212,3 +212,30 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 14px 40px; }
   .coin { animation: none; }
   .cab, .news-cta, .btn-play { transition: none; }
 }
+
+/* ---------- donate block (one placement, above the footer) ---------- */
+.donate { margin: 26px auto 0; max-width: 960px; padding: 0 18px; }
+.donate-inner {
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(140% 120% at 0% 0%, rgba(255,90,60,.20), transparent 55%),
+    linear-gradient(135deg, #14304e, #0f2842);
+  border: 1px solid rgba(255,90,60,.35);
+  border-radius: 20px; padding: 24px 22px; text-align: center;
+  box-shadow: var(--shadow);
+}
+.donate-badge {
+  display: inline-block; font-weight: 900; font-size: 12px; letter-spacing: 1px;
+  color: var(--maple-2); background: rgba(255,90,60,.12);
+  border: 1px solid rgba(255,90,60,.3); padding: 5px 12px; border-radius: 999px;
+}
+.donate-head { margin: 12px auto 8px; font-size: clamp(18px, 4.5vw, 24px); max-width: 24ch; }
+.donate-body { margin: 0 auto; color: var(--muted); font-size: 14.5px; line-height: 1.55; max-width: 46ch; }
+.donate-cta {
+  display: inline-block; margin: 16px 0 2px; text-decoration: none;
+  font-weight: 900; font-size: 16px; color: #1b0f0c;
+  background: linear-gradient(90deg, var(--maple), var(--maple-2));
+  padding: 12px 24px; border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(255,90,60,.35); transition: transform .1s ease;
+}
+.donate-cta:hover { transform: translateY(-2px) scale(1.02); }
