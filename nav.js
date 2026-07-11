@@ -17,21 +17,50 @@
   if (window.__btownNav) return;
   window.__btownNav = true;
 
+  /*
+   * `on` lists every place a link counts as "you are here". The city guide has two,
+   * because it answers on its own subdomain AND still answers on the old
+   * play.btownbrief.com/btown-brief/ path that older newsletter issues link to.
+   */
   var LINKS = [
-    { label: 'The Brief', href: 'https://www.btownbrief.com', match: /(^|\.)btownbrief\.com$/, path: null },
-    { label: 'City Guide', href: 'https://play.btownbrief.com/btown-brief/', match: /play\.btownbrief\.com$/, path: /^\/btown-brief\// },
-    { label: 'Arcade', href: 'https://play.btownbrief.com/', match: /play\.btownbrief\.com$/, path: /^\/$/ },
-    { label: 'Merch', href: 'https://stephenvdavis-jpg.github.io/t-shirts/', match: /stephenvdavis-jpg\.github\.io$/, path: /^\/t-shirts\// },
-    { label: 'Everything', href: 'https://play.btownbrief.com/everything/', match: /play\.btownbrief\.com$/, path: /^\/everything\// }
+    {
+      label: 'The Brief',
+      href: 'https://www.btownbrief.com',
+      on: [{ host: /^(www\.)?btownbrief\.com$/ }]
+    },
+    {
+      label: 'City Guide',
+      href: 'https://guide.btownbrief.com/',
+      on: [
+        { host: /^guide\.btownbrief\.com$/ },
+        { host: /^play\.btownbrief\.com$/, path: /^\/btown-brief\// }
+      ]
+    },
+    {
+      label: 'Arcade',
+      href: 'https://play.btownbrief.com/',
+      on: [{ host: /^play\.btownbrief\.com$/, path: /^\/$/ }]
+    },
+    {
+      label: 'Merch',
+      href: 'https://stephenvdavis-jpg.github.io/t-shirts/',
+      on: [{ host: /stephenvdavis-jpg\.github\.io$/, path: /^\/t-shirts\// }]
+    },
+    {
+      label: 'Everything',
+      href: 'https://play.btownbrief.com/everything/',
+      on: [{ host: /^play\.btownbrief\.com$/, path: /^\/everything\// }]
+    }
   ];
 
   var host = window.location.hostname;
   var path = window.location.pathname;
 
   function isCurrent(link) {
-    if (!link.match.test(host)) return false;
-    if (!link.path) return true;
-    return link.path.test(path);
+    return link.on.some(function (m) {
+      if (!m.host.test(host)) return false;
+      return m.path ? m.path.test(path) : true;
+    });
   }
 
   var css = [
