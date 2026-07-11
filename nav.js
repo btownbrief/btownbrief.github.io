@@ -29,10 +29,16 @@
       on: [{ host: /^(www\.)?btownbrief\.com$/ }]
     },
     {
+      label: 'Things To Do',
+      href: 'https://guide.btownbrief.com/things-to-do.html',
+      on: [{ host: /^guide\.btownbrief\.com$/, path: /^\/things-to-do\.html$/ }]
+    },
+    {
+      // The guide's other 14 pages. Things To Do stands on its own above.
       label: 'City Guide',
       href: 'https://guide.btownbrief.com/',
       on: [
-        { host: /^guide\.btownbrief\.com$/ },
+        { host: /^guide\.btownbrief\.com$/, path: /^\/(?!things-to-do\.html)/ },
         { host: /^play\.btownbrief\.com$/, path: /^\/btown-brief\// }
       ]
     },
