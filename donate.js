@@ -12,7 +12,7 @@
   var DONATE_COPY = {
     A: { // personal
       heading: 'One local guy builds all of this',
-      body: 'The newsletter, the guides, every cabinet in this arcade — it’s just me, Stephen, at a laptop in Burlington. If a game ever ate your lunch break, a coffee keeps the machines running.',
+      body: 'The newsletter, the guides, every cabinet in this arcade — it’s just me, Steve, at a laptop in Burlington. If a game ever ate your lunch break, a coffee keeps the machines running.',
       button: '☕ Buy me a coffee',
     },
     B: { // civic

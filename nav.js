@@ -184,7 +184,7 @@
     read:    { label: 'Read about me',      href: 'https://www.btownbrief.com/about-me', ev: 'about-read' },
     kofi:    { label: 'Buy me a coffee',    href: 'https://ko-fi.com/btownbrief',        ev: 'about-kofi' },
     upgrade: { label: 'Upgrade the Brief',  href: 'https://www.btownbrief.com/upgrade',  ev: 'about-upgrade' },
-    sign: 'Stephen Davis · Burlington, Vermont'
+    sign: 'Steve Davis · Burlington, Vermont'
   };
 
   var SUPABASE_URL = 'https://jnouvwxomrcffqwilqkq.supabase.co';
