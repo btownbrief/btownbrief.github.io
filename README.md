@@ -1,6 +1,6 @@
 # Btown Games — Arcade Hub
 
-The front door for the Btown Brief browser arcade at **play.btownbrief.com**
+The front door for the BTown Brief browser arcade at **play.btownbrief.com**
 (also served at https://btownbrief.github.io/). Plain static site, no build step.
 
 This repo is the org **root** site (`btownbrief/btownbrief.github.io`), so it serves

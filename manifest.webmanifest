@@ -1,7 +1,7 @@
 {
-  "name": "Btown Games — the Btown Brief Arcade",
+  "name": "Btown Games — the BTown Brief Arcade",
   "short_name": "Btown Games",
-  "description": "Burlington's browser arcade from the Btown Brief. Free games, monthly leaderboards.",
+  "description": "Burlington's browser arcade from the BTown Brief. Free games, monthly leaderboards.",
   "start_url": ".",
   "scope": ".",
   "display": "standalone",
