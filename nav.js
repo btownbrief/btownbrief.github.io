@@ -82,24 +82,30 @@
     '.btnav{--btnav-bg:#0E2230;--btnav-fg:#9DB6C2;--btnav-on:#FFFFFF;--btnav-accent:#E8A33D;',
     'background:var(--btnav-bg);color:var(--btnav-fg);width:100%;box-sizing:border-box;',
     "font-family:'Avenir Next Condensed','Futura','Helvetica Neue',Helvetica,sans-serif;",
-    'font-size:13px;letter-spacing:.09em;text-transform:uppercase;line-height:1;}',
+    'font-size:15px;letter-spacing:.09em;text-transform:uppercase;line-height:1;}',
 
     '.btnav *{box-sizing:border-box;}',
-    '.btnav-in{max-width:1120px;margin:0 auto;padding:0 16px;display:flex;align-items:center;',
-    'gap:4px;min-height:38px;flex-wrap:wrap;}',
+    /* The links space themselves evenly via their own padding, so the flex gap
+       stays 0 — a gap PLUS padding double-counts and makes the run look ragged. */
+    '.btnav-in{max-width:1120px;margin:0 auto;padding:0 20px;display:flex;align-items:center;',
+    'gap:0;min-height:52px;flex-wrap:wrap;}',
 
-    '.btnav-mark{font-weight:700;color:var(--btnav-on);letter-spacing:.12em;',
-    'margin-right:10px;white-space:nowrap;text-decoration:none;display:flex;align-items:center;gap:6px;}',
+    /* The wordmark was 13px — exactly the same as the links, so it never actually
+       read as bigger. Now it genuinely leads. */
+    '.btnav-mark{font-weight:700;color:var(--btnav-on);letter-spacing:.14em;font-size:19px;',
+    'margin-right:22px;white-space:nowrap;text-decoration:none;display:flex;align-items:center;gap:7px;}',
     '.btnav-mark span{color:var(--btnav-accent);}',
 
-    '.btnav a.btnav-l{color:var(--btnav-fg);text-decoration:none;padding:11px 10px;',
+    '.btnav a.btnav-l{color:var(--btnav-fg);text-decoration:none;padding:16px 15px;',
     'font-weight:500;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s ease;}',
     '.btnav a.btnav-l:hover{color:var(--btnav-on);}',
     '.btnav a.btnav-l:focus-visible{outline:2px solid var(--btnav-accent);outline-offset:-2px;}',
     '.btnav a.btnav-cur{color:var(--btnav-on);border-bottom-color:var(--btnav-accent);cursor:default;}',
 
-    '@media (max-width:420px){.btnav{font-size:12px;}.btnav-in{gap:0;}',
-    '.btnav a.btnav-l{padding:10px 7px;}.btnav-mark{margin-right:6px;}}'
+    /* Phones: still bigger than the old 12px, but tightened so six links plus the
+       wordmark do not wrap into a third row. */
+    '@media (max-width:560px){.btnav{font-size:13px;}.btnav-mark{font-size:16px;margin-right:12px;}',
+    '.btnav-in{padding:0 14px;min-height:46px;}.btnav a.btnav-l{padding:13px 9px;}}'
   ].join('');
 
   function build() {
