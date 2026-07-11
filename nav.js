@@ -49,7 +49,7 @@
       ]
     },
     {
-      label: 'Arcade',
+      label: 'Digital Arcade',
       href: 'https://play.btownbrief.com/',
       on: [{ host: /^play\.btownbrief\.com$/, path: /^\/$/ }]
     },
