@@ -29,10 +29,24 @@
    "live": true
   },
   {
-   "slug": "archive",
-   "name": "The Archives",
-   "emoji": "📰",
-   "pitch": "More of a reader? Search every Btown Brief ever written — find that story you half-remember.",
+   "slug": "tap-the-maple",
+   "name": "Tap the Maple",
+   "emoji": "🍁",
+   "pitch": "Knife-Hit sugaring season: tap taps into the maple, don't hit the taps.",
+   "live": true
+  },
+  {
+   "slug": "creemee-drop",
+   "name": "Creemee Drop",
+   "emoji": "🍦",
+   "pitch": "Catch falling swirls and stack Vermont soft-serve to the sky.",
+   "live": true
+  },
+  {
+   "slug": "pothole-patrol",
+   "name": "Pothole Patrol",
+   "emoji": "🕳️",
+   "pitch": "Patch Burlington's potholes before mud season swallows the street.",
    "live": true
   },
   {
@@ -57,17 +71,10 @@
    "live": true
   },
   {
-   "slug": "tap-the-maple",
-   "name": "Tap the Maple",
-   "emoji": "🍁",
-   "pitch": "Knife-Hit sugaring season: tap taps into the maple, don't hit the taps.",
-   "live": true
-  },
-  {
-   "slug": "rank-what-you-know",
-   "name": "Rank What You Know",
-   "emoji": "🔢",
-   "pitch": "Put Burlington things in the right order. Sounds easy. It isn't.",
+   "slug": "news-quiz",
+   "name": "News Quiz",
+   "emoji": "🗞️",
+   "pitch": "How closely did you actually read this week's BTown Brief?",
    "live": true
   },
   {
@@ -92,24 +99,10 @@
    "live": true
   },
   {
-   "slug": "news-quiz",
-   "name": "News Quiz",
-   "emoji": "🗞️",
-   "pitch": "How closely did you actually read this week's BTown Brief?",
-   "live": true
-  },
-  {
-   "slug": "creemee-drop",
-   "name": "Creemee Drop",
-   "emoji": "🍦",
-   "pitch": "Catch falling swirls and stack Vermont soft-serve to the sky.",
-   "live": true
-  },
-  {
-   "slug": "pothole-patrol",
-   "name": "Pothole Patrol",
-   "emoji": "🕳️",
-   "pitch": "Patch Burlington's potholes before mud season swallows the street.",
+   "slug": "rank-what-you-know",
+   "name": "Rank What You Know",
+   "emoji": "🔢",
+   "pitch": "Put Burlington things in the right order. Sounds easy. It isn't.",
    "live": true
   },
   {
@@ -117,6 +110,13 @@
    "name": "Caption This",
    "emoji": "💬",
    "pitch": "BTown's weekly caption contest: swipe on the funniest, or write your own.",
+   "live": true
+  },
+  {
+   "slug": "archive",
+   "name": "The Archives",
+   "emoji": "📰",
+   "pitch": "More of a reader? Search every Btown Brief ever written — find that story you half-remember.",
    "live": true
   }
  ]
