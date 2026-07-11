@@ -21,7 +21,8 @@
     { label: 'The Brief', href: 'https://www.btownbrief.com', match: /(^|\.)btownbrief\.com$/, path: null },
     { label: 'City Guide', href: 'https://play.btownbrief.com/btown-brief/', match: /play\.btownbrief\.com$/, path: /^\/btown-brief\// },
     { label: 'Arcade', href: 'https://play.btownbrief.com/', match: /play\.btownbrief\.com$/, path: /^\/$/ },
-    { label: 'Merch', href: 'https://stephenvdavis-jpg.github.io/t-shirts/', match: /stephenvdavis-jpg\.github\.io$/, path: /^\/t-shirts\// }
+    { label: 'Merch', href: 'https://stephenvdavis-jpg.github.io/t-shirts/', match: /stephenvdavis-jpg\.github\.io$/, path: /^\/t-shirts\// },
+    { label: 'Everything', href: 'https://play.btownbrief.com/everything/', match: /play\.btownbrief\.com$/, path: /^\/everything\// }
   ];
 
   var host = window.location.hostname;
