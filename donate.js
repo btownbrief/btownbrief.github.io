@@ -17,7 +17,7 @@
     },
     B: { // civic
       heading: 'Keep Burlington’s arcade free',
-      body: 'No paywall, no ads, no coin slot — just free local games and info for everyone who loves this city. Chip in to keep it that way.',
+      body: 'No paywall, no coin slot, no autoplay video — just free local games and info for everyone who loves this city. Chip in to keep it that way.',
       button: '❤️ Chip in on Ko-fi',
     },
   };

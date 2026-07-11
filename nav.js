@@ -180,7 +180,7 @@
     heading: 'One local guy builds all of this',
     body: 'The newsletter, the city guide, the arcade, the sunset forecast, the ' +
           'photographs — it’s one person, at a laptop in Burlington. No team, no ' +
-          'investors, no ads.',
+          'investors, no boss.',
     read:    { label: 'Read about me',      href: 'https://www.btownbrief.com/about-me', ev: 'about-read' },
     kofi:    { label: 'Buy me a coffee',    href: 'https://ko-fi.com/btownbrief',        ev: 'about-kofi' },
     upgrade: { label: 'Upgrade the Brief',  href: 'https://www.btownbrief.com/upgrade',  ev: 'about-upgrade' },
