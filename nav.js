@@ -54,8 +54,11 @@
     },
     {
       label: 'Everything',
-      href: 'https://play.btownbrief.com/everything/',
-      on: [{ host: /^play\.btownbrief\.com$/, path: /^\/everything\// }]
+      href: 'https://hub.btownbrief.com/',
+      on: [
+        { host: /^hub\.btownbrief\.com$/ },
+        { host: /^play\.btownbrief\.com$/, path: /^\/everything\// }   // the old address, still redirecting
+      ]
     }
   ];
 
