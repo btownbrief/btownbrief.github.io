@@ -113,6 +113,13 @@
    "live": true
   },
   {
+   "slug": "challenges",
+   "name": "Btown Challenges",
+   "emoji": "🏆",
+   "pitch": "Real Burlington challenges — eat it, climb it, streak it — then put your name on the board.",
+   "live": true
+  },
+  {
    "slug": "caption-this",
    "name": "Caption This",
    "emoji": "💬",
