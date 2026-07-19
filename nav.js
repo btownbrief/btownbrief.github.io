@@ -16,6 +16,12 @@
  * Same deal: it's here so it's written once and appears everywhere, and so it
  * reads identically on the guide, the hub, the arcade and the merch shop.
  * See ABOUT below for how it decides which pages can carry it.
+ *
+ * Since v3 the bar also carries NETWORK SEARCH — a ⌘K / Ctrl-K palette that
+ * jumps to any page or game across every property. The index is two files on
+ * this host: search-index.json (curated pages — edit that, not this) and
+ * games.json (the arcade's own list, so new games appear in search the moment
+ * they're live). See SEARCH below.
  */
 (function () {
   'use strict';
@@ -102,10 +108,22 @@
     '.btnav a.btnav-l:focus-visible{outline:2px solid var(--btnav-accent);outline-offset:-2px;}',
     '.btnav a.btnav-cur{color:var(--btnav-on);border-bottom-color:var(--btnav-accent);cursor:default;}',
 
+    /* The search control sits at the far right of the bar — a quiet pill, not a
+       seventh link, so the run of links still reads as one family. */
+    '.btnav-s{margin-left:auto;display:inline-flex;align-items:center;gap:7px;',
+    'background:none;border:1px solid rgba(255,255,255,.22);border-radius:999px;',
+    'color:var(--btnav-fg);padding:6px 13px;font:inherit;font-size:12px;letter-spacing:.09em;',
+    'text-transform:uppercase;cursor:pointer;transition:color .15s ease,border-color .15s ease;}',
+    '.btnav-s:hover{color:var(--btnav-on);border-color:rgba(255,255,255,.45);}',
+    '.btnav-s:focus-visible{outline:2px solid var(--btnav-accent);outline-offset:2px;}',
+    '.btnav-s svg{flex:none;}',
+    '.btnav-s-k{font-size:10px;opacity:.55;letter-spacing:.05em;text-transform:none;}',
+
     /* Phones: still bigger than the old 12px, but tightened so six links plus the
        wordmark do not wrap into a third row. */
     '@media (max-width:560px){.btnav{font-size:13px;}.btnav-mark{font-size:16px;margin-right:12px;}',
-    '.btnav-in{padding:0 14px;min-height:46px;}.btnav a.btnav-l{padding:13px 9px;}}'
+    '.btnav-in{padding:0 14px;min-height:46px;}.btnav a.btnav-l{padding:13px 9px;}',
+    '.btnav-s{padding:5px 10px;}.btnav-s-k{display:none;}}'
   ].join('');
 
   function build() {
@@ -142,6 +160,21 @@
       }
       inner.appendChild(a);
     });
+
+    /* Search rides in the bar but must never be able to break it. */
+    try {
+      var sbtn = document.createElement('button');
+      sbtn.type = 'button';
+      sbtn.className = 'btnav-s';
+      sbtn.setAttribute('aria-label', 'Search every Btown page and game');
+      sbtn.innerHTML =
+        '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+        'stroke-width="2.4" stroke-linecap="round" aria-hidden="true">' +
+        '<circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>' +
+        'Search <span class="btnav-s-k">' + (IS_MAC ? '⌘K' : 'Ctrl K') + '</span>';
+      sbtn.addEventListener('click', function () { openSearch(sbtn); });
+      inner.appendChild(sbtn);
+    } catch (e) { /* search is optional; the bar is not */ }
 
     bar.appendChild(inner);
     document.body.insertBefore(bar, document.body.firstChild);
@@ -348,9 +381,302 @@
     document.body.appendChild(band);
   }
 
+  /* ============================================================
+     NETWORK SEARCH
+
+     One palette, every property: type a few letters, land on any page or
+     game in the network. Opened from the bar's Search pill, ⌘K / Ctrl-K,
+     or plain `/` when you're not typing in something.
+
+     The index is deliberately split in two, both living on this host:
+       search-index.json — the curated pages (EDIT THAT FILE to add a page)
+       games.json        — the arcade's own source of truth, read live, so a
+                           new game shows up in search the moment it's live
+     Both fetches are lazy (first open) and both are allowed to fail: the
+     palette degrades to whichever half arrived, or a quiet "can't search
+     right now" line. Search must never cost a page anything.
+  ============================================================ */
+
+  var SEARCH_HOME = 'https://play.btownbrief.com';
+  var IS_MAC = /Mac|iPhone|iPad|iPod/.test(navigator.platform || '');
+
+  var searchItems = null;     // null until loaded; [] if both halves failed
+  var searchFetch = null;
+  var searchUi = null;
+  var searchResults = [];
+  var searchActive = 0;
+  var searchPrevFocus = null;
+
+  function loadSearchIndex() {
+    if (searchFetch) return searchFetch;
+    function grab(url) {
+      return fetch(url).then(function (r) { return r.ok ? r.json() : null; })
+                       .catch(function () { return null; });
+    }
+    searchFetch = Promise.all([
+      grab(SEARCH_HOME + '/search-index.json'),
+      grab(SEARCH_HOME + '/games.json')
+    ]).then(function (got) {
+      var items = ((got[0] && got[0].pages) || []).slice();
+      ((got[1] && got[1].games) || []).forEach(function (g) {
+        if (!g || g.live === false || !g.slug) return;
+        items.push({
+          title: (g.emoji ? g.emoji + ' ' : '') + (g.name || g.slug),
+          url: SEARCH_HOME + '/' + g.slug + '/',
+          section: 'Games',
+          keywords: g.pitch || ''
+        });
+      });
+      searchItems = items;
+      return items;
+    });
+    return searchFetch;
+  }
+
+  /* Every typed word has to land somewhere; where it lands sets the rank.
+     Title beginnings beat title words beat title fragments beat keywords. */
+  function searchScore(item, words) {
+    var title = item._t || (item._t = String(item.title || '').toLowerCase());
+    var hay = item._h ||
+      (item._h = (item.title + ' ' + (item.keywords || '') + ' ' + (item.section || '')).toLowerCase());
+    var score = 0;
+    for (var i = 0; i < words.length; i++) {
+      var w = words[i];
+      if (title.indexOf(w) === 0) score += 40;
+      else if (title.indexOf(' ' + w) !== -1) score += 25;
+      else if (title.indexOf(w) !== -1) score += 15;
+      else if (hay.indexOf(w) !== -1) score += 6;
+      else return 0;
+    }
+    return score;
+  }
+
+  var searchCss = [
+    '.btsearch{position:fixed;inset:0;z-index:2147483000;display:flex;',
+    'align-items:flex-start;justify-content:center;padding:12vh 16px 16px;}',
+    '.btsearch[hidden]{display:none;}',
+    '.btsearch-bd{position:absolute;inset:0;background:rgba(4,10,15,.62);}',
+
+    /* The panel wears the bar's own night-navy and amber, on every property —
+       the palette belongs to the network, not to the page underneath it. */
+    '.btsearch-p{position:relative;width:min(600px,100%);background:#0E2230;color:#E8EEF2;',
+    'border:1px solid rgba(255,255,255,.14);border-radius:14px;overflow:hidden;',
+    'box-shadow:0 24px 64px rgba(0,0,0,.5);',
+    "font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',Helvetica,sans-serif;}",
+    '.btsearch-p *{box-sizing:border-box;}',
+
+    /* 16px input: anything smaller makes iOS zoom the page on focus. */
+    '.btsearch-in{width:100%;border:none;outline:none;background:transparent;color:#fff;',
+    'font:inherit;font-size:16px;padding:16px 18px;',
+    'border-bottom:1px solid rgba(255,255,255,.12);}',
+    '.btsearch-in::placeholder{color:rgba(232,238,242,.45);}',
+
+    '.btsearch-ls{list-style:none;margin:0;padding:6px;overflow-y:auto;',
+    'max-height:min(48vh,420px);overscroll-behavior:contain;}',
+    '.btsearch-ls a{display:flex;align-items:baseline;gap:12px;justify-content:space-between;',
+    'padding:10px 12px;border-radius:8px;color:#DCE6EC;text-decoration:none;font-size:15px;}',
+    '.btsearch-ls li.on a{background:rgba(232,163,61,.16);color:#fff;}',
+    '.btsearch-t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}',
+    '.btsearch-sec{flex:none;font-size:10px;letter-spacing:.12em;text-transform:uppercase;',
+    'color:rgba(232,163,61,.85);}',
+    '.btsearch-none{padding:18px;color:rgba(232,238,242,.55);font-size:14px;}',
+
+    '.btsearch-hint{padding:9px 14px;border-top:1px solid rgba(255,255,255,.1);',
+    'font-size:11px;letter-spacing:.08em;text-transform:uppercase;',
+    'color:rgba(232,238,242,.4);display:flex;gap:16px;}',
+
+    '@media (max-width:560px){.btsearch{padding:6vh 10px 10px;}',
+    '.btsearch-hint{display:none;}}'
+  ].join('');
+
+  function buildSearchUi() {
+    if (searchUi) return searchUi;
+
+    var style = document.createElement('style');
+    style.textContent = searchCss;
+    document.head.appendChild(style);
+
+    var wrap = document.createElement('div');
+    wrap.className = 'btsearch';
+    wrap.hidden = true;
+
+    var bd = document.createElement('div');
+    bd.className = 'btsearch-bd';
+    bd.addEventListener('click', closeSearch);
+
+    var panel = document.createElement('div');
+    panel.className = 'btsearch-p';
+    panel.setAttribute('role', 'dialog');
+    panel.setAttribute('aria-modal', 'true');
+    panel.setAttribute('aria-label', 'Search the Btown network');
+
+    var input = document.createElement('input');
+    input.className = 'btsearch-in';
+    input.type = 'text';
+    input.placeholder = 'Search pages & games…';
+    input.setAttribute('aria-label', 'Search every Btown page and game');
+    input.setAttribute('autocomplete', 'off');
+    input.setAttribute('autocapitalize', 'none');
+    input.setAttribute('spellcheck', 'false');
+    input.setAttribute('role', 'combobox');
+    input.setAttribute('aria-expanded', 'true');
+    input.setAttribute('aria-controls', 'btsearch-list');
+
+    var list = document.createElement('ul');
+    list.className = 'btsearch-ls';
+    list.id = 'btsearch-list';
+    list.setAttribute('role', 'listbox');
+
+    var hint = document.createElement('div');
+    hint.className = 'btsearch-hint';
+    hint.innerHTML = '<span>↑↓ move</span><span>↩ open</span><span>esc close</span>';
+
+    input.addEventListener('input', function () { renderSearch(input.value); });
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown') { e.preventDefault(); moveSearch(1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); moveSearch(-1); }
+      else if (e.key === 'Enter') {
+        var hit = searchResults[searchActive];
+        if (hit) { trackAbout('search-go'); window.location.href = hit.url; }
+      } else if (e.key === 'Escape') { e.stopPropagation(); closeSearch(); }
+    });
+
+    panel.appendChild(input);
+    panel.appendChild(list);
+    panel.appendChild(hint);
+    wrap.appendChild(bd);
+    wrap.appendChild(panel);
+    document.body.appendChild(wrap);
+
+    searchUi = { wrap: wrap, input: input, list: list };
+    return searchUi;
+  }
+
+  function renderSearch(query) {
+    var ui = searchUi;
+    if (!ui) return;
+
+    if (searchItems === null) {
+      ui.list.innerHTML = '<li class="btsearch-none">Loading the map of everything…</li>';
+      searchResults = [];
+      return;
+    }
+    if (!searchItems.length) {
+      ui.list.innerHTML = '<li class="btsearch-none">Can’t search right now — try the nav links above.</li>';
+      searchResults = [];
+      return;
+    }
+
+    var words = String(query || '').toLowerCase().split(/\s+/).filter(Boolean);
+    if (!words.length) {
+      /* Empty box: the index's own opening order is a decent "jump anywhere" menu. */
+      searchResults = searchItems.slice(0, 9);
+    } else {
+      searchResults = searchItems
+        .map(function (it) { return { it: it, s: searchScore(it, words) }; })
+        .filter(function (r) { return r.s > 0; })
+        .sort(function (a, b) { return b.s - a.s; })
+        .slice(0, 10)
+        .map(function (r) { return r.it; });
+    }
+    searchActive = 0;
+
+    if (!searchResults.length) {
+      ui.list.innerHTML = '<li class="btsearch-none">Nothing called “' +
+        String(query).replace(/</g, '‹') + '” yet.</li>';
+      return;
+    }
+
+    ui.list.innerHTML = '';
+    searchResults.forEach(function (item, i) {
+      var li = document.createElement('li');
+      li.setAttribute('role', 'option');
+      li.id = 'btsearch-o' + i;
+      li.setAttribute('aria-selected', i === searchActive ? 'true' : 'false');
+      if (i === searchActive) li.className = 'on';
+
+      var a = document.createElement('a');
+      a.href = item.url;
+      a.addEventListener('click', function () { trackAbout('search-go'); });
+
+      var t = document.createElement('span');
+      t.className = 'btsearch-t';
+      t.textContent = item.title;
+
+      var sec = document.createElement('span');
+      sec.className = 'btsearch-sec';
+      sec.textContent = item.section || '';
+
+      a.appendChild(t);
+      a.appendChild(sec);
+      li.appendChild(a);
+      li.addEventListener('mouseenter', function () { setSearchActive(i); });
+      ui.list.appendChild(li);
+    });
+    ui.input.setAttribute('aria-activedescendant', 'btsearch-o0');
+  }
+
+  function setSearchActive(i) {
+    if (!searchUi || !searchResults.length) return;
+    searchActive = (i + searchResults.length) % searchResults.length;
+    [].forEach.call(searchUi.list.children, function (li, j) {
+      li.className = j === searchActive ? 'on' : '';
+      li.setAttribute('aria-selected', j === searchActive ? 'true' : 'false');
+    });
+    searchUi.input.setAttribute('aria-activedescendant', 'btsearch-o' + searchActive);
+    var el = searchUi.list.children[searchActive];
+    if (el && el.scrollIntoView) el.scrollIntoView({ block: 'nearest' });
+  }
+
+  function moveSearch(dir) { setSearchActive(searchActive + dir); }
+
+  function openSearch(fromEl) {
+    try {
+      var ui = buildSearchUi();
+      searchPrevFocus = fromEl || document.activeElement;
+      ui.wrap.hidden = false;
+      ui.input.value = '';
+      renderSearch('');
+      ui.input.focus();
+      trackAbout('search-open');
+      loadSearchIndex().then(function () {
+        if (!ui.wrap.hidden) renderSearch(ui.input.value);
+      });
+    } catch (e) { /* never let search take a page down */ }
+  }
+
+  function closeSearch() {
+    if (!searchUi || searchUi.wrap.hidden) return;
+    searchUi.wrap.hidden = true;
+    if (searchPrevFocus && searchPrevFocus.focus) {
+      try { searchPrevFocus.focus(); } catch (e) {}
+    }
+  }
+
+  function searchIsOpen() {
+    return !!(searchUi && !searchUi.wrap.hidden);
+  }
+
+  function initSearchKeys() {
+    document.addEventListener('keydown', function (e) {
+      if ((e.metaKey || e.ctrlKey) && !e.altKey && !e.shiftKey &&
+          (e.key === 'k' || e.key === 'K')) {
+        e.preventDefault();
+        searchIsOpen() ? closeSearch() : openSearch();
+        return;
+      }
+      if (e.key === '/' && !e.metaKey && !e.ctrlKey && !e.altKey && !searchIsOpen()) {
+        var t = e.target;
+        var typing = t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable);
+        if (!typing) { e.preventDefault(); openSearch(); }
+      }
+    });
+  }
+
   function start() {
     build();
     buildAbout();
+    try { initSearchKeys(); } catch (e) { /* shortcuts are sugar, not structure */ }
   }
 
   if (document.readyState === 'loading') {
