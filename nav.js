@@ -31,7 +31,7 @@
   var LINKS = [
     {
       label: 'The Brief',
-      href: 'https://www.btownbrief.com',
+      href: 'https://www.btownbrief.com?utm_source=nav&utm_medium=referral&utm_campaign=site_capture',
       on: [{ host: /^(www\.)?btownbrief\.com$/ }]
     },
     {
