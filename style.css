@@ -282,3 +282,81 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 14px 40px; }
   .brief-signup-inner { padding: 24px 14px 16px; }
   .brief-signup-screen { margin-top: 16px; padding: 4px; }
 }
+
+/* ---------- leaderboards page (/leaderboards/) ---------- */
+.lb-hero { padding-bottom: 4px; }
+.lb-back { color: var(--lake); text-decoration: none; white-space: nowrap; }
+.lb-back:hover { text-decoration: underline; }
+
+.lb-months { margin-top: 16px; display: inline-flex; gap: 8px; }
+.lb-month {
+  font: inherit; font-size: 13px; font-weight: 700; cursor: pointer;
+  color: var(--muted); background: var(--panel);
+  border: 1px solid var(--line); border-radius: 999px;
+  padding: 8px 16px; min-height: 40px;
+  transition: color .12s ease, border-color .12s ease;
+}
+.lb-month:hover { color: var(--ink); }
+.lb-month.active {
+  color: #10233a; background: linear-gradient(90deg, var(--gold), #ffe27a);
+  border-color: transparent;
+  text-shadow: 0 1px 0 rgba(255,255,255,.25);
+}
+
+.lb-section-head {
+  margin: 26px 4px 4px; font-size: 18px; font-weight: 900;
+  letter-spacing: .4px; color: var(--gold);
+  text-shadow: 0 0 10px rgba(255,210,63,.25);
+}
+.lb-section-sub { margin: 0 4px 12px; color: var(--muted); font-size: 13px; }
+
+/* Arcade Royalty — who rules the most cabinets this month. */
+.lb-royalty-list {
+  list-style: none; margin: 0; padding: 0;
+  background: linear-gradient(180deg, var(--panel-2), var(--panel));
+  border: 1px solid var(--line); border-radius: 16px;
+  box-shadow: var(--shadow); overflow: hidden;
+}
+.lb-royal {
+  display: flex; align-items: baseline; gap: 10px;
+  padding: 10px 14px; border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+.lb-royal:last-child { border-bottom: 0; }
+.lb-royal-bits { margin-left: auto; color: var(--muted); font-size: 12.5px; text-align: right; }
+
+/* One board per cabinet. */
+.lb-grid {
+  display: grid; gap: 14px; margin-top: 14px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 520px) { .lb-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 860px) { .lb-grid { grid-template-columns: 1fr 1fr 1fr; gap: 16px; } }
+
+.lb-board:hover { transform: none; }
+.lb-marquee { display: block; text-decoration: none; }
+.lb-board-body { flex: 1; padding: 10px 14px 4px; }
+.lb-rows { list-style: none; margin: 0; padding: 0; }
+.lb-row {
+  display: flex; align-items: baseline; gap: 8px;
+  padding: 5px 0; font-size: 13.5px;
+  border-bottom: 1px dashed rgba(255,255,255,.06);
+}
+.lb-row:last-child { border-bottom: 0; }
+.lb-rank { flex: 0 0 26px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.lb-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lb-score { margin-left: auto; color: var(--lake); font-weight: 700; font-variant-numeric: tabular-nums; }
+.lb-row-me { background: rgba(255,210,63,.08); border-radius: 6px; }
+.lb-row-me .lb-name { color: var(--gold); font-weight: 800; }
+.lb-empty { color: var(--muted); font-size: 13px; padding: 8px 0 12px; }
+
+/* Hub hero link to the boards. */
+.lb-link {
+  display: inline-block; margin-top: 12px;
+  color: var(--gold); text-decoration: none; font-weight: 800; font-size: 14px;
+  border: 1px solid rgba(255,210,63,.35); border-radius: 999px;
+  padding: 8px 16px; min-height: 20px;
+  text-shadow: 0 0 10px rgba(255,210,63,.3);
+  transition: border-color .12s ease, background .12s ease;
+}
+.lb-link:hover { border-color: var(--gold); background: rgba(255,210,63,.08); }

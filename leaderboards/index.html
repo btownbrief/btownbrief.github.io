@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d1b2a">
+<title>Leaderboards — BTown Games</title>
+<meta name="description" content="Every BTown Games leaderboard in one place: this month's top ten in every cabinet, plus the players ruling the whole arcade.">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icon-180.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BTown Games">
+<meta property="og:title" content="Leaderboards — BTown Games">
+<meta property="og:description" content="This month's top ten in every cabinet, plus the players ruling the whole arcade.">
+<meta property="og:url" content="https://play.btownbrief.com/leaderboards/">
+<meta property="og:image" content="https://play.btownbrief.com/og-image.png">
+
+<link rel="stylesheet" href="/style.css">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2471867016612559');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2471867016612559&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<div class="scanlines" aria-hidden="true"></div>
+
+<header class="hero lb-hero">
+  <div class="hero-inner">
+    <div class="coin">🏆</div>
+    <h1 class="wordmark"><span class="w1">LEADER</span><span class="w2">BOARDS</span></h1>
+    <p class="hero-sub">Every cabinet's monthly top ten, in one place. <a class="lb-back" href="/">← Back to the arcade</a></p>
+    <div class="lb-months" role="group" aria-label="Pick a month">
+      <button class="lb-month active" id="lb-this" type="button" aria-pressed="true">This month</button>
+      <button class="lb-month" id="lb-last" type="button" aria-pressed="false">Last month</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="lb-royalty" id="royalty-wrap" hidden aria-labelledby="royalty-head">
+    <h2 class="lb-section-head" id="royalty-head">👑 Arcade Royalty — <span id="royalty-month"></span></h2>
+    <p class="lb-section-sub">Scores don't compare across cabinets, so the crown goes to whoever tops the most boards.</p>
+    <ol class="lb-royalty-list" id="royalty-list"></ol>
+  </section>
+
+  <section aria-label="Per-game leaderboards">
+    <h2 class="lb-section-head">🕹️ The Boards</h2>
+    <div class="lb-grid" id="boards">
+      <p class="load-error">Loading the boards…</p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p class="foot-line">Monthly leaderboards reset on the 1st. Champions get named in the Brief.</p>
+  <p class="foot-sub"><a href="/">Play the arcade</a> · <a href="https://www.btownbrief.com" target="_blank" rel="noopener">btownbrief.com</a></p>
+</footer>
+
+<script type="module">
+import { fetchTop, playerId, monthLabel } from '../leaderboard.js';
+
+const boardsEl = document.getElementById('boards');
+const royaltyWrap = document.getElementById('royalty-wrap');
+const royaltyList = document.getElementById('royalty-list');
+const royaltyMonth = document.getElementById('royalty-month');
+const btnThis = document.getElementById('lb-this');
+const btnLast = document.getElementById('lb-last');
+
+let games = [];
+let monthOffset = 0;
+let loadSeq = 0; // ignore stale fetches after a month switch
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, (c) => (
+    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+  ));
+}
+
+const MEDALS = ['🥇', '🥈', '🥉'];
+
+function boardHtml(g, rows) {
+  const me = playerId();
+  const body = rows.length
+    ? '<ol class="lb-rows">' + rows.slice(0, 10).map((r, i) => {
+        const mine = me && r.player_id === me ? ' lb-row-me' : '';
+        const mark = MEDALS[i] || (i + 1) + '.';
+        return `<li class="lb-row${mine}">
+          <span class="lb-rank">${mark}</span>
+          <span class="lb-name">${escapeHtml(r.name || 'Anonymous')}</span>
+          <span class="lb-score">${Number(r.score).toLocaleString()}</span>
+        </li>`;
+      }).join('') + '</ol>'
+    : '<p class="lb-empty">No scores yet — be the first on the board.</p>';
+  return `
+    <article class="cab lb-board" aria-label="${escapeHtml(g.name)} leaderboard">
+      <a class="cab-marquee lb-marquee" href="/${g.slug}/">${g.emoji} ${escapeHtml(g.name.toUpperCase())}</a>
+      <div class="lb-board-body">${body}</div>
+      <div class="cab-foot"><a class="btn btn-play" href="/${g.slug}/">▶ PLAY</a></div>
+    </article>`;
+}
+
+/* One player can rule several cabinets. Rank people by crowns (#1 spots),
+   then podium finishes, then how many boards they appear on at all. */
+function renderRoyalty(results) {
+  const players = new Map();
+  results.forEach(({ rows }) => {
+    // A player can hold several rows on one board; rows are best-first,
+    // so their first appearance is their position — count each board once.
+    const best = new Map();
+    rows.slice(0, 10).forEach((r, i) => {
+      if (r.player_id && !best.has(r.player_id)) best.set(r.player_id, { name: r.name, pos: i });
+    });
+    best.forEach(({ name, pos }, id) => {
+      let p = players.get(id);
+      if (!p) { p = { name: name || 'Anonymous', crowns: 0, podiums: 0, boards: 0 }; players.set(id, p); }
+      p.boards += 1;
+      if (pos === 0) p.crowns += 1;
+      if (pos < 3) p.podiums += 1;
+    });
+  });
+  const ranked = [...players.entries()]
+    .sort((a, b) => b[1].crowns - a[1].crowns || b[1].podiums - a[1].podiums || b[1].boards - a[1].boards)
+    .slice(0, 10)
+    .filter(([, p]) => p.podiums > 0);
+  if (!ranked.length) { royaltyWrap.hidden = true; return; }
+  const me = playerId();
+  royaltyList.innerHTML = ranked.map(([id, p], i) => {
+    const mine = me && id === me ? ' lb-row-me' : '';
+    const bits = [];
+    if (p.crowns) bits.push(`👑 ${p.crowns} board${p.crowns === 1 ? '' : 's'} topped`);
+    if (p.podiums > p.crowns) bits.push(`${p.podiums} podium${p.podiums === 1 ? '' : 's'}`);
+    bits.push(`on ${p.boards} board${p.boards === 1 ? '' : 's'}`);
+    return `<li class="lb-royal${mine}">
+      <span class="lb-rank">${MEDALS[i] || (i + 1) + '.'}</span>
+      <span class="lb-name">${escapeHtml(p.name)}</span>
+      <span class="lb-royal-bits">${bits.join(' · ')}</span>
+    </li>`;
+  }).join('');
+  royaltyMonth.textContent = monthLabel(monthOffset);
+  royaltyWrap.hidden = false;
+}
+
+async function load() {
+  const seq = ++loadSeq;
+  boardsEl.innerHTML = '<p class="load-error">Loading the boards…</p>';
+  royaltyWrap.hidden = true;
+  const results = await Promise.all(games.map(async (g) => {
+    try { return { g, rows: (await fetchTop(g.slug, monthOffset)) || [] }; }
+    catch (e) { return { g, rows: [] }; }
+  }));
+  if (seq !== loadSeq) return;
+  boardsEl.innerHTML = results.map(({ g, rows }) => boardHtml(g, rows)).join('');
+  renderRoyalty(results);
+}
+
+function setMonth(offset) {
+  monthOffset = offset;
+  btnThis.classList.toggle('active', offset === 0);
+  btnThis.setAttribute('aria-pressed', offset === 0 ? 'true' : 'false');
+  btnLast.classList.toggle('active', offset === -1);
+  btnLast.setAttribute('aria-pressed', offset === -1 ? 'true' : 'false');
+  btnThis.textContent = 'This month (' + monthLabel(0) + ')';
+  btnLast.textContent = 'Last month (' + monthLabel(-1) + ')';
+  load();
+}
+
+btnThis.addEventListener('click', () => setMonth(0));
+btnLast.addEventListener('click', () => setMonth(-1));
+
+async function init() {
+  try {
+    const res = await fetch('/games.json', { cache: 'no-cache' });
+    const data = await res.json();
+    games = (data.games || []).filter((g) => g.live && g.leaderboard);
+  } catch (e) {
+    boardsEl.innerHTML = '<p class="load-error">Couldn\'t load the game list. Refresh to try again.</p>';
+    return;
+  }
+  setMonth(0);
+}
+
+init();
+</script>
+<script src="https://play.btownbrief.com/nav.js" defer></script>
+</body>
+</html>
