@@ -153,6 +153,22 @@
    "leaderboard": true
   },
   {
+   "slug": "kings-corner",
+   "name": "Kings Corner",
+   "emoji": "👑",
+   "pitch": "Kings to the corners: shed your hand around City Hall Park before the bot does.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "btown-cribbage",
+   "name": "Btown Cribbage",
+   "emoji": "🏔️",
+   "pitch": "Full cribbage on the Long Trail peg board — the app does all the counting.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
    "slug": "stay-awhile",
    "name": "Stay Awhile",
    "emoji": "🎡",
