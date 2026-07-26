@@ -121,6 +121,38 @@
    "leaderboard": false
   },
   {
+   "slug": "four-in-a-rowboat",
+   "name": "Four in a Rowboat",
+   "emoji": "🚣",
+   "pitch": "Drop your buoys and line up four across Lake Champlain — race a friend or take on the Skipper.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "crazy-eights",
+   "name": "Crazy Eights",
+   "emoji": "🃏",
+   "pitch": "Eights are wild on the Burlington deck: match it or draw, first empty hand wins.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "maple-mancala",
+   "name": "Maple Mancala",
+   "emoji": "🌰",
+   "pitch": "Sow maple candies bucket to bucket and capture the sweetest side of the plank.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "maple-scramble",
+   "name": "Maple Scramble",
+   "emoji": "🔠",
+   "pitch": "Sixteen tiles, one connected crossword, every day — get TAPPED fast and top the monthly board.",
+   "live": true,
+   "leaderboard": true
+  },
+  {
    "slug": "stay-awhile",
    "name": "Stay Awhile",
    "emoji": "🎡",
