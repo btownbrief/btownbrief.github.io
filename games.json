@@ -169,6 +169,54 @@
    "leaderboard": false
   },
   {
+   "slug": "church-street-checkers",
+   "name": "Church Street Checkers",
+   "emoji": "🔴",
+   "pitch": "Checkers on the Marketplace bricks — captures are mandatory, no mercy.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "battle-on-the-lake",
+   "name": "Battle on the Lake",
+   "emoji": "⛵",
+   "pitch": "Hide your fleet on Lake Champlain, then sink theirs — ferry, schooner, kayak and all.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "btown-crossings",
+   "name": "Btown Crossings",
+   "emoji": "🔡",
+   "pitch": "Our own word-tile board: Church Street doubles your word, the Waterfront triples a letter.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "sugarbush-squares",
+   "name": "Sugarbush Squares",
+   "emoji": "🌳",
+   "pitch": "Claim plots in the sugarbush: close a box, plant a maple, go again.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "peak-foliage",
+   "name": "Peak Foliage",
+   "emoji": "🍂",
+   "pitch": "Flip the forest green or red — whoever hits peak foliage wins the canopy.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "snowball-slinger",
+   "name": "Snowball Slinger",
+   "emoji": "☃️",
+   "pitch": "Sling snowballs at squirrel forts across 3D Burlington — win back the maple candy.",
+   "live": true,
+   "leaderboard": true
+  },
+  {
    "slug": "stay-awhile",
    "name": "Stay Awhile",
    "emoji": "🎡",
@@ -189,6 +237,14 @@
    "name": "Caption This",
    "emoji": "💬",
    "pitch": "BTown's weekly caption contest: swipe on the funniest, or write your own.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "maples-to-maples",
+   "name": "Maples to Maples",
+   "emoji": "🗳️",
+   "pitch": "The weekly party game: one prompt, your best answer, the town votes.",
    "live": true,
    "leaderboard": false
   },
