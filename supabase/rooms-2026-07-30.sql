@@ -91,6 +91,19 @@ begin
 end;
 $$;
 
+-- Hard budget: the arcade never holds more than this many live rooms, so a
+-- key-scraping spammer can't grow the table past ~130 MB no matter how many
+-- identities they rotate through (each room is already capped at 128 KB).
+-- Real Burlington traffic will never see this.
+create or replace function public.br_check_budget() returns void
+language plpgsql security definer set search_path = public as $$
+begin
+  if (select count(*) from public.game_rooms) >= 1000 then
+    raise exception using message = 'arcade_full';
+  end if;
+end;
+$$;
+
 create or replace function public.br_clean_name(p_name text) returns text
 language plpgsql immutable as $$
 declare v text := left(btrim(coalesce(p_name, '')), 24);
@@ -128,6 +141,7 @@ begin
   end if;
   perform public.br_check_state(p_state);
   perform public.br_sweep_rooms();
+  perform public.br_check_budget();
 
   -- One open room per device per game — creating again replaces it. Both
   -- player_id AND the device token must match, so nobody can sweep away a
@@ -186,13 +200,18 @@ begin
      or coalesce(length(p_player), 0) not between 1 and 64 then
     raise exception using message = 'bad_identity';
   end if;
+  -- NULL would sail straight past a <> comparison, so validate the slug
+  -- exactly like room_create does.
+  if p_game is null or p_game !~ '^[a-z0-9-]{1,40}$' then
+    raise exception using message = 'bad_game';
+  end if;
 
   select * into r from public.game_rooms
   where code = upper(btrim(coalesce(p_code, ''))) for update;
   if not found then
     raise exception using message = 'not_found';
   end if;
-  if r.game <> p_game then
+  if r.game is distinct from p_game then
     -- Friendly steer: the code exists, but for a different game.
     raise exception using message = 'wrong_game:' || r.game;
   end if;
@@ -297,6 +316,11 @@ begin
   if r.status = 'waiting' then
     raise exception using message = 'not_started';
   end if;
+  -- Once anyone has walked out, the room is done for good — a push racing
+  -- a leave must never flip it back to 'playing'.
+  if r.seats @> '[{"left": true}]'::jsonb then
+    raise exception using message = 'opponent_left';
+  end if;
   if r.version <> coalesce(p_version, -1) then
     raise exception using message = 'version_conflict';
   end if;
@@ -336,6 +360,7 @@ begin
   update public.game_rooms
   set seats = jsonb_set(seats, array[v_seat::text, 'left'], 'true'::jsonb),
       status = 'over',
+      version = version + 1,   -- any in-flight push now loses its version race
       updated_at = now()
   where id = r.id;
 
@@ -344,8 +369,20 @@ end;
 $$;
 
 -- ---------------------------------------------------------------- grants
+-- Postgres grants EXECUTE to PUBLIC by default, and PostgREST exposes every
+-- executable public function as an RPC — so lock down ALL the internal
+-- helpers, not just the sweeper. The definer-owned room_* functions can
+-- still call them (they run with the owner's privileges).
 
-revoke all on function public.br_sweep_rooms() from public, anon, authenticated;
+revoke all on function
+  public.br_token_hash(text),
+  public.br_public_seats(jsonb),
+  public.br_seat_of(jsonb, text),
+  public.br_sweep_rooms(),
+  public.br_check_state(jsonb),
+  public.br_check_budget(),
+  public.br_clean_name(text)
+from public, anon, authenticated;
 
 grant execute on function
   public.room_create(text, text, text, text, jsonb, int),
