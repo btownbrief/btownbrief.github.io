@@ -129,6 +129,14 @@
    "leaderboard": false
   },
   {
+   "slug": "queen-city-chess",
+   "name": "Queen City Chess",
+   "emoji": "♛",
+   "pitch": "Burlington IS the Queen City \u2014 full chess: pass the phone, race a friend online, or test the Queen City Club.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
    "slug": "crazy-eights",
    "name": "Crazy Eights",
    "emoji": "🃏",
