@@ -121,6 +121,110 @@
    "leaderboard": false
   },
   {
+   "slug": "four-in-a-rowboat",
+   "name": "Four in a Rowboat",
+   "emoji": "🚣",
+   "pitch": "Drop your buoys and line up four across Lake Champlain — race a friend or take on the Skipper.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "queen-city-chess",
+   "name": "Queen City Chess",
+   "emoji": "♛",
+   "pitch": "Burlington IS the Queen City \u2014 full chess: pass the phone, race a friend online, or test the Queen City Club.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "crazy-eights",
+   "name": "Crazy Eights",
+   "emoji": "🃏",
+   "pitch": "Eights are wild on the Burlington deck: match it or draw, first empty hand wins.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "maple-mancala",
+   "name": "Maple Mancala",
+   "emoji": "🌰",
+   "pitch": "Sow maple candies bucket to bucket and capture the sweetest side of the plank.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "maple-scramble",
+   "name": "Maple Scramble",
+   "emoji": "🔠",
+   "pitch": "Sixteen tiles, one connected crossword, every day — get TAPPED fast and top the monthly board.",
+   "live": true,
+   "leaderboard": true
+  },
+  {
+   "slug": "kings-corner",
+   "name": "Kings Corner",
+   "emoji": "👑",
+   "pitch": "Kings to the corners: shed your hand around City Hall Park before the bot does.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "btown-cribbage",
+   "name": "Btown Cribbage",
+   "emoji": "🏔️",
+   "pitch": "Full cribbage on the Long Trail peg board — the app does all the counting.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "church-street-checkers",
+   "name": "Church Street Checkers",
+   "emoji": "🔴",
+   "pitch": "Checkers on the Marketplace bricks — captures are mandatory, no mercy.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "battle-on-the-lake",
+   "name": "Battle on the Lake",
+   "emoji": "⛵",
+   "pitch": "Hide your fleet on Lake Champlain, then sink theirs — ferry, schooner, kayak and all.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "btown-crossings",
+   "name": "Btown Crossings",
+   "emoji": "🔡",
+   "pitch": "Our own word-tile board: Church Street doubles your word, the Waterfront triples a letter.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "sugarbush-squares",
+   "name": "Sugarbush Squares",
+   "emoji": "🌳",
+   "pitch": "Claim plots in the sugarbush: close a box, plant a maple, go again.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "peak-foliage",
+   "name": "Peak Foliage",
+   "emoji": "🍂",
+   "pitch": "Flip the forest green or red — whoever hits peak foliage wins the canopy.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "snowball-slinger",
+   "name": "Snowball Slinger",
+   "emoji": "☃️",
+   "pitch": "Sling snowballs at squirrel forts across 3D Burlington — win back the maple candy.",
+   "live": true,
+   "leaderboard": true
+  },
+  {
    "slug": "stay-awhile",
    "name": "Stay Awhile",
    "emoji": "🎡",
@@ -141,6 +245,14 @@
    "name": "Caption This",
    "emoji": "💬",
    "pitch": "BTown's weekly caption contest: swipe on the funniest, or write your own.",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "maples-to-maples",
+   "name": "Maples to Maples",
+   "emoji": "🗳️",
+   "pitch": "The weekly party game: one prompt, your best answer, the town votes.",
    "live": true,
    "leaderboard": false
   },
