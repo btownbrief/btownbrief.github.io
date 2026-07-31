@@ -18,8 +18,10 @@
  * Behavior contract with the games:
  *   - It's an overlay. It never resizes or reflows the host page, so it can't
  *     break a game's layout; it's kept slim so it can't hide much either.
- *   - ✕ dismisses it for the session (sessionStorage), so anyone who finds it
- *     in the way during play can clear it with one tap.
+ *   - ✕ collapses it to a small 📰 tab in the corner; tapping the tab brings
+ *     it back — a two-way toggle that works any time, mid-game included.
+ *     The choice persists across visits (localStorage, shared by all games
+ *     on play.btownbrief.com).
  *   - If the feed can't be fetched, the bar simply never appears.
  *   - <script ... data-position="top"> pins it to the top instead, for games
  *     whose bottom edge is part of the play surface.
@@ -40,16 +42,19 @@
 
   var FEED = 'https://guide.btownbrief.com/data/ticker.json';
   var EVENTS_URL = 'https://guide.btownbrief.com/things-to-do.html';
-  var KEY = 'btown-ticker'; // sessionStorage: 'off' = dismissed this session
+  var KEY = 'btown-ticker'; // localStorage: 'off' = collapsed to the 📰 tab
   var MAX_ITEMS = 48;       // items per loop — plenty of variety, light DOM
   var SPEED = 65;           // crawl speed, px/s
 
   var script = document.currentScript || {};
   var position = (script.dataset && script.dataset.position) === 'top' ? 'top' : 'bottom';
 
-  try {
-    if (sessionStorage.getItem(KEY) === 'off') return;
-  } catch (e) { /* storage blocked — just show it */ }
+  function pref(v) {
+    try {
+      if (v === undefined) return localStorage.getItem(KEY);
+      localStorage.setItem(KEY, v);
+    } catch (e) { /* storage blocked — the toggle just won't persist */ }
+  }
 
   var css = [
     '.bt-ticker{position:fixed;left:0;right:0;', position, ':0;z-index:2147482000;',
@@ -74,6 +79,12 @@
     '.bt-ticker-x{flex:0 0 auto;width:30px;border:0;background:none;color:#9db4d0;font-size:14px;',
     'cursor:pointer;padding:0;line-height:30px;}',
     '.bt-ticker-x:hover{color:#eaf2ff;}',
+    '.bt-ticker-tab{position:fixed;left:6px;', position, ':6px;z-index:2147482000;',
+    'width:30px;height:30px;border-radius:8px;border:1px solid rgba(255,255,255,.2);',
+    'background:rgba(13,27,42,.82);font-size:15px;line-height:28px;text-align:center;',
+    'cursor:pointer;padding:0;opacity:.6;',
+    'margin-', position === 'top' ? 'top' : 'bottom', ':env(safe-area-inset-', position, ',0px);}',
+    '.bt-ticker-tab:hover{opacity:1;}',
     '@keyframes bt-ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}',
     '@keyframes bt-ticker-blink{0%,100%{opacity:1}50%{opacity:.35}}',
     '@media (max-width:640px){.bt-ticker{font-size:12px;}.bt-ticker-item{padding:0 10px;}}',
@@ -140,19 +151,40 @@
       '<div class="bt-ticker-view"><div class="bt-ticker-track">' +
       html + html + // doubled so the -50% translate loops seamlessly
       '</div></div>' +
-      '<button class="bt-ticker-x" aria-label="Hide news ticker" title="Hide for this session">\u2715</button>';
+      '<button class="bt-ticker-x" aria-label="Hide news ticker" title="Hide the ticker">\u2715</button>';
 
-    bar.querySelector('.bt-ticker-x').addEventListener('click', function () {
-      bar.remove();
-      try { sessionStorage.setItem(KEY, 'off'); } catch (e) { /* fine */ }
-    });
+    // The ✕ never kills the ticker outright — it collapses it into a small
+    // 📰 tab in the corner, so a player can flip it back on whenever they
+    // like, mid-game included. The choice sticks (localStorage) until they
+    // flip it again.
+    var tab = document.createElement('button');
+    tab.className = 'bt-ticker-tab';
+    tab.textContent = '\uD83D\uDCF0';
+    tab.setAttribute('aria-label', 'Show news ticker');
+    tab.title = 'Btown Brief news & events';
+
+    function setOn(on) {
+      bar.style.display = on ? '' : 'none';
+      tab.style.display = on ? 'none' : '';
+      pref(on ? 'on' : 'off');
+    }
+    bar.querySelector('.bt-ticker-x').addEventListener('click', function () { setOn(false); });
+    tab.addEventListener('click', function () { setOn(true); });
 
     document.body.appendChild(bar);
+    document.body.appendChild(tab);
 
     var track = bar.querySelector('.bt-ticker-track');
     // Duration from real content width so the crawl speed is constant
-    // whatever the mix of short and long items.
+    // whatever the mix of short and long items. Measured while the bar is
+    // still visible — a display:none bar has no width to measure.
     track.style.animationDuration = (track.scrollWidth / 2 / SPEED) + 's';
+
+    if (pref() === 'off') {
+      bar.style.display = 'none';
+    } else {
+      tab.style.display = 'none';
+    }
 
     // Reduced motion: the crawl is disabled by CSS; rotate a single item.
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -166,9 +198,14 @@
       }, 6000);
     }
 
+    // For games: tuck the whole thing (bar AND tab) away during play, bring
+    // it back on the menu. show() restores whichever state the player chose.
     window.BtownTicker = {
-      hide: function () { bar.style.display = 'none'; },
-      show: function () { bar.style.display = ''; }
+      hide: function () { bar.style.display = 'none'; tab.style.display = 'none'; },
+      show: function () {
+        if (pref() === 'off') tab.style.display = '';
+        else bar.style.display = '';
+      }
     };
   }
 
