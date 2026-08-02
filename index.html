@@ -54,13 +54,16 @@ src="https://www.facebook.com/tr?id=2471867016612559&ev=PageView&noscript=1"
     <h1 class="wordmark"><span class="w1">BTOWN</span><span class="w2">GAMES</span></h1>
     <p class="hero-sub">The <strong>BTown Brief</strong> arcade: a scrappy little corner of Burlington, VT.</p>
     <div id="greeting" class="greeting"></div>
-    <a class="lb-link" href="/leaderboards/">🏆 Monthly leaderboards →</a>
+    <div class="hero-actions">
+      <a class="lb-link" href="/leaderboards/">🏆 Monthly leaderboards →</a>
+      <span id="donate-header-slot"></span>
+    </div>
   </div>
 </header>
 
 <main>
   <section class="cabinets" aria-label="Games">
-    <div id="grid" class="grid">
+    <div id="grid" class="game-sections">
       <p class="load-error">Loading the arcade…</p>
     </div>
   </section>
@@ -80,9 +83,6 @@ src="https://www.facebook.com/tr?id=2471867016612559&ev=PageView&noscript=1"
       <p class="news-fine">Monthly champions get named in the newsletter. Yes, really.</p>
     </div>
   </section>
-  <!-- Donate: one tasteful placement, after the cabinets, never in the play flow -->
-  <section class="donate" id="donate-slot" aria-label="Support the arcade"></section>
-
   <section class="brief-signup" aria-labelledby="brief-signup-heading">
     <div class="brief-signup-inner">
       <h2 class="brief-signup-head" id="brief-signup-heading">Get the Brief</h2>
@@ -102,6 +102,9 @@ src="https://www.facebook.com/tr?id=2471867016612559&ev=PageView&noscript=1"
       </div>
     </div>
   </section>
+
+  <!-- Support stays outside the game grid and play flow. -->
+  <section class="donate" id="donate-slot" aria-label="Support the arcade"></section>
 </main>
 
 <footer class="foot">

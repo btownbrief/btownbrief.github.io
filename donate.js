@@ -1,4 +1,4 @@
-// Donate card for the arcade — same Ko-fi A/B copy test as the main site.
+// Donate prompts for the arcade — same Ko-fi A/B copy test as the main site.
 // The sticky variant key is shared across play.btownbrief.com, so a visitor
 // sees one consistent pitch everywhere; clicks land in btb_events (see the
 // btown-brief repo's db/quick-wins.sql — until that runs, tracking no-ops).
@@ -46,9 +46,20 @@
   }
 
   var slot = document.getElementById('donate-slot');
-  if (!slot) return;
+  var headerSlot = document.getElementById('donate-header-slot');
+  if (!slot && !headerSlot) return;
   var variant = donateVariant();
   var copy = DONATE_COPY[variant];
+
+  if (headerSlot) {
+    headerSlot.innerHTML =
+      '<a class="donate-mini" href="' + KOFI_URL + '" target="_blank" rel="noopener">' +
+        '☕ Support the arcade' +
+      '</a>';
+    headerSlot.querySelector('.donate-mini').addEventListener('click', function () { track(variant); });
+  }
+
+  if (!slot) return;
 
   slot.innerHTML =
     '<div class="donate-inner">' +

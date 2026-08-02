@@ -28,7 +28,7 @@ function cardHtml(g) {
         <div class="cab-marquee soon">COMING SOON</div>
         <div class="cab-screen">
           <div class="cab-emoji">${g.emoji}</div>
-          <h2 class="cab-name">${escapeHtml(g.name)}</h2>
+          <h3 class="cab-name">${escapeHtml(g.name)}</h3>
           <p class="cab-pitch">${escapeHtml(g.pitch)}</p>
         </div>
         <div class="cab-foot">
@@ -41,7 +41,6 @@ function cardHtml(g) {
       <div class="cab-marquee">${g.emoji} ${escapeHtml(g.name.toUpperCase())}</div>
       <div class="cab-screen">
         <div class="cab-emoji">${g.emoji}</div>
-        <h2 class="cab-name">${escapeHtml(g.name)}</h2>
         <p class="cab-pitch">${escapeHtml(g.pitch)}</p>
         <div class="cab-champ" data-champ="${g.slug}" hidden></div>
         <div class="cab-rank" data-rank="${g.slug}" hidden></div>
@@ -50,6 +49,18 @@ function cardHtml(g) {
         <a class="btn btn-play" href="/${g.slug}/">▶ PLAY</a>
       </div>
     </article>`;
+}
+
+function sectionHtml(section, games) {
+  const headingId = `section-${section.id}`;
+  return `
+    <section class="game-section" aria-labelledby="${escapeHtml(headingId)}">
+      <div class="game-section-head">
+        <h2 id="${escapeHtml(headingId)}">${escapeHtml(section.title)}</h2>
+        ${section.description ? `<p>${escapeHtml(section.description)}</p>` : ''}
+      </div>
+      <div class="grid">${games.map(cardHtml).join('')}</div>
+    </section>`;
 }
 
 async function loadStats(g) {
@@ -87,8 +98,17 @@ async function init() {
     return;
   }
   const games = data.games || [];
+  const sections = Array.isArray(data.sections) ? data.sections.filter((s) => s && s.id) : [];
+  const knownSections = new Set(sections.map((s) => s.id));
+  const sectionBlocks = sections.map((section) => (
+    sectionHtml(section, games.filter((g) => g.section === section.id))
+  ));
+  const ungrouped = games.filter((g) => !knownSections.has(g.section));
+  if (ungrouped.length) {
+    sectionBlocks.push(sectionHtml({ id: 'more', title: 'More Games' }, ungrouped));
+  }
   document.getElementById('month-label').textContent = monthLabel(0);
-  grid.innerHTML = games.map(cardHtml).join('');
+  grid.innerHTML = sectionBlocks.join('') || '<p class="load-error">No games are listed right now.</p>';
   // Fetch live champs / ranks in parallel; each degrades on its own.
   games.filter((g) => g.live).forEach(loadStats);
 }
