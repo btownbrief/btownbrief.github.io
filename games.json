@@ -181,6 +181,69 @@
    "leaderboard": false
   },
   {
+   "slug": "creemee-chase",
+   "name": "Creemee Chase",
+   "emoji": "🍦",
+   "pitch": "Race four flavors around the creemee stand and bump your rivals back in line \u2014 2\u20134 players, any phones.",
+   "section": "board-card",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "sap-roll",
+   "name": "Sap Roll",
+   "emoji": "🎲",
+   "pitch": "Five dice, three rolls, FULL BOIL for fifty \u2014 sugarhouse dice for 2\u20134 players.",
+   "section": "board-card",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "front-porch-dominoes",
+   "name": "Front Porch Dominoes",
+   "emoji": "🁵",
+   "pitch": "Draw dominoes under the string lights \u2014 first to 100 wins the porch. 2\u20134 players.",
+   "section": "board-card",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "stowaway-hearts",
+   "name": "Stowaway Hearts",
+   "emoji": "🚢",
+   "pitch": "Dodge hearts and the Harbormaster\u2019s Fine on the Champlain ferry \u2014 four deckhands, shoot the moon.",
+   "section": "board-card",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "mud-season",
+   "name": "Mud Season",
+   "emoji": "🥾",
+   "pitch": "Bid exactly how much mud you can drive \u2014 Vermont\u2019s meanest trick-taking, 3\u20134 players.",
+   "section": "board-card",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "north-star-hop",
+   "name": "North Star Hop",
+   "emoji": "⭐",
+   "pitch": "Hop your marbles across the star under the northern lights \u2014 2\u20134 players.",
+   "section": "board-card",
+   "live": true,
+   "leaderboard": false
+  },
+  {
+   "slug": "lift-line",
+   "name": "Lift Line",
+   "emoji": "🎿",
+   "pitch": "Shed your hand, ride First Chair, dodge the T-Bar \u2014 the ski-lift pecking order for 3\u20134.",
+   "section": "board-card",
+   "live": true,
+   "leaderboard": false
+  },
+  {
    "slug": "crazy-eights",
    "name": "Crazy Eights",
    "emoji": "🃏",
