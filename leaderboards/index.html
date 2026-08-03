@@ -105,9 +105,11 @@ function boardHtml(g, rows) {
         </li>`;
       }).join('') + '</ol>'
     : '<p class="lb-empty">No scores yet — be the first on the board.</p>';
+  const hint = g.boardHint ? `<p class="lb-board-hint">${escapeHtml(g.boardHint)}</p>` : '';
   return `
     <article class="cab lb-board" aria-label="${escapeHtml(g.name)} leaderboard">
       <a class="cab-marquee lb-marquee" href="/${g.slug}/">${g.emoji} ${escapeHtml(g.name.toUpperCase())}</a>
+      ${hint}
       <div class="lb-board-body">${body}</div>
       <div class="cab-foot">
         <a class="btn btn-play" href="/${g.slug}/" aria-label="Play ${escapeHtml(g.name)}">▶ PLAY THIS GAME</a>

@@ -250,7 +250,8 @@
    "pitch": "Checkers on the Marketplace bricks — captures are mandatory, no mercy.",
    "section": "board-card",
    "live": true,
-   "leaderboard": false
+   "leaderboard": true,
+   "boardHint": "Fewest moves to beat the bots — a 🎩 Marketplace Master win outranks every 🍦 Stroller win."
   },
   {
    "slug": "battle-on-the-lake",
@@ -259,7 +260,8 @@
    "pitch": "Hide your fleet on Lake Champlain, then sink theirs — ferry, schooner, kayak and all.",
    "section": "board-card",
    "live": true,
-   "leaderboard": false
+   "leaderboard": true,
+   "boardHint": "Sink the Harbormaster's fleet in the fewest shots — a perfect 17-shot hunt scores 84."
   },
   {
    "slug": "btown-crossings",
@@ -277,7 +279,8 @@
    "pitch": "Claim plots in the sugarbush: close a box, plant a maple, go again.",
    "section": "board-card",
    "live": true,
-   "leaderboard": false
+   "leaderboard": true,
+   "boardHint": "Widest winning margin — a 🔥 Boiler win outranks every Sap Hauler win."
   },
   {
    "slug": "peak-foliage",
