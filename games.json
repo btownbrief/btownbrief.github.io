@@ -13,7 +13,7 @@
   {
    "id": "board-card",
    "title": "Board & Card Classics",
-   "description": "Familiar favorites rebuilt with a Vermont twist."
+   "description": "Familiar favorites rebuilt with a Vermont twist. Play solo against the bot, pass the phone, or go online with a 4-letter crew code — bot wins are what put you on the monthly leaderboard."
   },
   {
    "id": "party-community",
@@ -186,7 +186,7 @@
    "slug": "front-porch-dominoes",
    "name": "Front Porch Dominoes",
    "emoji": "🁵",
-   "pitch": "Draw dominoes under the string lights — first to 100 wins the porch. 2–4 players.",
+   "pitch": "Draw dominoes under the string lights — first to 100 wins the porch. Solo vs Porch Swing Pete, or 2–4 players.",
    "section": "board-card",
    "live": true,
    "leaderboard": true,
@@ -196,7 +196,7 @@
    "slug": "north-star-hop",
    "name": "North Star Hop",
    "emoji": "⭐",
-   "pitch": "Hop your marbles across the star under the northern lights — 2–4 players.",
+   "pitch": "Hop your marbles across the star under the northern lights — solo vs Polaris, or 2–4 players.",
    "section": "board-card",
    "live": true,
    "leaderboard": true,
