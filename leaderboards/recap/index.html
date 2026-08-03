@@ -200,8 +200,10 @@ async function load() {
   champsWrap.hidden = false;
 
   if (unclaimed.length) {
-    unclaimedEl.innerHTML = '<strong>Still unclaimed:</strong> ' +
-      unclaimed.map(({ g }) => `${g.emoji} ${escapeHtml(g.name)}`).join(' · ');
+    const shown = unclaimed.slice(0, 4).map(({ g }) => `${g.emoji} ${escapeHtml(g.name)}`);
+    const extra = unclaimed.length - shown.length;
+    unclaimedEl.innerHTML = '<strong>Still unclaimed:</strong> ' + shown.join(' · ') +
+      (extra > 0 ? ` + ${extra} more` : '');
     unclaimedEl.hidden = false;
   }
 }
