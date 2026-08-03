@@ -169,7 +169,8 @@
    "pitch": "Drop your buoys and line up four across Lake Champlain — race a friend or take on the Skipper.",
    "section": "board-card",
    "live": true,
-   "leaderboard": false
+   "leaderboard": true,
+   "boardHint": "Fewest buoys to line up four — ⛵ Skipper wins outrank 🛶 Paddler wins."
   },
   {
    "slug": "queen-city-chess",
@@ -178,7 +179,8 @@
    "pitch": "Burlington IS the Queen City — full chess: pass the phone, race a friend online, or test the Queen City Club.",
    "section": "board-card",
    "live": true,
-   "leaderboard": false
+   "leaderboard": true,
+   "boardHint": "Fastest checkmate — ♛ Queen City Club wins outrank 🧳 Tourist wins."
   },
   {
    "slug": "front-porch-dominoes",
@@ -187,7 +189,8 @@
    "pitch": "Draw dominoes under the string lights — first to 100 wins the porch. 2–4 players.",
    "section": "board-card",
    "live": true,
-   "leaderboard": false
+   "leaderboard": true,
+   "boardHint": "Biggest points margin — 👀 Neighbor wins outrank 🪑 Porch Swing Pete wins."
   },
   {
    "slug": "north-star-hop",
@@ -196,7 +199,8 @@
    "pitch": "Hop your marbles across the star under the northern lights — 2–4 players.",
    "section": "board-card",
    "live": true,
-   "leaderboard": false
+   "leaderboard": true,
+   "boardHint": "Fewest hops to bring every marble home — 🧭 Navigator wins outrank ⭐ Polaris wins."
   },
   {
    "slug": "crazy-eights",
@@ -205,7 +209,8 @@
    "pitch": "Eights are wild on the Burlington deck: match it or draw, first empty hand wins.",
    "section": "board-card",
    "live": true,
-   "leaderboard": false
+   "leaderboard": true,
+   "boardHint": "Go out while Champ still holds a fistful — more stranded cards, higher score."
   },
   {
    "slug": "maple-mancala",
@@ -214,7 +219,8 @@
    "pitch": "Sow maple candies bucket to bucket and capture the sweetest side of the plank.",
    "section": "board-card",
    "live": true,
-   "leaderboard": false
+   "leaderboard": true,
+   "boardHint": "Sweetest store margin — 🔥 Sugarmaker wins outrank 🌱 Sap Run wins."
   },
   {
    "slug": "maple-scramble",
@@ -232,7 +238,8 @@
    "pitch": "Kings to the corners: shed your hand around City Hall Park before the bot does.",
    "section": "board-card",
    "live": true,
-   "leaderboard": false
+   "leaderboard": true,
+   "boardHint": "Shed your hand in the fewest turns to outdeal the Mayor."
   },
   {
    "slug": "btown-cribbage",
@@ -241,7 +248,8 @@
    "pitch": "Full cribbage on the Long Trail peg board — the app does all the counting.",
    "section": "board-card",
    "live": true,
-   "leaderboard": false
+   "leaderboard": true,
+   "boardHint": "Beat Champ by the most points — a skunk scores 31+."
   },
   {
    "slug": "church-street-checkers",
@@ -270,7 +278,8 @@
    "pitch": "Our own word-tile board: Church Street doubles your word, the Waterfront triples a letter.",
    "section": "board-card",
    "live": true,
-   "leaderboard": false
+   "leaderboard": true,
+   "boardHint": "Your highest winning score against SKIP."
   },
   {
    "slug": "sugarbush-squares",
@@ -289,7 +298,8 @@
    "pitch": "Flip the forest green or red — whoever hits peak foliage wins the canopy.",
    "section": "board-card",
    "live": true,
-   "leaderboard": false
+   "leaderboard": true,
+   "boardHint": "Widest leaf margin — 🌲 Forester wins outrank 🍁 Peeper wins."
   },
   {
    "slug": "snowball-slinger",
