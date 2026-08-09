@@ -28,7 +28,7 @@
     {
       "id": "party-night",
       "title": "Party Night",
-      "description": "Live games for a whole room — everyone scans a QR code, phones stay mostly pocketed, and the reveals land together on a big screen (or read aloud by the host). Built for Btown Brief meetups and mixers; bring it to yours."
+      "description": "Live games for a whole room — everyone scans a QR code, phones stay mostly pocketed, and the reveals land together on a big screen (or read aloud by whoever's hosting). Built for Btown Brief meetups and mixers — or your own living room. Anyone can host, free, no accounts."
     }
   ],
   "games": [
@@ -364,7 +364,7 @@
       "slug": "btown-party",
       "name": "Btown Party",
       "emoji": "🎪",
-      "pitch": "One host, one room code, five games: read the room, spin tall tales, write together, blend in, and finish the chain.",
+      "pitch": "One room code, five games: read the room, spin tall tales, write together, blend in, finish the chain. Anyone can host.",
       "section": "party-night",
       "live": true,
       "leaderboard": false
