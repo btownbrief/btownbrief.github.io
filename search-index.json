@@ -9,6 +9,8 @@
 
     { "title": "Everything — the whole network", "url": "https://hub.btownbrief.com/", "section": "Hub", "keywords": "hub all pages directory home" },
     { "title": "Digital Arcade — all games", "url": "https://play.btownbrief.com/", "section": "Games", "keywords": "arcade play games list" },
+    { "title": "What Now — one answer for right now", "url": "https://play.btownbrief.com/what-now/", "section": "Hub", "keywords": "what now bored tonight ideas do something anti-feed" },
+    { "title": "Leaderboards — monthly champions", "url": "https://play.btownbrief.com/leaderboards/", "section": "Games", "keywords": "scores rankings high score champions winners" },
     { "title": "Merch — Btown t-shirts", "url": "https://stephenvdavis-jpg.github.io/t-shirts/", "section": "Merch", "keywords": "shirts shop store buy apparel" },
 
     { "title": "City Guide — home", "url": "https://guide.btownbrief.com/", "section": "City Guide", "keywords": "guide burlington" },
@@ -19,7 +21,12 @@
     { "title": "Weather — Burlington right now", "url": "https://guide.btownbrief.com/weather.html", "section": "City Guide", "keywords": "forecast temperature rain snow swim" },
     { "title": "Sunset Tracker", "url": "https://guide.btownbrief.com/sunset.html", "section": "City Guide", "keywords": "golden hour tonight sky" },
     { "title": "Since You Checked — what changed", "url": "https://guide.btownbrief.com/changes.html", "section": "City Guide", "keywords": "openings closings new changes news" },
-    { "title": "Burlington Pulse — the chatter", "url": "https://guide.btownbrief.com/chatter.html", "section": "City Guide", "keywords": "news reddit headlines wire local talk" },
+    { "title": "Burlington Pulse — local + national reads", "url": "https://guide.btownbrief.com/pulse.html", "section": "City Guide", "keywords": "news reddit headlines wire local talk chatter youtube" },
+    { "title": "Lake & Beaches", "url": "https://guide.btownbrief.com/beaches.html", "section": "City Guide", "keywords": "swim beach water temperature north beach oakledge leddy" },
+    { "title": "Small Bites — walkable menus", "url": "https://guide.btownbrief.com/small-bites.html", "section": "City Guide", "keywords": "snacks cheap eats menu waterfront pine street" },
+    { "title": "Openings & Closings", "url": "https://guide.btownbrief.com/openings.html", "section": "City Guide", "keywords": "new restaurants closed opened coming soon" },
+    { "title": "Vermont Hobbies", "url": "https://guide.btownbrief.com/hobbies.html", "section": "City Guide", "keywords": "hobby activities clubs learn try something new" },
+    { "title": "Best of r/burlington", "url": "https://guide.btownbrief.com/best-of-reddit.html", "section": "City Guide", "keywords": "best of reddit seven daysies favorites recommendations" },
     { "title": "r/GoodBurlington", "url": "https://guide.btownbrief.com/goodburlington.html", "section": "Community", "keywords": "reddit good news positive" },
     { "title": "Housing & Apartments", "url": "https://guide.btownbrief.com/housing.html", "section": "City Guide", "keywords": "rent apartment landlord property managers" },
     { "title": "Jobs Board", "url": "https://guide.btownbrief.com/jobs.html", "section": "City Guide", "keywords": "hiring work employment careers" },
