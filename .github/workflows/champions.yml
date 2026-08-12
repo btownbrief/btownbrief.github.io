@@ -1,0 +1,45 @@
+name: Snapshot leaderboard champions
+
+# Fans out the 29 get_leaderboard RPCs once every 6 hours and publishes
+# data/champions.json on the `champions-data` branch (single force-pushed
+# commit — history for a scoreboard is noise, and committing to main would
+# queue a Pages deploy every run). Consumers fetch it from
+# raw.githubusercontent.com: the Pulse Live board's PLAY cards today,
+# the newsletter or a hub ticker tomorrow.
+#
+# Failure posture: the script refuses to write when fewer than 3 boards
+# answer, so a Supabase wobble keeps the last good snapshot in place.
+
+on:
+  schedule:
+    - cron: '41 1,7,13,19 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: champions
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Snapshot the champions
+        run: |
+          python3 scripts/snapshot_champions.py --out /tmp/champs-out/data/champions.json
+
+      - name: Force-push the single-commit champions-data branch
+        run: |
+          cd /tmp/champs-out
+          git init -q -b champions-data
+          git config user.name "btown-brief-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/champions.json
+          git commit -q -m "Champions snapshot $(date -u +%FT%TZ)"
+          git push -q --force \
+            "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" \
+            champions-data
