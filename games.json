@@ -325,6 +325,15 @@
       "leaderboard": false
     },
     {
+      "slug": "lake-breath",
+      "name": "Lake Breath",
+      "emoji": "🌊",
+      "pitch": "A Lake Champlain meditation: breathe with the motion light, paddle the water, and let it go.",
+      "section": "local-more",
+      "live": true,
+      "leaderboard": false
+    },
+    {
       "slug": "challenges",
       "name": "Btown Challenges",
       "emoji": "🏆",
