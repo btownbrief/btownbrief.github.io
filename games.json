@@ -334,6 +334,15 @@
       "leaderboard": false
     },
     {
+      "slug": "up-for-it",
+      "name": "Up For It",
+      "emoji": "🙋",
+      "pitch": "Say what you'd go to. Five taps and it tips; a host picks it up and it's on. Burlington only.",
+      "section": "local-more",
+      "live": true,
+      "leaderboard": false
+    },
+    {
       "slug": "lake-breath",
       "name": "Lake Breath",
       "emoji": "🌊",
