@@ -119,11 +119,35 @@
     '.btnav-s svg{flex:none;}',
     '.btnav-s-k{font-size:10px;opacity:.55;letter-spacing:.05em;text-transform:none;}',
 
-    /* Phones: still bigger than the old 12px, but tightened so six links plus the
-       wordmark do not wrap into a third row. */
-    '@media (max-width:560px){.btnav{font-size:13px;}.btnav-mark{font-size:16px;margin-right:12px;}',
-    '.btnav-in{padding:0 14px;min-height:46px;}.btnav a.btnav-l{padding:13px 9px;}',
-    '.btnav-s{padding:5px 10px;}.btnav-s-k{display:none;}}'
+    /* The links live in their own box so phones can treat them as one strip.
+       On anything wider it is `display:contents` — the anchors lay out exactly
+       as if the wrapper were not there, so the desktop bar is unchanged. */
+    '.btnav-links{display:contents;}',
+
+    /* Phones: the old approach tightened the type and hoped six links plus the
+       wordmark would fit on two rows. At 390px they never did — the bar wrapped
+       to three rows of links plus a fourth for Search, ~320px of a 844px screen
+       before the page began, and pushed the guide's live tiles below the fold.
+       Now the bar is two rows, always: wordmark + Search on the first, and the
+       six links as ONE horizontally scrolling strip on the second. The current
+       page is scrolled into view on load (see build()); the fade at the right
+       edge says there is more. */
+    '@media (max-width:560px){.btnav{font-size:13px;}.btnav-mark{font-size:16px;margin-right:0;padding:11px 0;}',
+    '.btnav-in{padding:0 14px;min-height:0;}',
+    '.btnav-s{order:1;padding:5px 10px;}.btnav-s-k{display:none;}',
+    '.btnav-links{order:2;display:flex;flex:0 0 100%;overflow-x:auto;overflow-y:hidden;',
+    'scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;',
+    'margin:0 -14px;padding:0 14px;scroll-padding:0 14px;',
+    '-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 36px),transparent);',
+    'mask-image:linear-gradient(90deg,#000 calc(100% - 36px),transparent);}',
+    /* Once the strip has scrolled, fade the left edge too; at the far right, only the left. */
+    '.btnav-links[data-edge="mid"]{-webkit-mask-image:linear-gradient(90deg,transparent,#000 36px,#000 calc(100% - 36px),transparent);',
+    'mask-image:linear-gradient(90deg,transparent,#000 36px,#000 calc(100% - 36px),transparent);}',
+    '.btnav-links[data-edge="end"]{-webkit-mask-image:linear-gradient(90deg,transparent,#000 36px);',
+    'mask-image:linear-gradient(90deg,transparent,#000 36px);}',
+    '.btnav-links::-webkit-scrollbar{display:none;}',
+    '.btnav a.btnav-l{padding:9px 11px 13px;flex:none;}',
+    '.btnav a.btnav-l:first-child{padding-left:0;}}'
   ].join('');
 
   function build() {
@@ -146,6 +170,9 @@
     mark.innerHTML = 'BTown<span>Brief</span>';
     inner.appendChild(mark);
 
+    var links = document.createElement('div');
+    links.className = 'btnav-links';
+    var currentLink = null;
     LINKS.forEach(function (link) {
       var current = isCurrent(link);
       var a = document.createElement('a');
@@ -155,11 +182,13 @@
         a.setAttribute('aria-current', 'page');
         a.removeAttribute('href');
         a.href = link.href;
+        currentLink = a;
       } else {
         a.href = link.href;
       }
-      inner.appendChild(a);
+      links.appendChild(a);
     });
+    inner.appendChild(links);
 
     /* Search rides in the bar but must never be able to break it. */
     try {
@@ -178,6 +207,23 @@
 
     bar.appendChild(inner);
     document.body.insertBefore(bar, document.body.firstChild);
+
+    /* On a phone the strip scrolls; start it with "you are here" in view so
+       the first thing a reader sees is not the three links left of it. Only
+       acts when the strip actually overflows (i.e. the phone layout is on). */
+    function edges() {
+      var max = links.scrollWidth - links.clientWidth;
+      if (max <= 2) { links.removeAttribute('data-edge'); return; }
+      var x = links.scrollLeft;
+      links.setAttribute('data-edge', x <= 2 ? 'start' : (x >= max - 2 ? 'end' : 'mid'));
+    }
+    if (currentLink && links.scrollWidth > links.clientWidth + 2) {
+      var target = currentLink.offsetLeft - (links.clientWidth - currentLink.offsetWidth) / 2;
+      links.scrollLeft = Math.max(0, target);
+    }
+    links.addEventListener('scroll', edges, { passive: true });
+    window.addEventListener('resize', edges);
+    edges();
   }
 
   /* ============================================================
