@@ -395,6 +395,15 @@
       "section": "party-night",
       "live": true,
       "leaderboard": false
+    },
+    {
+      "slug": "dibs",
+      "name": "Dibs",
+      "emoji": "🔷",
+      "pitch": "Burlington is 920 blocks. Stand in one, tap, it's yours — until someone takes it back. Hold for points, rep your crew.",
+      "section": "local-more",
+      "live": true,
+      "leaderboard": false
     }
   ]
 }
