@@ -325,6 +325,15 @@
       "leaderboard": false
     },
     {
+      "slug": "whos-playing",
+      "name": "Who's Playing",
+      "emoji": "🎾",
+      "pitch": "Find someone to play with — or find the game. Partners and pickup sports, Burlington only.",
+      "section": "local-more",
+      "live": true,
+      "leaderboard": false
+    },
+    {
       "slug": "lake-breath",
       "name": "Lake Breath",
       "emoji": "🌊",
