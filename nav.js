@@ -45,7 +45,12 @@
     {
       label: 'Do',
       href: 'https://guide.btownbrief.com/events.html',
-      on: [{ host: /^guide\.btownbrief\.com$/, path: /^\/(events|things-to-do)\.html$/ }]
+      on: [{ host: /^guide\.btownbrief\.com$/, path: /^\/events\.html$/ }]
+    },
+    {
+      label: 'Things To Do',
+      href: 'https://guide.btownbrief.com/things-to-do.html',
+      on: [{ host: /^guide\.btownbrief\.com$/, path: /^\/things-to-do\.html$/ }]
     },
     {
       label: 'Play',
@@ -113,8 +118,9 @@
 
     /* Phones: four verbs plus the wordmark fit one row; Subscribe and search
        tighten up rather than wrap. */
-    '@media (max-width:560px){.btnav{font-size:13px;}.btnav-mark{font-size:16px;margin-right:12px;}',
-    '.btnav-in{padding:0 14px;min-height:46px;}.btnav a.btnav-l{padding:13px 9px;}',
+    '@media (max-width:560px){.btnav{font-size:12px;letter-spacing:.06em;}',
+    '.btnav-mark{font-size:15px;margin-right:9px;}',
+    '.btnav-in{padding:0 10px;min-height:46px;}.btnav a.btnav-l{padding:12px 6px;}',
     '.btnav-sub{padding:6px 11px;font-size:11px;}',
     '.btnav-s{padding:5px 10px;margin-left:7px;}.btnav-s-k{display:none;}}'
   ].join('');
