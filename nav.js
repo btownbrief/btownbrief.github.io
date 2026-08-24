@@ -30,47 +30,32 @@
   window.__btownNav = true;
 
   /*
-   * `on` lists every place a link counts as "you are here". The city guide has two,
-   * because it answers on its own subdomain AND still answers on the old
-   * play.btownbrief.com/btown-brief/ path that older newsletter issues link to.
+   * The bar matches the hub front door's header: four verbs, then Subscribe.
+   * The wordmark is the fifth link — it goes to the hub, the one front door
+   * (guide.btownbrief.com/ now redirects there too). Merch and Everything left
+   * the bar: the hub's A-Z, search and footer carry them.
+   * `on` lists every place a link counts as "you are here".
    */
   var LINKS = [
     {
-      label: 'The Brief',
+      label: 'Eat',
+      href: 'https://guide.btownbrief.com/restaurants.html',
+      on: [{ host: /^guide\.btownbrief\.com$/, path: /^\/(restaurants|deals|small-bites|openings)\.html$/ }]
+    },
+    {
+      label: 'Do',
+      href: 'https://guide.btownbrief.com/events.html',
+      on: [{ host: /^guide\.btownbrief\.com$/, path: /^\/(events|things-to-do)\.html$/ }]
+    },
+    {
+      label: 'Play',
+      href: 'https://play.btownbrief.com/',
+      on: [{ host: /^play\.btownbrief\.com$/ }]
+    },
+    {
+      label: 'Read',
       href: 'https://www.btownbrief.com?utm_source=nav&utm_medium=referral&utm_campaign=site_capture',
       on: [{ host: /^(www\.)?btownbrief\.com$/ }]
-    },
-    {
-      label: 'Things To Do',
-      href: 'https://guide.btownbrief.com/things-to-do.html',
-      on: [{ host: /^guide\.btownbrief\.com$/, path: /^\/things-to-do\.html$/ }]
-    },
-    {
-      // The guide's other 14 pages. Things To Do stands on its own above.
-      label: 'City Guide',
-      href: 'https://guide.btownbrief.com/',
-      on: [
-        { host: /^guide\.btownbrief\.com$/, path: /^\/(?!things-to-do\.html)/ },
-        { host: /^play\.btownbrief\.com$/, path: /^\/btown-brief\// }
-      ]
-    },
-    {
-      label: 'Digital Arcade',
-      href: 'https://play.btownbrief.com/',
-      on: [{ host: /^play\.btownbrief\.com$/, path: /^\/$/ }]
-    },
-    {
-      label: 'Merch',
-      href: 'https://stephenvdavis-jpg.github.io/t-shirts/',
-      on: [{ host: /stephenvdavis-jpg\.github\.io$/, path: /^\/t-shirts\// }]
-    },
-    {
-      label: 'Everything',
-      href: 'https://hub.btownbrief.com/',
-      on: [
-        { host: /^hub\.btownbrief\.com$/ },
-        { host: /^play\.btownbrief\.com$/, path: /^\/everything\// }   // the old address, still redirecting
-      ]
     }
   ];
 
@@ -108,9 +93,16 @@
     '.btnav a.btnav-l:focus-visible{outline:2px solid var(--btnav-accent);outline-offset:-2px;}',
     '.btnav a.btnav-cur{color:var(--btnav-on);border-bottom-color:var(--btnav-accent);cursor:default;}',
 
-    /* The search control sits at the far right of the bar — a quiet pill, not a
-       seventh link, so the run of links still reads as one family. */
-    '.btnav-s{margin-left:auto;display:inline-flex;align-items:center;gap:7px;',
+    /* Subscribe is the bar's one loud thing — the hub header's yellow pill. */
+    '.btnav-sub{margin-left:auto;background:var(--btnav-accent);color:#0E2230;',
+    'border-radius:999px;padding:7px 14px;font-weight:700;text-decoration:none;',
+    'white-space:nowrap;font-size:12px;letter-spacing:.09em;}',
+    '.btnav-sub:hover{filter:brightness(1.08);}',
+    '.btnav-sub:focus-visible{outline:2px solid var(--btnav-on);outline-offset:2px;}',
+
+    /* The search control sits at the far right of the bar — a quiet pill, not
+       another link, so the run of links still reads as one family. */
+    '.btnav-s{margin-left:10px;display:inline-flex;align-items:center;gap:7px;',
     'background:none;border:1px solid rgba(255,255,255,.22);border-radius:999px;',
     'color:var(--btnav-fg);padding:6px 13px;font:inherit;font-size:12px;letter-spacing:.09em;',
     'text-transform:uppercase;cursor:pointer;transition:color .15s ease,border-color .15s ease;}',
@@ -119,11 +111,12 @@
     '.btnav-s svg{flex:none;}',
     '.btnav-s-k{font-size:10px;opacity:.55;letter-spacing:.05em;text-transform:none;}',
 
-    /* Phones: still bigger than the old 12px, but tightened so six links plus the
-       wordmark do not wrap into a third row. */
+    /* Phones: four verbs plus the wordmark fit one row; Subscribe and search
+       tighten up rather than wrap. */
     '@media (max-width:560px){.btnav{font-size:13px;}.btnav-mark{font-size:16px;margin-right:12px;}',
     '.btnav-in{padding:0 14px;min-height:46px;}.btnav a.btnav-l{padding:13px 9px;}',
-    '.btnav-s{padding:5px 10px;}.btnav-s-k{display:none;}}'
+    '.btnav-sub{padding:6px 11px;font-size:11px;}',
+    '.btnav-s{padding:5px 10px;margin-left:7px;}.btnav-s-k{display:none;}}'
   ].join('');
 
   function build() {
@@ -142,7 +135,7 @@
 
     var mark = document.createElement('a');
     mark.className = 'btnav-mark';
-    mark.href = 'https://www.btownbrief.com';
+    mark.href = 'https://hub.btownbrief.com/';
     mark.innerHTML = 'BTown<span>Brief</span>';
     inner.appendChild(mark);
 
@@ -160,6 +153,12 @@
       }
       inner.appendChild(a);
     });
+
+    var sub = document.createElement('a');
+    sub.className = 'btnav-sub';
+    sub.href = 'https://hub.btownbrief.com/#subscribe';
+    sub.textContent = 'Subscribe';
+    inner.appendChild(sub);
 
     /* Search rides in the bar but must never be able to break it. */
     try {
