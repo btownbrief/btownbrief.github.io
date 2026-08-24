@@ -58,6 +58,11 @@
       on: [{ host: /^play\.btownbrief\.com$/ }]
     },
     {
+      label: 'Listen / Watch',
+      href: 'https://guide.btownbrief.com/listen.html',
+      on: [{ host: /^guide\.btownbrief\.com$/, path: /^\/(listen|tv)\.html$/ }]
+    },
+    {
       label: 'Read',
       href: 'https://www.btownbrief.com?utm_source=nav&utm_medium=referral&utm_campaign=site_capture',
       on: [{ host: /^(www\.)?btownbrief\.com$/ }]
