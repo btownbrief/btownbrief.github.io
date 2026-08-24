@@ -1,14 +1,14 @@
 {
   "sections": [
     {
-      "id": "daily-puzzles",
-      "title": "Daily Puzzles & Quizzes",
-      "description": "Words, trivia, local knowledge, and fresh reasons to come back."
-    },
-    {
       "id": "arcade-action",
       "title": "Action & Arcade",
       "description": "Quick reflexes, high scores, and Burlington-sized chaos."
+    },
+    {
+      "id": "daily-puzzles",
+      "title": "Daily Puzzles & Quizzes",
+      "description": "Words, trivia, local knowledge, and fresh reasons to come back."
     },
     {
       "id": "board-card",
@@ -32,6 +32,24 @@
     }
   ],
   "games": [
+    {
+      "slug": "church-street-skate",
+      "name": "Church Street Skate",
+      "emoji": "🛹",
+      "pitch": "Skate real downtown Burlington in 3D — ollie the City Hall steps, grind the planters, bomb College Street to the lake.",
+      "section": "arcade-action",
+      "live": true,
+      "leaderboard": false
+    },
+    {
+      "slug": "street-yeet",
+      "name": "STREET YEET",
+      "emoji": "🚀",
+      "pitch": "Ragdoll-physics yeeting on Church Street. Creemees, syrup jugs, leaf peepers. You know what to do.",
+      "section": "arcade-action",
+      "live": true,
+      "leaderboard": false
+    },
     {
       "slug": "church-street-runner",
       "name": "Church Street Runners",
