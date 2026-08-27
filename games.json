@@ -116,6 +116,16 @@
       "leaderboard": true
     },
     {
+      "slug": "btown-hangman",
+      "name": "Btown Hangman",
+      "emoji": "🪢",
+      "pitch": "One Burlington word a day, six lives — save the little chalk guy.",
+      "section": "daily-puzzles",
+      "live": true,
+      "leaderboard": true,
+      "boardHint": "Lives kept ×10,000 + speed bonus — a clean no-miss save tops the board."
+    },
+    {
       "slug": "btown-wordle",
       "name": "BTown Wordle",
       "emoji": "🟩",
