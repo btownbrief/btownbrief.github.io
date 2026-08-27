@@ -39,7 +39,8 @@
       "pitch": "Skate real downtown Burlington in 3D — ollie the City Hall steps, grind the planters, bomb College Street to the lake.",
       "section": "arcade-action",
       "live": true,
-      "leaderboard": false
+      "leaderboard": true,
+      "boardHint": "Trick points from your best skate session."
     },
     {
       "slug": "street-yeet",
@@ -48,7 +49,8 @@
       "pitch": "Ragdoll-physics yeeting on Church Street. Creemees, syrup jugs, leaf peepers. You know what to do.",
       "section": "arcade-action",
       "live": true,
-      "leaderboard": false
+      "leaderboard": true,
+      "boardHint": "Yeet points — bigger launches, bigger score."
     },
     {
       "slug": "church-street-runner",
