@@ -1,53 +1,287 @@
 {
   "_comment": "The curated half of the network search in nav.js. Games are NOT listed here — the palette reads games.json for those, so new games appear in search the moment they're live on the arcade. Add pages here; keywords are extra words people might type.",
   "pages": [
-    { "title": "The Btown Brief — newsletter", "url": "https://www.btownbrief.com", "section": "Newsletter", "keywords": "home subscribe email editions" },
-    { "title": "Subscribe to the Brief", "url": "https://www.btownbrief.com/subscribe", "section": "Newsletter", "keywords": "sign up email join free" },
-    { "title": "Community — channels & chat", "url": "https://www.btownbrief.com/community", "section": "Community", "keywords": "chat channels photo wall recipes music lounge neighbors" },
-    { "title": "About Steve", "url": "https://www.btownbrief.com/about-me", "section": "Newsletter", "keywords": "who makes this one local guy" },
-    { "title": "Support / Upgrade the Brief", "url": "https://www.btownbrief.com/upgrade", "section": "Newsletter", "keywords": "donate support paid tiers membership" },
-
-    { "title": "Everything — the whole network", "url": "https://hub.btownbrief.com/", "section": "Hub", "keywords": "hub all pages directory home" },
-    { "title": "Start Here — check daily, check once", "url": "https://hub.btownbrief.com/start-here.html", "section": "Hub", "keywords": "start here begin new best top ranked two lists daily every day check once recommended where to start what should i" },
-    { "title": "Digital Arcade — all games", "url": "https://play.btownbrief.com/", "section": "Games", "keywords": "arcade play games list" },
-    { "title": "What Now — one answer for right now", "url": "https://play.btownbrief.com/what-now/", "section": "Hub", "keywords": "what now bored tonight ideas do something anti-feed" },
-    { "title": "Leaderboards — monthly champions", "url": "https://play.btownbrief.com/leaderboards/", "section": "Games", "keywords": "scores rankings high score champions winners" },
-    { "title": "Merch — Btown t-shirts", "url": "https://stephenvdavis-jpg.github.io/t-shirts/", "section": "Merch", "keywords": "shirts shop store buy apparel" },
-
-    { "title": "City Guide — home", "url": "https://guide.btownbrief.com/", "section": "City Guide", "keywords": "guide burlington" },
-    { "title": "202 Things To Do", "url": "https://guide.btownbrief.com/things-to-do.html", "section": "City Guide", "keywords": "activities bucket list 101 ideas bored" },
-    { "title": "Events Calendar", "url": "https://guide.btownbrief.com/events.html", "section": "City Guide", "keywords": "this weekend concerts shows happenings" },
-    { "title": "Restaurants — live hours", "url": "https://guide.btownbrief.com/restaurants.html", "section": "City Guide", "keywords": "food eat open now dinner lunch" },
-    { "title": "Food & Drink Deals", "url": "https://guide.btownbrief.com/deals.html", "section": "City Guide", "keywords": "happy hour specials cheap discounts" },
-    { "title": "Weather — Burlington right now", "url": "https://guide.btownbrief.com/weather.html", "section": "City Guide", "keywords": "forecast temperature rain snow swim" },
-    { "title": "Sunset Tracker", "url": "https://guide.btownbrief.com/sunset.html", "section": "City Guide", "keywords": "golden hour tonight sky" },
-    { "title": "Since You Checked — what changed", "url": "https://guide.btownbrief.com/changes.html", "section": "City Guide", "keywords": "openings closings new changes news" },
-    { "title": "Burlington Pulse — local + national reads", "url": "https://guide.btownbrief.com/pulse.html", "section": "City Guide", "keywords": "news reddit headlines wire local talk chatter youtube" },
-    { "title": "Pulse Live — the lean-back board", "url": "https://guide.btownbrief.com/live.html", "section": "City Guide", "keywords": "pulse live watch board headlines rotate tv kiosk" },
-    { "title": "Btown TV — tonight's picks", "url": "https://guide.btownbrief.com/tv.html", "section": "City Guide", "keywords": "tv video youtube watch tonight playlist curated vermont shelves vault" },
-    { "title": "Table Talk — meetup companion board", "url": "https://guide.btownbrief.com/table.html", "section": "City Guide", "keywords": "icebreakers questions conversation coffee meetup sync party prompts hangout table" },
-    { "title": "Lake & Beaches", "url": "https://guide.btownbrief.com/beaches.html", "section": "City Guide", "keywords": "swim beach water temperature north beach oakledge leddy" },
-    { "title": "Small Bites — walkable menus", "url": "https://guide.btownbrief.com/small-bites.html", "section": "City Guide", "keywords": "snacks cheap eats menu waterfront pine street" },
-    { "title": "Openings & Closings", "url": "https://guide.btownbrief.com/openings.html", "section": "City Guide", "keywords": "new restaurants closed opened coming soon" },
-    { "title": "Vermont Hobbies", "url": "https://guide.btownbrief.com/hobbies.html", "section": "City Guide", "keywords": "hobby activities clubs learn try something new" },
-    { "title": "Best of r/burlington", "url": "https://guide.btownbrief.com/best-of-reddit.html", "section": "City Guide", "keywords": "best of reddit seven daysies favorites recommendations" },
-    { "title": "r/GoodBurlington", "url": "https://guide.btownbrief.com/goodburlington.html", "section": "Community", "keywords": "reddit good news positive" },
-    { "title": "Housing & Apartments", "url": "https://guide.btownbrief.com/housing.html", "section": "City Guide", "keywords": "rent apartment landlord property managers" },
-    { "title": "Jobs Board", "url": "https://guide.btownbrief.com/jobs.html", "section": "City Guide", "keywords": "hiring work employment careers" },
-    { "title": "Volunteer", "url": "https://guide.btownbrief.com/volunteer.html", "section": "City Guide", "keywords": "give back help opportunities" },
-    { "title": "Civic Meetings Calendar", "url": "https://guide.btownbrief.com/civic.html", "section": "City Guide", "keywords": "city council school board planning government" },
-    { "title": "Clubs & Groups", "url": "https://guide.btownbrief.com/clubs.html", "section": "City Guide", "keywords": "run club meetup social hobbies" },
-    { "title": "Community Projects", "url": "https://guide.btownbrief.com/projects.html", "section": "City Guide", "keywords": "volunteer builds initiatives" },
-    { "title": "Community Playlist", "url": "https://guide.btownbrief.com/playlist.html", "section": "Community", "keywords": "music songs local artists spotify" },
-    { "title": "Community Photos", "url": "https://guide.btownbrief.com/photos.html", "section": "Community", "keywords": "photo wall pictures gallery submit" },
-    { "title": "Group Chats", "url": "https://guide.btownbrief.com/telegram.html", "section": "Community", "keywords": "telegram chat meetup community talk" },
-    { "title": "Burlington Gift Guide", "url": "https://guide.btownbrief.com/gifts.html", "section": "City Guide", "keywords": "presents shopping local gifts" },
-    { "title": "Walking Tour", "url": "https://guide.btownbrief.com/walking-tour.html", "section": "City Guide", "keywords": "history walk sights self-guided" },
-    { "title": "History of Burlington — the short version", "url": "https://guide.btownbrief.com/history.html", "section": "History", "keywords": "past story founding" },
-    { "title": "History of Burlington — the full story", "url": "https://guide.btownbrief.com/history-full.html", "section": "History", "keywords": "past long in-depth" },
-    { "title": "History of Winooski", "url": "https://guide.btownbrief.com/history-winooski.html", "section": "History", "keywords": "onion city mills" },
-    { "title": "History of Essex", "url": "https://guide.btownbrief.com/history-essex.html", "section": "History", "keywords": "essex junction" },
-    { "title": "History of South Burlington", "url": "https://guide.btownbrief.com/history-south-burlington.html", "section": "History", "keywords": "so burlington" },
-    { "title": "History of Colchester", "url": "https://guide.btownbrief.com/history-colchester.html", "section": "History", "keywords": "malletts bay" }
+    {
+      "title": "The Btown Brief — newsletter",
+      "url": "https://www.btownbrief.com",
+      "section": "Newsletter",
+      "keywords": "home subscribe email editions"
+    },
+    {
+      "title": "Subscribe to the Brief",
+      "url": "https://www.btownbrief.com/subscribe",
+      "section": "Newsletter",
+      "keywords": "sign up email join free"
+    },
+    {
+      "title": "Community — channels & chat",
+      "url": "https://www.btownbrief.com/community",
+      "section": "Community",
+      "keywords": "chat channels photo wall recipes music lounge neighbors"
+    },
+    {
+      "title": "About Steve",
+      "url": "https://www.btownbrief.com/about-me",
+      "section": "Newsletter",
+      "keywords": "who makes this one local guy"
+    },
+    {
+      "title": "Support / Upgrade the Brief",
+      "url": "https://www.btownbrief.com/upgrade",
+      "section": "Newsletter",
+      "keywords": "donate support paid tiers membership"
+    },
+    {
+      "title": "Everything — the whole network",
+      "url": "https://hub.btownbrief.com/",
+      "section": "Hub",
+      "keywords": "hub all pages directory home"
+    },
+    {
+      "title": "Start Here — check daily, check once",
+      "url": "https://hub.btownbrief.com/start-here.html",
+      "section": "Hub",
+      "keywords": "start here begin new best top ranked two lists daily every day check once recommended where to start what should i"
+    },
+    {
+      "title": "Digital Arcade — all games",
+      "url": "https://play.btownbrief.com/",
+      "section": "Games",
+      "keywords": "arcade play games list"
+    },
+    {
+      "title": "What Now — one answer for right now",
+      "url": "https://play.btownbrief.com/what-now/",
+      "section": "Hub",
+      "keywords": "what now bored tonight ideas do something anti-feed"
+    },
+    {
+      "title": "Leaderboards — monthly champions",
+      "url": "https://play.btownbrief.com/leaderboards/",
+      "section": "Games",
+      "keywords": "scores rankings high score champions winners"
+    },
+    {
+      "title": "Merch — Btown t-shirts",
+      "url": "https://stephenvdavis-jpg.github.io/t-shirts/",
+      "section": "Merch",
+      "keywords": "shirts shop store buy apparel"
+    },
+    {
+      "title": "City Guide — home",
+      "url": "https://guide.btownbrief.com/",
+      "section": "City Guide",
+      "keywords": "guide burlington"
+    },
+    {
+      "title": "202 Things To Do",
+      "url": "https://guide.btownbrief.com/things-to-do.html",
+      "section": "City Guide",
+      "keywords": "activities bucket list 101 ideas bored"
+    },
+    {
+      "title": "Events Calendar",
+      "url": "https://guide.btownbrief.com/events.html",
+      "section": "City Guide",
+      "keywords": "this weekend concerts shows happenings"
+    },
+    {
+      "title": "Restaurants — live hours",
+      "url": "https://guide.btownbrief.com/restaurants.html",
+      "section": "City Guide",
+      "keywords": "food eat open now dinner lunch"
+    },
+    {
+      "title": "Food & Drink Deals",
+      "url": "https://guide.btownbrief.com/deals.html",
+      "section": "City Guide",
+      "keywords": "happy hour specials cheap discounts"
+    },
+    {
+      "title": "Weather — Burlington right now",
+      "url": "https://guide.btownbrief.com/weather.html",
+      "section": "City Guide",
+      "keywords": "forecast temperature rain snow swim"
+    },
+    {
+      "title": "Sunset Tracker",
+      "url": "https://guide.btownbrief.com/sunset.html",
+      "section": "City Guide",
+      "keywords": "golden hour tonight sky"
+    },
+    {
+      "title": "Since You Checked — what changed",
+      "url": "https://guide.btownbrief.com/changes.html",
+      "section": "City Guide",
+      "keywords": "openings closings new changes news"
+    },
+    {
+      "title": "Burlington Pulse — local + national reads",
+      "url": "https://guide.btownbrief.com/pulse.html",
+      "section": "City Guide",
+      "keywords": "news reddit headlines wire local talk chatter youtube"
+    },
+    {
+      "title": "Pulse Live — the lean-back board",
+      "url": "https://guide.btownbrief.com/live.html",
+      "section": "City Guide",
+      "keywords": "pulse live watch board headlines rotate tv kiosk"
+    },
+    {
+      "title": "Btown TV — tonight's picks",
+      "url": "https://guide.btownbrief.com/tv.html",
+      "section": "City Guide",
+      "keywords": "tv video youtube watch tonight playlist curated vermont shelves vault"
+    },
+    {
+      "title": "Table Talk — meetup companion board",
+      "url": "https://guide.btownbrief.com/table.html",
+      "section": "City Guide",
+      "keywords": "icebreakers questions conversation coffee meetup sync party prompts hangout table"
+    },
+    {
+      "title": "Lake & Beaches",
+      "url": "https://guide.btownbrief.com/beaches.html",
+      "section": "City Guide",
+      "keywords": "swim beach water temperature north beach oakledge leddy"
+    },
+    {
+      "title": "Small Bites — walkable menus",
+      "url": "https://guide.btownbrief.com/small-bites.html",
+      "section": "City Guide",
+      "keywords": "snacks cheap eats menu waterfront pine street"
+    },
+    {
+      "title": "Openings & Closings",
+      "url": "https://guide.btownbrief.com/openings.html",
+      "section": "City Guide",
+      "keywords": "new restaurants closed opened coming soon"
+    },
+    {
+      "title": "Vermont Hobbies",
+      "url": "https://guide.btownbrief.com/hobbies.html",
+      "section": "City Guide",
+      "keywords": "hobby activities clubs learn try something new"
+    },
+    {
+      "title": "Best of r/burlington",
+      "url": "https://guide.btownbrief.com/best-of-reddit.html",
+      "section": "City Guide",
+      "keywords": "best of reddit seven daysies favorites recommendations"
+    },
+    {
+      "title": "r/GoodBurlington",
+      "url": "https://guide.btownbrief.com/goodburlington.html",
+      "section": "Community",
+      "keywords": "reddit good news positive"
+    },
+    {
+      "title": "Housing & Apartments",
+      "url": "https://guide.btownbrief.com/housing.html",
+      "section": "City Guide",
+      "keywords": "rent apartment landlord property managers"
+    },
+    {
+      "title": "Jobs Board",
+      "url": "https://guide.btownbrief.com/jobs.html",
+      "section": "City Guide",
+      "keywords": "hiring work employment careers"
+    },
+    {
+      "title": "Volunteer",
+      "url": "https://guide.btownbrief.com/volunteer.html",
+      "section": "City Guide",
+      "keywords": "give back help opportunities"
+    },
+    {
+      "title": "Civic Meetings Calendar",
+      "url": "https://guide.btownbrief.com/civic.html",
+      "section": "City Guide",
+      "keywords": "city council school board planning government"
+    },
+    {
+      "title": "Clubs & Groups",
+      "url": "https://guide.btownbrief.com/clubs.html",
+      "section": "City Guide",
+      "keywords": "run club meetup social hobbies"
+    },
+    {
+      "title": "Community Projects",
+      "url": "https://guide.btownbrief.com/projects.html",
+      "section": "City Guide",
+      "keywords": "volunteer builds initiatives"
+    },
+    {
+      "title": "Community Playlist",
+      "url": "https://guide.btownbrief.com/playlist.html",
+      "section": "Community",
+      "keywords": "music songs local artists spotify"
+    },
+    {
+      "title": "Community Photos",
+      "url": "https://guide.btownbrief.com/photos.html",
+      "section": "Community",
+      "keywords": "photo wall pictures gallery submit"
+    },
+    {
+      "title": "Group Chats",
+      "url": "https://guide.btownbrief.com/telegram.html",
+      "section": "Community",
+      "keywords": "telegram chat meetup community talk"
+    },
+    {
+      "title": "Burlington Gift Guide",
+      "url": "https://guide.btownbrief.com/gifts.html",
+      "section": "City Guide",
+      "keywords": "presents shopping local gifts"
+    },
+    {
+      "title": "Walking Tour",
+      "url": "https://guide.btownbrief.com/walking-tour.html",
+      "section": "City Guide",
+      "keywords": "history walk sights self-guided"
+    },
+    {
+      "title": "All Day",
+      "url": "https://guide.btownbrief.com/all-day/",
+      "section": "City Guide",
+      "keywords": "read watch listen wander rss reddit youtube podcasts wikipedia feed news reader rabbit hole"
+    },
+    {
+      "title": "History of Burlington — the short version",
+      "url": "https://guide.btownbrief.com/history.html",
+      "section": "History",
+      "keywords": "past story founding"
+    },
+    {
+      "title": "History of Burlington — the full story",
+      "url": "https://guide.btownbrief.com/history-full.html",
+      "section": "History",
+      "keywords": "past long in-depth"
+    },
+    {
+      "title": "History of Winooski",
+      "url": "https://guide.btownbrief.com/history-winooski.html",
+      "section": "History",
+      "keywords": "onion city mills"
+    },
+    {
+      "title": "History of Essex",
+      "url": "https://guide.btownbrief.com/history-essex.html",
+      "section": "History",
+      "keywords": "essex junction"
+    },
+    {
+      "title": "History of South Burlington",
+      "url": "https://guide.btownbrief.com/history-south-burlington.html",
+      "section": "History",
+      "keywords": "so burlington"
+    },
+    {
+      "title": "History of Colchester",
+      "url": "https://guide.btownbrief.com/history-colchester.html",
+      "section": "History",
+      "keywords": "malletts bay"
+    }
   ]
 }
