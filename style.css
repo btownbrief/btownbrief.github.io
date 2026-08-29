@@ -384,3 +384,45 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 14px 40px; }
   transition: border-color .12s ease, background .12s ease;
 }
 .lb-link:hover { border-color: var(--gold); background: rgba(255,210,63,.08); }
+
+/* ---------- where you want to play ---------- */
+/* Two ways in, and they are different errands: the cabinets you tap through
+   on the couch, and the ones that need you to actually be standing somewhere
+   in Burlington. Built like a cabinet select — one lit button, one dark —
+   rather than a web toggle, because this is an arcade. */
+.mode-select { max-width: 960px; margin: 0 auto 22px; padding: 0 18px; }
+.mode-bar {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; padding: 7px; box-shadow: var(--shadow);
+}
+.mode-btn {
+  display: flex; align-items: center; justify-content: center; gap: 9px;
+  padding: 13px 10px; min-height: 52px; border: 0; border-radius: 10px;
+  background: transparent; color: var(--muted); cursor: pointer;
+  font: 700 .82rem/1.1 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: .1em; text-transform: uppercase;
+  transition: background .16s ease, color .16s ease, box-shadow .16s ease;
+}
+.mode-btn:hover { color: var(--ink); background: var(--panel-2); }
+.mode-btn:focus-visible { outline: 2px solid var(--lake); outline-offset: 2px; }
+/* Lit: the screen side glows lake blue, the street side maple. Two different
+   colours because they are two different kinds of evening. */
+.mode-btn.on { color: var(--night); background: var(--lake);
+  box-shadow: 0 0 18px rgba(76, 195, 255, .45); }
+.mode-btn[data-mode="out"].on { background: var(--maple); color: #fff;
+  box-shadow: 0 0 18px rgba(255, 90, 60, .5); }
+.mode-count {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .74rem;
+  letter-spacing: .04em; padding: 2px 7px; border-radius: 999px;
+  background: rgba(0, 0, 0, .22); color: inherit; opacity: .85;
+}
+.mode-btn:not(.on) .mode-count { background: rgba(255, 255, 255, .07); }
+.mode-blurb {
+  margin: 11px 2px 0; color: var(--muted); font-size: .93rem; line-height: 1.5;
+  text-align: center;
+}
+@media (max-width: 400px) {
+  .mode-btn { font-size: .72rem; letter-spacing: .06em; padding: 12px 6px; gap: 6px; }
+}
+@media (prefers-reduced-motion: reduce) { .mode-btn { transition: none; } }
