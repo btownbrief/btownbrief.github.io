@@ -355,6 +355,15 @@
       "leaderboard": false
     },
     {
+      "slug": "burlington-days",
+      "name": "Burlington Days",
+      "emoji": "🗓️",
+      "pitch": "Days people actually had here. Take one and it's rebuilt for your date — hours, weather and what's on, all checked. Burlington only.",
+      "section": "local-more",
+      "live": true,
+      "leaderboard": false
+    },
+    {
       "slug": "whos-playing",
       "name": "Who's Playing",
       "emoji": "🎾",
