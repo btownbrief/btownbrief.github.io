@@ -30,11 +30,15 @@
   window.__btownNav = true;
 
   /*
-   * The bar matches the hub front door's header: four verbs, then Subscribe.
-   * The wordmark is the fifth link — it goes to the hub, the one front door
+   * The bar matches the hub front door's header: the verbs, then Subscribe.
+   * The wordmark is a link too — it goes to the hub, the one front door
    * (guide.btownbrief.com/ now redirects there too). Merch and Everything left
    * the bar: the hub's A-Z, search and footer carry them.
    * `on` lists every place a link counts as "you are here".
+   *
+   * Order is by kind, not by importance: the out-and-about run (Eat, Do,
+   * Things To Do, Weather), then Play, then the reading run (Read, Listen /
+   * Watch, Pulse Live).
    */
   var LINKS = [
     {
@@ -53,6 +57,13 @@
       on: [{ host: /^guide\.btownbrief\.com$/, path: /^\/things-to-do\.html$/ }]
     },
     {
+      /* Closes the out-and-about run: what to eat, what is on, what to do,
+         and whether you want to be outside for any of it. */
+      label: 'Weather',
+      href: 'https://guide.btownbrief.com/weather.html',
+      on: [{ host: /^guide\.btownbrief\.com$/, path: /^\/weather\.html$/ }]
+    },
+    {
       label: 'Play',
       href: 'https://play.btownbrief.com/',
       on: [{ host: /^play\.btownbrief\.com$/ }]
@@ -66,6 +77,15 @@
       label: 'Listen / Watch',
       href: 'https://guide.btownbrief.com/listen.html',
       on: [{ host: /^guide\.btownbrief\.com$/, path: /^\/(listen|tv)\.html$/ }]
+    },
+    {
+      /* The board you leave running. pulse.html and live.html are one
+         destination in two modes — READ and WATCH toggle between them — so
+         the bar marks you "here" on both, and the link still works from
+         either, because a current link keeps its href. */
+      label: 'Pulse Live',
+      href: 'https://guide.btownbrief.com/live.html',
+      on: [{ host: /^guide\.btownbrief\.com$/, path: /^\/(live|pulse)\.html$/ }]
     }
   ];
 
@@ -121,13 +141,19 @@
     '.btnav-s svg{flex:none;}',
     '.btnav-s-k{font-size:10px;opacity:.55;letter-spacing:.05em;text-transform:none;}',
 
-    /* Phones: four verbs plus the wordmark fit one row; Subscribe and search
-       tighten up rather than wrap. */
-    '@media (max-width:560px){.btnav{font-size:12px;letter-spacing:.06em;}',
-    '.btnav-mark{font-size:15px;margin-right:9px;}',
-    '.btnav-in{padding:0 10px;min-height:46px;}.btnav a.btnav-l{padding:12px 6px;}',
-    '.btnav-sub{padding:6px 11px;font-size:11px;}',
-    '.btnav-s{padding:5px 10px;margin-left:7px;}.btnav-s-k{display:none;}}'
+    /* Eight links do not fit one row below a laptop, and the bar sits above
+       every page of every property — so each tier tightens rather than
+       spending another band of the screen on navigation. */
+    '@media (max-width:1000px){.btnav{font-size:13px;letter-spacing:.07em;}',
+    '.btnav-mark{margin-right:14px;}.btnav a.btnav-l{padding:14px 10px;}}',
+
+    /* Phones: the run wraps to a second row, and everything shrinks to keep
+       that second row from becoming a third. */
+    '@media (max-width:560px){.btnav{font-size:11.5px;letter-spacing:.05em;}',
+    '.btnav-mark{font-size:15px;margin-right:8px;}',
+    '.btnav-in{padding:0 8px;min-height:44px;}.btnav a.btnav-l{padding:10px 5px;}',
+    '.btnav-sub{padding:5px 10px;font-size:10.5px;}',
+    '.btnav-s{padding:4px 9px;margin-left:6px;}.btnav-s-k{display:none;}}'
   ].join('');
 
   function build() {
