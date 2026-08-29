@@ -2,6 +2,31 @@ import { fetchTop, getName, playerId, monthLabel } from './leaderboard.js';
 
 const grid = document.getElementById('grid');
 const greetEl = document.getElementById('greeting');
+const modeEl = document.getElementById('mode');
+
+/* Two ways to play, and they are genuinely different errands: the cabinets
+   you tap through on the couch, and the five that need you to actually be
+   somewhere in Burlington. A game opts into the second with "where": "out"
+   in games.json — everything else defaults to the screen side, so adding a
+   scavenger hunt is one field, not a refactor.
+
+   The choice is remembered, because someone who came for the outdoor ones
+   did not come for Tetris. */
+const MODE_KEY = 'btown-arcade-where';
+const DEFAULT_MODES = [
+  { id: 'screen', title: 'On a screen', blurb: '' },
+  { id: 'out', title: 'Out in Burlington', blurb: '' },
+];
+let MODE = 'screen';
+let DATA = null;
+
+function readMode() {
+  try { return localStorage.getItem(MODE_KEY) || 'screen'; } catch (e) { return 'screen'; }
+}
+function writeMode(v) {
+  try { localStorage.setItem(MODE_KEY, v); } catch (e) { /* private mode: this session only */ }
+}
+const whereOf = (g) => (g && g.where === 'out') ? 'out' : 'screen';
 
 const cardEls = {}; // slug -> { champ, rank } element handles
 
@@ -87,30 +112,82 @@ async function loadStats(g) {
   }
 }
 
-async function init() {
-  renderGreeting();
-  let data;
-  try {
-    const res = await fetch('./games.json', { cache: 'no-cache' });
-    data = await res.json();
-  } catch (e) {
-    grid.innerHTML = `<p class="load-error">Couldn't load the game list. Refresh to try again.</p>`;
-    return;
-  }
-  const games = data.games || [];
-  const sections = Array.isArray(data.sections) ? data.sections.filter((s) => s && s.id) : [];
+function renderModes() {
+  if (!modeEl || !DATA) return;
+  const modes = Array.isArray(DATA.modes) && DATA.modes.length ? DATA.modes : DEFAULT_MODES;
+  const counts = {};
+  (DATA.games || []).forEach((g) => {
+    const k = whereOf(g);
+    counts[k] = (counts[k] || 0) + 1;
+  });
+  const active = modes.find((m) => m.id === MODE) || modes[0];
+  modeEl.innerHTML =
+    `<div class="mode-bar" role="tablist" aria-label="Where you want to play">` +
+    modes.map((m) => (
+      `<button class="mode-btn${m.id === MODE ? ' on' : ''}" role="tab" data-mode="${escapeHtml(m.id)}"` +
+      ` aria-selected="${m.id === MODE ? 'true' : 'false'}">` +
+      `<span class="mode-title">${escapeHtml(m.title)}</span>` +
+      `<span class="mode-count">${counts[m.id] || 0}</span></button>`
+    )).join('') +
+    `</div>` +
+    (active && active.blurb ? `<p class="mode-blurb">${escapeHtml(active.blurb)}</p>` : '');
+}
+
+function renderGrid() {
+  const games = (DATA.games || []).filter((g) => whereOf(g) === MODE);
+  const sections = Array.isArray(DATA.sections) ? DATA.sections.filter((s) => s && s.id) : [];
   const knownSections = new Set(sections.map((s) => s.id));
-  const sectionBlocks = sections.map((section) => (
-    sectionHtml(section, games.filter((g) => g.section === section.id))
+  /* A section with nothing on this side of the toggle is not rendered at all —
+     an empty "Daily Puzzles" heading under Out in Burlington would read as a
+     loading failure. */
+  const live = sections
+    .map((section) => [section, games.filter((g) => g.section === section.id)])
+    .filter(([, list]) => list.length);
+  /* When a side has only one section, its heading just says again what the lit
+     button and the blurb above already said — and worse, a description written
+     for the whole section can be half-wrong about the half being shown. Drop
+     it and let the cabinets start. */
+  const sectionBlocks = live.map(([section, list]) => (
+    live.length === 1 ? `<div class="grid">${list.map(cardHtml).join('')}</div>`
+                      : sectionHtml(section, list)
   ));
   const ungrouped = games.filter((g) => !knownSections.has(g.section));
   if (ungrouped.length) {
     sectionBlocks.push(sectionHtml({ id: 'more', title: 'More Games' }, ungrouped));
   }
-  document.getElementById('month-label').textContent = monthLabel(0);
-  grid.innerHTML = sectionBlocks.join('') || '<p class="load-error">No games are listed right now.</p>';
+  grid.innerHTML = sectionBlocks.join('') ||
+    `<p class="load-error">Nothing on this side yet — try the other one.</p>`;
   // Fetch live champs / ranks in parallel; each degrades on its own.
   games.filter((g) => g.live).forEach(loadStats);
+}
+
+function setMode(next) {
+  if (next === MODE) return;
+  MODE = next;
+  writeMode(next);
+  renderModes();
+  renderGrid();
+}
+
+async function init() {
+  renderGreeting();
+  MODE = readMode();
+  try {
+    const res = await fetch('./games.json', { cache: 'no-cache' });
+    DATA = await res.json();
+  } catch (e) {
+    grid.innerHTML = `<p class="load-error">Couldn't load the game list. Refresh to try again.</p>`;
+    return;
+  }
+  document.getElementById('month-label').textContent = monthLabel(0);
+  renderModes();
+  renderGrid();
+  if (modeEl) {
+    modeEl.addEventListener('click', (e) => {
+      const b = e.target.closest('[data-mode]');
+      if (b) setMode(b.dataset.mode);
+    });
+  }
 }
 
 init();

@@ -361,7 +361,8 @@
       "pitch": "Days people actually had here. Take one and it's rebuilt for your date — hours, weather and what's on, all checked. Burlington only.",
       "section": "local-more",
       "live": true,
-      "leaderboard": false
+      "leaderboard": false,
+      "where": "out"
     },
     {
       "slug": "whos-playing",
@@ -370,7 +371,8 @@
       "pitch": "Find someone to play with — or find the game. Partners and pickup sports, Burlington only.",
       "section": "local-more",
       "live": true,
-      "leaderboard": false
+      "leaderboard": false,
+      "where": "out"
     },
     {
       "slug": "up-for-it",
@@ -379,7 +381,8 @@
       "pitch": "Say what you'd go to. Five taps and it tips; a host picks it up and it's on. Burlington only.",
       "section": "local-more",
       "live": true,
-      "leaderboard": false
+      "leaderboard": false,
+      "where": "out"
     },
     {
       "slug": "lake-breath",
@@ -397,7 +400,8 @@
       "pitch": "Real Burlington challenges — eat it, climb it, streak it — then put your name on the board.",
       "section": "local-more",
       "live": true,
-      "leaderboard": false
+      "leaderboard": false,
+      "where": "out"
     },
     {
       "slug": "caption-this",
@@ -442,7 +446,21 @@
       "pitch": "Burlington is 920 blocks. Stand in one, tap, it's yours — until someone takes it back. Hold for points, rep your crew.",
       "section": "local-more",
       "live": true,
-      "leaderboard": false
+      "leaderboard": false,
+      "where": "out"
     }
-  ]
+  ],
+  "modes": [
+    {
+      "id": "screen",
+      "title": "On a screen",
+      "blurb": "Cabinets, puzzles and card games. Play right here, right now."
+    },
+    {
+      "id": "out",
+      "title": "Out in Burlington",
+      "blurb": "Put the phone in your pocket and go somewhere. These need real streets."
+    }
+  ],
+  "_comment_where": "A game with \"where\": \"out\" appears under Out in Burlington; everything else defaults to the screen side. Scavenger hunts go here — add the game as normal and give it \"where\": \"out\". Nothing else needs to change."
 }
