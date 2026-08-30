@@ -30,15 +30,20 @@
   window.__btownNav = true;
 
   /*
-   * The bar matches the hub front door's header: the verbs, then Subscribe.
-   * The wordmark is a link too — it goes to the hub, the one front door
-   * (guide.btownbrief.com/ now redirects there too). Merch and Everything left
-   * the bar: the hub's A-Z, search and footer carry them.
-   * `on` lists every place a link counts as "you are here".
+   * The bar is three things, in this order: the wordmark, the SWITCH between
+   * the two front doors, and the verb run. `on` lists every place a link
+   * counts as "you are here".
    *
-   * Order is by kind, not by importance: the out-and-about run (Eat, Do,
-   * Things To Do, Weather), then Play, then the reading run (Read, Listen /
-   * Watch, Pulse Live).
+   * Order is by kind, not importance: the out-and-about run (Eat, Do, Things
+   * To Do, Weather), then Play, then the two social/reading rooms (Groupchat,
+   * Pulse Live).
+   *
+   * Read and Subscribe left the run and became ONE pill. They were two
+   * controls pointing at one thing — the newsletter — and on a phone that
+   * cost a whole row's worth of width to say the same word twice.
+   *
+   * Listen / Watch left it too: every one of those feeds is a tab inside All
+   * Day now, and All Day is one tap away on the switch.
    */
   var LINKS = [
     {
@@ -69,14 +74,11 @@
       on: [{ host: /^play\.btownbrief\.com$/ }]
     },
     {
-      label: 'Read',
-      href: 'https://www.btownbrief.com?utm_source=nav&utm_medium=referral&utm_campaign=site_capture',
-      on: [{ host: /^(www\.)?btownbrief\.com$/ }]
-    },
-    {
-      label: 'Listen / Watch',
-      href: 'https://guide.btownbrief.com/listen.html',
-      on: [{ host: /^guide\.btownbrief\.com$/, path: /^\/(listen|tv)\.html$/ }]
+      /* The town's group chat. It was on the hub's own header and nowhere
+         else, so it existed on exactly one page of the network. */
+      label: 'Groupchat',
+      href: 'https://guide.btownbrief.com/telegram.html',
+      on: [{ host: /^guide\.btownbrief\.com$/, path: /^\/telegram\.html$/ }]
     },
     {
       /* The board you leave running. pulse.html and live.html are one
@@ -86,6 +88,21 @@
       label: 'Pulse Live',
       href: 'https://guide.btownbrief.com/live.html',
       on: [{ host: /^guide\.btownbrief\.com$/, path: /^\/(live|pulse)\.html$/ }]
+    }
+  ];
+
+  /* The two front doors. Everything else on the network hangs off one of
+     them: the hub is the browsable index, All Day is the feed you read. */
+  var DOORS = [
+    {
+      label: 'Hub',
+      href: 'https://hub.btownbrief.com/',
+      on: [{ host: /^hub\.btownbrief\.com$/ }]
+    },
+    {
+      label: 'All Day',
+      href: 'https://guide.btownbrief.com/all-day/',
+      on: [{ host: /^guide\.btownbrief\.com$/, path: /^\/all-day\/?/ }]
     }
   ];
 
@@ -117,25 +134,60 @@
     'font-size:15px;letter-spacing:.09em;text-transform:uppercase;line-height:1;}',
 
     '.btnav *{box-sizing:border-box;}',
-    /* The links space themselves evenly via their own padding, so the flex gap
-       stays 0 — a gap PLUS padding double-counts and makes the run look ragged. */
-    '.btnav-in{max-width:1120px;margin:0 auto;padding:0 20px;display:flex;align-items:center;',
-    'gap:0;min-height:52px;flex-wrap:wrap;}',
+    /* A named grid rather than a wrapping flex row, because the two shapes
+       want different ORDERS, not just different widths. Wide: one row, verbs
+       in the middle, actions right. Narrow: the wordmark, the switch and the
+       two actions on top, and the whole verb run gets its own row underneath
+       where it can scroll. flex-wrap can do the widths but not the reorder. */
+    '.btnav-in{max-width:1120px;margin:0 auto;padding:0 20px;display:grid;',
+    'align-items:center;column-gap:10px;min-height:52px;',
+    "grid-template-columns:auto 1fr auto auto;",
+    "grid-template-areas:'mark run sub search';}",
+    '.btnav-mark{grid-area:mark;}.btnav-run{grid-area:run;}',
+    '.btnav-sub{grid-area:sub;}.btnav-s{grid-area:search;}',
+
+    /* The switch is pinned and the verbs scroll past it, so "which half of the
+       site am I in" never scrolls out of view. */
+    '.btnav-run{display:flex;align-items:center;gap:10px;min-width:0;}',
+    '.btnav-switch{flex:0 0 auto;}',
+    /* The verb run scrolls rather than wraps: a second wrapped row is a third
+       band of navigation above every page on the site. */
+    '.btnav-verbs{flex:1 1 auto;display:flex;align-items:center;gap:0;min-width:0;',
+    'overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;}',
+    '.btnav-verbs::-webkit-scrollbar{display:none;}',
+    /* the fade is switched on only when the run actually overflows, so it is
+       never a hint about scrolling that does not exist */
+    '.btnav-in.is-over .btnav-verbs{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent);',
+    'mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent);}',
 
     /* The wordmark was 13px — exactly the same as the links, so it never actually
        read as bigger. Now it genuinely leads. */
     '.btnav-mark{font-weight:700;color:var(--btnav-on);letter-spacing:.14em;font-size:19px;',
-    'margin-right:22px;white-space:nowrap;text-decoration:none;display:flex;align-items:center;gap:7px;}',
+    'white-space:nowrap;text-decoration:none;display:flex;align-items:center;gap:7px;}',
     '.btnav-mark span{color:var(--btnav-accent);}',
 
-    '.btnav a.btnav-l{color:var(--btnav-fg);text-decoration:none;padding:16px 15px;',
+    /* THE SWITCH. Two front doors — the hub you browse and the feed you read —
+       and until now the only way between them was to know a URL. It is a pair,
+       not two links, because the point is that they are alternatives: the one
+       you are on is filled and inert, the other is where you can go. */
+    '.btnav-switch{display:inline-flex;align-items:center;gap:2px;padding:2px;',
+    'background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);',
+    'border-radius:999px;}',
+    '.btnav-sw{display:inline-block;padding:5px 11px;border-radius:999px;font-size:11.5px;',
+    'font-weight:600;letter-spacing:.08em;color:var(--btnav-fg);text-decoration:none;',
+    'white-space:nowrap;transition:color .15s ease,background .15s ease;}',
+    '.btnav-sw:hover{color:var(--btnav-on);}',
+    '.btnav-sw-cur{background:var(--btnav-accent);color:#0E2230;cursor:default;}',
+    '.btnav-sw:focus-visible{outline:2px solid var(--btnav-accent);outline-offset:2px;}',
+
+    '.btnav a.btnav-l{color:var(--btnav-fg);text-decoration:none;padding:16px 10px;',
     'font-weight:500;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s ease;}',
     '.btnav a.btnav-l:hover{color:var(--btnav-on);}',
     '.btnav a.btnav-l:focus-visible{outline:2px solid var(--btnav-accent);outline-offset:-2px;}',
     '.btnav a.btnav-cur{color:var(--btnav-on);border-bottom-color:var(--btnav-accent);cursor:default;}',
 
-    /* Subscribe is the bar's one loud thing — the hub header's yellow pill. */
-    '.btnav-sub{margin-left:auto;background:var(--btnav-accent);color:#0E2230;',
+    /* One pill where there were two words for the same place. */
+    '.btnav-sub{background:var(--btnav-accent);color:#0E2230;',
     'border-radius:999px;padding:7px 14px;font-weight:700;text-decoration:none;',
     'white-space:nowrap;font-size:12px;letter-spacing:.09em;}',
     '.btnav-sub:hover{filter:brightness(1.08);}',
@@ -143,7 +195,7 @@
 
     /* The search control sits at the far right of the bar — a quiet pill, not
        another link, so the run of links still reads as one family. */
-    '.btnav-s{margin-left:10px;display:inline-flex;align-items:center;gap:7px;',
+    '.btnav-s{display:inline-flex;align-items:center;gap:7px;',
     'background:none;border:1px solid rgba(255,255,255,.22);border-radius:999px;',
     'color:var(--btnav-fg);padding:6px 13px;font:inherit;font-size:12px;letter-spacing:.09em;',
     'text-transform:uppercase;cursor:pointer;transition:color .15s ease,border-color .15s ease;}',
@@ -152,19 +204,36 @@
     '.btnav-s svg{flex:none;}',
     '.btnav-s-k{font-size:10px;opacity:.55;letter-spacing:.05em;text-transform:none;}',
 
-    /* Eight links do not fit one row below a laptop, and the bar sits above
-       every page of every property — so each tier tightens rather than
-       spending another band of the screen on navigation. */
+    /* Below a laptop the bar tightens rather than spending another band of
+       the screen on navigation. */
     '@media (max-width:1000px){.btnav{font-size:13px;letter-spacing:.07em;}',
-    '.btnav-mark{margin-right:14px;}.btnav a.btnav-l{padding:14px 10px;}}',
+    '.btnav a.btnav-l{padding:14px 9px;}}',
 
-    /* Phones: the run wraps to a second row, and everything shrinks to keep
-       that second row from becoming a third. */
+    /* The reorder. Two rows of KNOWN height instead of a wrap whose height
+       depends on how many links happen to fit — the verbs get their own row
+       and scroll inside it, so the bar is the same height with seven verbs
+       as with three. */
+    '@media (max-width:820px){',
+    ".btnav-in{grid-template-columns:1fr auto auto;",
+    "grid-template-areas:'mark sub search' 'run run run';",
+    'row-gap:0;min-height:0;padding:0 10px;}',
+    '.btnav-run{margin:0 -10px;padding:0 10px 2px;}',
+    '.btnav-in>.btnav-mark,.btnav-in>.btnav-sub,.btnav-in>.btnav-s{',
+    'margin-top:8px;margin-bottom:2px;}',
+    '.btnav a.btnav-l{padding:8px 8px;}}',
+
     '@media (max-width:560px){.btnav{font-size:11.5px;letter-spacing:.05em;}',
-    '.btnav-mark{font-size:15px;margin-right:8px;}',
-    '.btnav-in{padding:0 8px;min-height:44px;}.btnav a.btnav-l{padding:10px 5px;}',
+    '.btnav-mark{font-size:15px;}',
+    '.btnav-in{padding:0 8px;column-gap:6px;}',
+    '.btnav-run{margin:0 -8px;padding:0 8px 2px;gap:7px;}',
+    '.btnav a.btnav-l{padding:8px 7px;}',
+    '.btnav-sw{padding:4px 9px;font-size:10.5px;letter-spacing:.05em;}',
     '.btnav-sub{padding:5px 10px;font-size:10.5px;}',
-    '.btnav-s{padding:4px 9px;margin-left:6px;}.btnav-s-k{display:none;}}'
+    '.btnav-s{padding:4px 9px;}.btnav-s-k{display:none;}}',
+
+    /* The very narrow end: the pill loses its second word rather than the bar
+       losing a row. "Read" alone still lands on the newsletter. */
+    '@media (max-width:380px){.btnav-sub-long{display:none;}}'
   ].join('');
 
   function build() {
@@ -187,6 +256,32 @@
     mark.innerHTML = 'BTown<span>Brief</span>';
     inner.appendChild(mark);
 
+    /* The switch between the two front doors. On the one you are already on,
+       that side is filled and carries no href — the pair still reads as a
+       pair, and you can see which half you are in. */
+    var run = document.createElement('div');
+    run.className = 'btnav-run';
+
+    var sw = document.createElement('div');
+    sw.className = 'btnav-switch';
+    sw.setAttribute('role', 'group');
+    sw.setAttribute('aria-label', 'Hub or All Day');
+    DOORS.forEach(function (door) {
+      var here = door.on.some(function (m) {
+        return m.host.test(host) && (m.path ? m.path.test(path) : true);
+      });
+      var a = document.createElement('a');
+      a.className = 'btnav-sw' + (here ? ' btnav-sw-cur' : '');
+      a.textContent = door.label;
+      a.href = door.href;
+      if (here) a.setAttribute('aria-current', 'page');
+      sw.appendChild(a);
+    });
+    run.appendChild(sw);
+
+    var verbs = document.createElement('div');
+    verbs.className = 'btnav-verbs';
+
     LINKS.forEach(function (link) {
       var current = isCurrent(link);
       var a = document.createElement('a');
@@ -199,13 +294,18 @@
       } else {
         a.href = link.href;
       }
-      inner.appendChild(a);
+      verbs.appendChild(a);
     });
+    run.appendChild(verbs);
+    inner.appendChild(run);
 
+    /* Read and Subscribe were two controls for one thing. The newsletter's own
+       page is where you both read it and sign up, so the pill goes there and
+       the hub's #subscribe section keeps working for anyone who scrolls. */
     var sub = document.createElement('a');
     sub.className = 'btnav-sub';
-    sub.href = 'https://hub.btownbrief.com/#subscribe';
-    sub.textContent = 'Subscribe';
+    sub.href = 'https://www.btownbrief.com?utm_source=nav&utm_medium=referral&utm_campaign=site_capture';
+    sub.innerHTML = 'Read<span class="btnav-sub-long"> / Subscribe</span>';
     inner.appendChild(sub);
 
     /* Search rides in the bar but must never be able to break it. */
@@ -225,6 +325,16 @@
 
     bar.appendChild(inner);
     document.body.insertBefore(bar, document.body.firstChild);
+
+    /* The fade at the end of the verb run means "there is more this way", so
+       it may only be there when there is. Measured, not assumed: the run's
+       width depends on the font, and Avenir Next Condensed is not on Android. */
+    var measure = function () {
+      inner.classList.toggle('is-over', verbs.scrollWidth > verbs.clientWidth + 2);
+    };
+    measure();
+    window.addEventListener('resize', measure);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
   }
 
   /* ============================================================
