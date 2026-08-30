@@ -102,6 +102,17 @@
   var css = [
     '.btnav{--btnav-bg:#0E2230;--btnav-fg:#9DB6C2;--btnav-on:#FFFFFF;--btnav-accent:#E8A33D;',
     'background:var(--btnav-bg);color:var(--btnav-fg);width:100%;box-sizing:border-box;',
+    /* The bar is the first thing in the body on every property, so on a page
+       that runs edge to edge — viewport-fit=cover plus a black-translucent
+       status bar, which is what an app added to the home screen gets — y=0 is
+       BEHIND the iOS clock and the top of this bar is simply not on screen.
+       Padding by the inset paints the bar's own navy up into that strip and
+       pushes the links back below it. Every one of these is 0 in a normal
+       browser tab and in portrait on a phone with no notch, so this costs
+       nothing anywhere else. */
+    'padding-top:env(safe-area-inset-top,0px);',
+    'padding-left:env(safe-area-inset-left,0px);',
+    'padding-right:env(safe-area-inset-right,0px);',
     "font-family:'Avenir Next Condensed','Futura','Helvetica Neue',Helvetica,sans-serif;",
     'font-size:15px;letter-spacing:.09em;text-transform:uppercase;line-height:1;}',
 
