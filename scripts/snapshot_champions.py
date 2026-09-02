@@ -59,17 +59,8 @@ def score_text(slug: str, score: int):
     return None
 
 
-def main() -> int:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--out", required=True)
-    args = ap.parse_args()
-
-    games = json.loads((REPO / "games.json").read_text())["games"]
-    games = [g for g in games if g.get("live") and g.get("leaderboard")]
-
-    now = datetime.datetime.now(TZ)
-    month = f"{now.year}-{now.month:02d}"
-
+def read_month(games: list, month: str):
+    """Fan out the per-game RPCs for one month -> (boards, royalty tallies)."""
     boards = []
     players: dict = {}  # player_id -> royalty tally
     for g in games:
@@ -109,11 +100,44 @@ def main() -> int:
         if st:
             board["scoreText"] = st
         boards.append(board)
+    return boards, players
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--out", required=True)
+    args = ap.parse_args()
+
+    games = json.loads((REPO / "games.json").read_text())["games"]
+    games = [g for g in games if g.get("live") and g.get("leaderboard")]
+
+    now = datetime.datetime.now(TZ)
+    month_start = now.replace(day=1)
+    month = f"{now.year}-{now.month:02d}"
+
+    boards, players = read_month(games, month)
 
     if len(boards) < MIN_BOARDS:
-        print(f"only {len(boards)} populated boards — refusing to overwrite "
-              "the snapshot with a probably-broken read", file=sys.stderr)
-        return 1
+        # Two ways to read almost-empty boards: Supabase is broken, or the
+        # month just rolled over and hardly anyone has played yet. The
+        # previous month tells them apart — if it reads fine, Supabase is
+        # healthy and the emptiness is real, so publish last month's boards
+        # as the reigning champions until the new month fills in. (This
+        # failed every run on 2026-09-01, when September was one day old.)
+        prev = month_start - datetime.timedelta(days=1)
+        prev_month = f"{prev.year}-{prev.month:02d}"
+        prev_boards, prev_players = read_month(games, prev_month)
+        if len(prev_boards) >= MIN_BOARDS:
+            print(f"only {len(boards)} populated boards for {month} but "
+                  f"{len(prev_boards)} for {prev_month} — young month, "
+                  "publishing the reigning champions")
+            boards, players = prev_boards, prev_players
+            month, month_start = prev_month, prev.replace(day=1)
+        else:
+            print(f"only {len(boards)} populated boards ({len(prev_boards)} "
+                  "last month) — refusing to overwrite the snapshot with a "
+                  "probably-broken read", file=sys.stderr)
+            return 1
 
     royalty = sorted(
         (p for p in players.values() if p["podiums"] > 0 and p["name"]),
@@ -124,7 +148,7 @@ def main() -> int:
         "updated": datetime.datetime.now(datetime.timezone.utc)
                    .strftime("%Y-%m-%dT%H:%M:%SZ"),
         "month": month,
-        "monthLabel": now.strftime("%B"),
+        "monthLabel": month_start.strftime("%B"),
         "games": boards,
         "royalty": royalty,
     }
