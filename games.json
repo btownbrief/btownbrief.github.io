@@ -135,6 +135,16 @@
       "leaderboard": true
     },
     {
+      "slug": "btown-riddle",
+      "name": "Btown Riddle",
+      "emoji": "🍁",
+      "pitch": "One Burlington riddle a day. Four maple leaves if you get it without a hint.",
+      "section": "daily-puzzles",
+      "live": false,
+      "leaderboard": true,
+      "boardHint": "Longest daily solving streak this month."
+    },
+    {
       "slug": "trivia-ladder",
       "name": "Trivia Ladder",
       "emoji": "🪜",
