@@ -33,6 +33,15 @@
   ],
   "games": [
     {
+      "slug": "church-street-zombies",
+      "name": "Church Street: Last Light",
+      "emoji": "🧟",
+      "pitch": "Fight zombie hordes, skate Church Street, enter runner portals, and YEET explosive barrels. Desktop + touch. Best scores save on your device.",
+      "section": "arcade-action",
+      "live": true,
+      "leaderboard": false
+    },
+    {
       "slug": "church-street-skate",
       "name": "Church Street Skate",
       "emoji": "🛹",

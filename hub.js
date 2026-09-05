@@ -158,7 +158,7 @@ function renderGrid() {
   grid.innerHTML = sectionBlocks.join('') ||
     `<p class="load-error">Nothing on this side yet — try the other one.</p>`;
   // Fetch live champs / ranks in parallel; each degrades on its own.
-  games.filter((g) => g.live).forEach(loadStats);
+  games.filter((g) => g.live && g.leaderboard !== false).forEach(loadStats);
 }
 
 function setMode(next) {
