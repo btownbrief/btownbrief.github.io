@@ -44,10 +44,19 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - name: Smoke
-        run: node smoke.mjs ${{ github.event.inputs.slugs }}
+        env:
+          SLUGS: ${{ github.event.inputs.slugs }}
+        run: |
+          # The input is data, never shell: split on whitespace and admit only slug-shaped tokens.
+          args=()
+          for t in $SLUGS; do
+            if [[ "$t" =~ ^[a-z0-9-]+$ ]]; then args+=("$t"); else echo "rejecting input token: $t" >&2; exit 2; fi
+          done
+          node smoke.mjs "${args[@]}"
       - name: Report
         if: always()
-        run: cat out/report.md >> "$GITHUB_STEP_SUMMARY"
+        run: |
+          if [ -f out/report.md ]; then cat out/report.md >> "$GITHUB_STEP_SUMMARY"; else echo "No report was written (runner crashed before producing one)." >> "$GITHUB_STEP_SUMMARY"; fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
