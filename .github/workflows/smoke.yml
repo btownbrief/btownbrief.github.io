@@ -1,0 +1,56 @@
+name: Smoke every game
+
+# Opens every live game in games.json on a phone and a laptop viewport and
+# fails on anything a player would hit: HTTP errors, JS exceptions, console
+# errors, 4xx/5xx sub-requests, "undefined"/"NaN" leaking into the page, a
+# Supabase RPC that does not exist yet, sideways scrolling on a phone.
+# Shell drift (missing manifest, ticker, analytics, og:image…) is reported
+# as warnings in the report artifact.
+#
+# It never writes: score/room RPCs are stubbed and the GoatCounter pixel is
+# swallowed, so the nightly run leaves no trace in production data.
+
+on:
+  schedule:
+    - cron: '17 9 * * *'   # 05:17 America/New_York in summer, 04:17 in winter
+  workflow_dispatch:
+    inputs:
+      slugs:
+        description: 'Space-separated slugs (blank = every live game)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+concurrency:
+  group: smoke
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: smoke
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: smoke/package-lock.json
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Smoke
+        run: node smoke.mjs ${{ github.event.inputs.slugs }}
+      - name: Report
+        if: always()
+        run: cat out/report.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: smoke-report
+          path: smoke/out
+          retention-days: 14

@@ -1,0 +1,12 @@
+{
+  "name": "btown-smoke",
+  "private": true,
+  "type": "module",
+  "description": "Nightly smoke run across every live Btown game: loads each one like a phone, blocks all writes, reports errors and shell drift.",
+  "scripts": {
+    "smoke": "node smoke.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.0"
+  }
+}
