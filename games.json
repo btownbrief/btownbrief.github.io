@@ -140,7 +140,7 @@
       "emoji": "🍁",
       "pitch": "One Burlington riddle a day. Four maple leaves if you get it without a hint.",
       "section": "daily-puzzles",
-      "live": false,
+      "live": true,
       "leaderboard": true,
       "boardHint": "Longest daily solving streak this month."
     },
