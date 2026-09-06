@@ -432,6 +432,15 @@
       "leaderboard": false
     },
     {
+      "slug": "btown-bracket",
+      "name": "Btown Bracket",
+      "emoji": "🍦",
+      "pitch": "Best creemee in Burlington? Nominate, then vote one matchup a day until the town has an answer.",
+      "section": "party-community",
+      "live": true,
+      "leaderboard": false
+    },
+    {
       "slug": "maples-to-maples",
       "name": "Maples to Maples",
       "emoji": "🗳️",
