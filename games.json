@@ -467,6 +467,17 @@
       "live": true,
       "leaderboard": false,
       "where": "out"
+    },
+    {
+      "slug": "btown-hunt",
+      "name": "Btown Hunt",
+      "emoji": "🪙",
+      "pitch": "Walk Burlington and collect it. Twenty downtown tokens, every historical marker, twelve riddles, a coffee passport and window mascots. One passport, no account.",
+      "section": "local-more",
+      "live": true,
+      "leaderboard": true,
+      "boardHint": "Stops stamped this month, one board per pack.",
+      "where": "out"
     }
   ],
   "modes": [
