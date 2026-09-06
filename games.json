@@ -374,6 +374,15 @@
       "leaderboard": false
     },
     {
+      "slug": "heads-up-btown",
+      "name": "Heads Up, Burlington",
+      "emoji": "🧠",
+      "pitch": "Phone on your forehead, friends shout clues. Six Burlington decks, tilt down when you get it.",
+      "section": "party-community",
+      "live": true,
+      "leaderboard": false
+    },
+    {
       "slug": "burlington-days",
       "name": "Burlington Days",
       "emoji": "🗓️",
