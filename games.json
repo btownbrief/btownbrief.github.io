@@ -125,6 +125,15 @@
       "leaderboard": true
     },
     {
+      "slug": "little-local",
+      "name": "Little Local",
+      "emoji": "🧺",
+      "pitch": "Match three local goods in a cozy Burlington corner shop. 600 levels, five modes, six shops, and 24 goods — plus endless untimed play, free hints, and offline support.",
+      "section": "daily-puzzles",
+      "live": true,
+      "leaderboard": false
+    },
+    {
       "slug": "btown-hangman",
       "name": "Btown Hangman",
       "emoji": "🪢",
