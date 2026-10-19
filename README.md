@@ -13,6 +13,10 @@ at the domain root and every project game (its own repo) serves under it at
   Each entry: `slug`, `name`, `emoji`, `pitch`, `live`.
 - `hub.js` — renders cabinet cards, greets a returning player, and loads each
   live game's reigning monthly champ + your personal rank.
+- `webpicks.js` / `web-games.json` — the "Daily picks from around the web" shelf. The list
+  lives in the All Day app (`guide.btownbrief.com/all-day/data/web-games.json`), fetched at
+  runtime; `web-games.json` here is a bundled fallback copy (refresh it when the app's changes).
+  `dailyPicks()` must match the one in the app's `games.js` so both pages show the same picks.
 - `leaderboard.js` — read-only Supabase client (same project/key as every game).
 - `CNAME` — custom domain (`play.btownbrief.com`).
 

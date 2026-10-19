@@ -73,6 +73,16 @@ src="https://www.facebook.com/tr?id=2471867016612559&ev=PageView&noscript=1"
     </div>
   </section>
 
+  <!-- Free puzzles on other sites: link-out only, the same daily picks as the
+       All Day app's Games tab. webpicks.js fills it, or leaves it hidden. -->
+  <section class="web-picks" id="web-picks" aria-labelledby="web-picks-heading" hidden>
+    <div class="game-section-head">
+      <h2 id="web-picks-heading">Daily picks from around the web</h2>
+      <p>Free puzzles on other sites. A few new ones every day.</p>
+    </div>
+    <div id="web-picks-body"></div>
+  </section>
+
   <section class="newsletter" aria-label="BTown Brief newsletter">
     <div class="news-inner">
       <div class="news-badge">📬 THE BTOWN BRIEF</div>
@@ -124,6 +134,7 @@ src="https://www.facebook.com/tr?id=2471867016612559&ev=PageView&noscript=1"
 </footer>
 
 <script type="module" src="hub.js"></script>
+<script type="module" src="webpicks.js"></script>
 <script src="donate.js"></script>
   <script src="https://play.btownbrief.com/nav.js" defer></script>
 </body>
