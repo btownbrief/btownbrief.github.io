@@ -27,3 +27,5 @@ champ line uses `slug` as the leaderboard game key (matches each game's `GAME`).
 
 ## Deploy
 Push to `main` → GitHub Actions (`.github/workflows/deploy.yml`) publishes Pages.
+
+All rights reserved: this code is published for viewing only and is not open source (see [LICENSE](LICENSE)).
