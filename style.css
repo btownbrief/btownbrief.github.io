@@ -134,6 +134,20 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 14px 40px; }
   font-size: 32px; line-height: 1; margin: 0 0 6px;
   filter: drop-shadow(0 4px 8px rgba(0,0,0,.45));
 }
+.cab-shot {
+  position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden;
+  background: #0b1626; border-bottom: 1px solid var(--line);
+}
+.cab-shot img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cab-genre {
+  position: absolute; left: 7px; bottom: 7px; max-width: calc(100% - 14px);
+  font-weight: 900; font-size: 11px; letter-spacing: .5px; text-transform: uppercase;
+  color: #10233a; background: #fff; border-radius: 999px; padding: 4px 9px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.45);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.cab.has-shot .cab-screen { padding: 8px 9px 4px; }
+.cab.has-shot .cab-pitch { color: var(--ink); opacity: .82; }
 .cab-name { margin: 0 0 4px; font-size: 16px; font-weight: 800; }
 .cab-pitch { margin: 0; color: var(--muted); font-size: 12.25px; line-height: 1.35; }
 

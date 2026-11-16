@@ -61,6 +61,24 @@ function cardHtml(g) {
         </div>
       </article>`;
   }
+  if (g.shot) {
+    return `
+    <article class="cab has-shot" aria-label="${escapeHtml(g.name)}${g.genre ? ` — ${escapeHtml(g.genre)}` : ''}">
+      <div class="cab-marquee">${escapeHtml(g.name.toUpperCase())}</div>
+      <a class="cab-shot" href="/${g.slug}/" tabindex="-1" aria-hidden="true">
+        <img src="${escapeHtml(g.shot)}" alt="" width="360" height="450" loading="lazy" decoding="async">
+        ${g.genre ? `<span class="cab-genre">${escapeHtml(g.genre)}</span>` : ''}
+      </a>
+      <div class="cab-screen">
+        <p class="cab-pitch">${escapeHtml(g.pitch)}</p>
+        <div class="cab-champ" data-champ="${g.slug}" hidden></div>
+        <div class="cab-rank" data-rank="${g.slug}" hidden></div>
+      </div>
+      <div class="cab-foot">
+        <a class="btn btn-play" href="/${g.slug}/">▶ PLAY</a>
+      </div>
+    </article>`;
+  }
   return `
     <article class="cab" aria-label="${escapeHtml(g.name)}">
       <div class="cab-marquee">${g.emoji} ${escapeHtml(g.name.toUpperCase())}</div>
