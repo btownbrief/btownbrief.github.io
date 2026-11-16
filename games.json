@@ -193,7 +193,7 @@
     },
     {
       "slug": "spot-champ",
-      "name": "Spot Champ",
+      "name": "Where’s Champ?",
       "emoji": "🔍",
       "pitch": "Find Champ hiding somewhere in the crowd.",
       "section": "arcade-classics",
@@ -204,7 +204,7 @@
     },
     {
       "slug": "champ-spotter",
-      "name": "Champ Spotter",
+      "name": "Champ Cam",
       "emoji": "📸",
       "pitch": "Snap Champ’s photo the moment he surfaces.",
       "section": "arcade-classics",
