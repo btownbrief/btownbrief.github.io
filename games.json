@@ -458,26 +458,6 @@
       "boardHint": "Fastest checkmate — ♛ Queen City Club wins outrank 🧳 Tourist wins."
     },
     {
-      "slug": "front-porch-dominoes",
-      "name": "Front Porch Dominoes",
-      "emoji": "🁵",
-      "pitch": "Draw dominoes under the string lights — first to 100 wins the porch. Solo vs Porch Swing Pete, or 2–4 players.",
-      "section": "board-card",
-      "live": true,
-      "leaderboard": true,
-      "boardHint": "Biggest points margin — 👀 Neighbor wins outrank 🪑 Porch Swing Pete wins."
-    },
-    {
-      "slug": "north-star-hop",
-      "name": "North Star Hop",
-      "emoji": "⭐",
-      "pitch": "Hop your marbles across the star under the northern lights — solo vs Polaris, or 2–4 players.",
-      "section": "board-card",
-      "live": true,
-      "leaderboard": true,
-      "boardHint": "Fewest hops to bring every marble home — 🧭 Navigator wins outrank ⭐ Polaris wins."
-    },
-    {
       "slug": "crazy-eights",
       "name": "Crazy Eights",
       "emoji": "🃏",
@@ -488,16 +468,6 @@
       "boardHint": "Go out while Champ still holds a fistful — more stranded cards, higher score."
     },
     {
-      "slug": "maple-mancala",
-      "name": "Maple Mancala",
-      "emoji": "🌰",
-      "pitch": "Sow maple candies bucket to bucket and capture the sweetest side of the plank.",
-      "section": "board-card",
-      "live": true,
-      "leaderboard": true,
-      "boardHint": "Sweetest store margin — 🔥 Sugarmaker wins outrank 🌱 Sap Run wins."
-    },
-    {
       "slug": "maple-scramble",
       "name": "Maple Scramble",
       "emoji": "🔠",
@@ -505,26 +475,6 @@
       "section": "daily-puzzles",
       "live": true,
       "leaderboard": true
-    },
-    {
-      "slug": "kings-corner",
-      "name": "Kings Corner",
-      "emoji": "👑",
-      "pitch": "Kings to the corners: shed your hand around City Hall Park before the bot does.",
-      "section": "board-card",
-      "live": true,
-      "leaderboard": true,
-      "boardHint": "Shed your hand in the fewest turns to outdeal the Mayor."
-    },
-    {
-      "slug": "btown-cribbage",
-      "name": "Btown Cribbage",
-      "emoji": "🏔️",
-      "pitch": "Full cribbage on the Long Trail peg board — the app does all the counting.",
-      "section": "board-card",
-      "live": true,
-      "leaderboard": true,
-      "boardHint": "Beat Champ by the most points — a skunk scores 31+."
     },
     {
       "slug": "church-street-checkers",
@@ -545,16 +495,6 @@
       "live": true,
       "leaderboard": true,
       "boardHint": "Sink the Harbormaster's fleet in the fewest shots — a perfect 17-shot hunt scores 84."
-    },
-    {
-      "slug": "btown-crossings",
-      "name": "Btown Crossings",
-      "emoji": "🔡",
-      "pitch": "Our own word-tile board: Church Street doubles your word, the Waterfront triples a letter.",
-      "section": "board-card",
-      "live": true,
-      "leaderboard": true,
-      "boardHint": "Your highest winning score against SKIP."
     },
     {
       "slug": "sugarbush-squares",
@@ -653,24 +593,6 @@
       "where": "out"
     },
     {
-      "slug": "caption-this",
-      "name": "Caption This",
-      "emoji": "💬",
-      "pitch": "BTown's weekly caption contest: swipe on the funniest, or write your own.",
-      "section": "party-community",
-      "live": true,
-      "leaderboard": false
-    },
-    {
-      "slug": "maples-to-maples",
-      "name": "Maples to Maples",
-      "emoji": "🗳️",
-      "pitch": "The weekly party game: one prompt, your best answer, the town votes.",
-      "section": "party-community",
-      "live": true,
-      "leaderboard": false
-    },
-    {
       "slug": "archive",
       "name": "The Archives",
       "emoji": "📰",
@@ -697,6 +619,87 @@
       "live": true,
       "leaderboard": false,
       "where": "out"
+    }
+  ],
+  "_comment_hidden": "Hidden Nov 16, 2026 for low traffic (0-3 visits Aug-Nov). They stay playable at their URLs but are off the hub, search and leaderboards. To bring one back, move its entry from 'hidden' into 'games'.",
+  "hidden": [
+    {
+      "slug": "front-porch-dominoes",
+      "name": "Front Porch Dominoes",
+      "emoji": "🁵",
+      "pitch": "Draw dominoes under the string lights — first to 100 wins the porch. Solo vs Porch Swing Pete, or 2–4 players.",
+      "section": "board-card",
+      "live": true,
+      "leaderboard": true,
+      "boardHint": "Biggest points margin — 👀 Neighbor wins outrank 🪑 Porch Swing Pete wins."
+    },
+    {
+      "slug": "north-star-hop",
+      "name": "North Star Hop",
+      "emoji": "⭐",
+      "pitch": "Hop your marbles across the star under the northern lights — solo vs Polaris, or 2–4 players.",
+      "section": "board-card",
+      "live": true,
+      "leaderboard": true,
+      "boardHint": "Fewest hops to bring every marble home — 🧭 Navigator wins outrank ⭐ Polaris wins."
+    },
+    {
+      "slug": "maple-mancala",
+      "name": "Maple Mancala",
+      "emoji": "🌰",
+      "pitch": "Sow maple candies bucket to bucket and capture the sweetest side of the plank.",
+      "section": "board-card",
+      "live": true,
+      "leaderboard": true,
+      "boardHint": "Sweetest store margin — 🔥 Sugarmaker wins outrank 🌱 Sap Run wins."
+    },
+    {
+      "slug": "kings-corner",
+      "name": "Kings Corner",
+      "emoji": "👑",
+      "pitch": "Kings to the corners: shed your hand around City Hall Park before the bot does.",
+      "section": "board-card",
+      "live": true,
+      "leaderboard": true,
+      "boardHint": "Shed your hand in the fewest turns to outdeal the Mayor."
+    },
+    {
+      "slug": "btown-cribbage",
+      "name": "Btown Cribbage",
+      "emoji": "🏔️",
+      "pitch": "Full cribbage on the Long Trail peg board — the app does all the counting.",
+      "section": "board-card",
+      "live": true,
+      "leaderboard": true,
+      "boardHint": "Beat Champ by the most points — a skunk scores 31+."
+    },
+    {
+      "slug": "btown-crossings",
+      "name": "Btown Crossings",
+      "emoji": "🔡",
+      "pitch": "Our own word-tile board: Church Street doubles your word, the Waterfront triples a letter.",
+      "section": "board-card",
+      "live": true,
+      "leaderboard": true,
+      "boardHint": "Your highest winning score against SKIP."
+    },
+    {
+      "slug": "caption-this",
+      "name": "Caption This",
+      "emoji": "💬",
+      "pitch": "BTown's weekly caption contest: swipe on the funniest, or write your own.",
+      "section": "party-community",
+      "live": true,
+      "leaderboard": false
+    },
+    {
+      "slug": "maples-to-maples",
+      "name": "Maples to Maples",
+      "emoji": "🗳️",
+      "pitch": "The weekly party game: one prompt, your best answer, the town votes.",
+      "section": "party-community",
+      "live": true,
+      "leaderboard": false
     }
   ],
   "modes": [
