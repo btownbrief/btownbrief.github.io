@@ -27,6 +27,9 @@
  *     whose bottom edge is part of the play surface.
  *   - window.BtownTicker.hide()/show() lets a game tuck it away during play
  *     and bring it back on the menu / game-over screen.
+ *   - Auto-dodge: if a button/link sits under the strip, or a game canvas is
+ *     under it while the player is touching it, the ticker hides itself
+ *     until the strip is clear (see autoDodge below).
  *
  * Each load starts the crawl at a random spot in the headline pile, so the
  * ticker reads fresh every visit even though the loop is long. Headlines
@@ -163,10 +166,17 @@
     tab.setAttribute('aria-label', 'Show news ticker');
     tab.title = 'Btown Brief news & events';
 
+    // What shows is decided in one place: the player's ✕ choice (pref), a game
+    // calling BtownTicker.hide(), or the auto-dodge below (blocked).
+    var gameHidden = false, blocked = false;
+    function apply() {
+      var off = pref() === 'off', away = gameHidden || blocked;
+      bar.style.display = !away && !off ? '' : 'none';
+      tab.style.display = !away && off ? '' : 'none';
+    }
     function setOn(on) {
-      bar.style.display = on ? '' : 'none';
-      tab.style.display = on ? 'none' : '';
       pref(on ? 'on' : 'off');
+      apply();
     }
     bar.querySelector('.bt-ticker-x').addEventListener('click', function () { setOn(false); });
     tab.addEventListener('click', function () { setOn(true); });
@@ -180,11 +190,8 @@
     // still visible — a display:none bar has no width to measure.
     track.style.animationDuration = (track.scrollWidth / 2 / SPEED) + 's';
 
-    if (pref() === 'off') {
-      bar.style.display = 'none';
-    } else {
-      tab.style.display = 'none';
-    }
+    apply();
+    autoDodge();
 
     // Reduced motion: the crawl is disabled by CSS; rotate a single item.
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -201,12 +208,65 @@
     // For games: tuck the whole thing (bar AND tab) away during play, bring
     // it back on the menu. show() restores whichever state the player chose.
     window.BtownTicker = {
-      hide: function () { bar.style.display = 'none'; tab.style.display = 'none'; },
-      show: function () {
-        if (pref() === 'off') tab.style.display = '';
-        else bar.style.display = '';
-      }
+      hide: function () { gameHidden = true; apply(); },
+      show: function () { gameHidden = false; apply(); }
     };
+
+    // Auto-dodge (Nov 2026): most games never call hide(), and the strip was
+    // sitting on top of their bottom buttons. So the ticker looks at what is
+    // underneath its strip about once a second:
+    //   - a button, link, input or anything clickable under it -> step aside
+    //     until the strip is clear again;
+    //   - a game canvas under it -> step aside while the player is touching
+    //     the game (any input in the last 5 s), come back when they idle on a
+    //     menu or game-over screen.
+    // It only hides itself (bar and tab); it never moves or resizes the page.
+    function autoDodge() {
+      var INTERACTIVE = 'a,button,input,select,textarea,label,summary,[role="button"],[role="link"],[onclick]';
+      var lastInput = 0, clearSince = 0, safe = 0;
+      var probe = document.createElement('div');
+      probe.style.cssText = 'position:fixed;left:0;bottom:0;width:0;visibility:hidden;pointer-events:none;' +
+        'height:env(safe-area-inset-' + position + ',0px);';
+      document.body.appendChild(probe);
+      safe = probe.getBoundingClientRect().height || 0;
+      probe.remove();
+
+      function ours(el) { return el === bar || el === tab || bar.contains(el) || tab.contains(el); }
+      window.addEventListener('pointerdown', function (e) {
+        if (!ours(e.target)) { lastInput = Date.now(); check(); }
+      }, { capture: true, passive: true });
+      window.addEventListener('keydown', function () { lastInput = Date.now(); check(); }, { capture: true, passive: true });
+
+      function whatsUnder() {
+        var vw = window.innerWidth, vh = window.innerHeight, ys, found = 'clear';
+        ys = position === 'top' ? [safe + 6, safe + 15, safe + 25]
+                                : [vh - safe - 6, vh - safe - 15, vh - safe - 25];
+        for (var i = 0; i < ys.length; i++) {
+          for (var x = 8; x < vw; x += Math.max(24, (vw - 16) / 9)) {
+            var stack = document.elementsFromPoint ? document.elementsFromPoint(x, ys[i]) : [];
+            var el = null;
+            for (var k = 0; k < stack.length; k++) { if (!ours(stack[k])) { el = stack[k]; break; } }
+            if (!el || el === document.body || el === document.documentElement) continue;
+            if (el.closest(INTERACTIVE)) return 'control';
+            if (el.tagName === 'CANVAS') { found = 'canvas'; continue; }
+            try { if (getComputedStyle(el).cursor === 'pointer') return 'control'; } catch (e) { /* ignore */ }
+          }
+        }
+        return found;
+      }
+
+      function check() {
+        var under = whatsUnder(), now = Date.now();
+        var want = under === 'control' || (under === 'canvas' && now - lastInput < 5000);
+        if (want) { clearSince = 0; if (!blocked) { blocked = true; apply(); } return; }
+        // come back only after the strip has been clear for ~1.5 s, so it
+        // doesn't flicker while a page scrolls buttons past it
+        if (!clearSince) clearSince = now;
+        if (blocked && now - clearSince > 1500) { blocked = false; apply(); }
+      }
+      setInterval(check, 700);
+      check();
+    }
   }
 
   function start() {
