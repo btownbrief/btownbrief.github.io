@@ -239,386 +239,468 @@
       "slug": "queen-city-clash",
       "name": "Queen City Clash",
       "emoji": "🥊",
-      "pitch": "Burlington's own fighting game: pick Champ, the Filing Cabinet, the Syrup Jug or ten more and brawl from Church Street to the frozen lake.",
+      "pitch": "Pick a Burlington brawler and fight across town.",
       "section": "arcade-action",
       "live": true,
-      "leaderboard": false
+      "leaderboard": false,
+      "shot": "assets/games/queen-city-clash.jpg",
+      "genre": "Fighting game"
     },
     {
       "slug": "church-street-zombies",
       "name": "Church Street: Last Light",
       "emoji": "🧟",
-      "pitch": "Fight zombie hordes, skate Church Street, enter runner portals, and YEET explosive barrels. Desktop + touch. Best scores save on your device.",
+      "pitch": "Hold Church Street against waves of zombies.",
       "section": "arcade-action",
       "live": true,
-      "leaderboard": false
+      "leaderboard": false,
+      "shot": "assets/games/church-street-zombies.jpg",
+      "genre": "Zombie shooter"
     },
     {
       "slug": "church-street-skate",
       "name": "Church Street Skate",
       "emoji": "🛹",
-      "pitch": "Skate real downtown Burlington in 3D — ollie the City Hall steps, grind the planters, bomb College Street to the lake.",
+      "pitch": "Skate downtown in 3D. Ollie, grind, score.",
       "section": "arcade-action",
       "live": true,
       "leaderboard": true,
-      "boardHint": "Trick points from your best skate session."
+      "boardHint": "Trick points from your best skate session.",
+      "shot": "assets/games/church-street-skate.jpg",
+      "genre": "3D skating"
     },
     {
       "slug": "street-yeet",
       "name": "STREET YEET",
       "emoji": "🚀",
-      "pitch": "Ragdoll-physics yeeting on Church Street. Creemees, syrup jugs, leaf peepers. You know what to do.",
+      "pitch": "Launch a ragdoll down Church Street for distance.",
       "section": "arcade-action",
       "live": true,
       "leaderboard": true,
-      "boardHint": "Yeet points — bigger launches, bigger score."
+      "boardHint": "Yeet points — bigger launches, bigger score.",
+      "shot": "assets/games/street-yeet.jpg",
+      "genre": "Ragdoll launch"
     },
     {
       "slug": "church-street-runner",
       "name": "Church Street Runners",
       "emoji": "🏃",
-      "pitch": "Run down Church Street Marketplace: dodge dogs, grab creemees, catch live headlines.",
+      "pitch": "Swipe lanes, dodge dogs, grab creemees.",
       "section": "arcade-action",
       "live": true,
-      "leaderboard": true
+      "leaderboard": true,
+      "shot": "assets/games/church-street-runner.jpg",
+      "genre": "Endless runner"
     },
     {
       "slug": "filed",
       "name": "FILED!",
       "emoji": "🗄️",
-      "pitch": "Two thumbs, one goal: survive the World's Tallest Filing Cabinet.",
+      "pitch": "Stamp your way up the world’s tallest filing cabinet.",
       "section": "arcade-action",
       "live": true,
-      "leaderboard": true
+      "leaderboard": true,
+      "shot": "assets/games/filed.jpg",
+      "genre": "Two-thumb climber"
     },
     {
       "slug": "flappy-champ",
       "name": "Flappy Champ",
       "emoji": "🐉",
-      "pitch": "Flap Champ, Lake Champlain's monster, through the schooner sails.",
+      "pitch": "Tap to flap Champ through the schooner sails.",
       "section": "arcade-action",
       "live": true,
-      "leaderboard": true
+      "leaderboard": true,
+      "shot": "assets/games/flappy-champ.jpg",
+      "genre": "One-tap flyer"
     },
     {
       "slug": "champlain-glider",
       "name": "Champlain Glider",
       "emoji": "🐦",
-      "pitch": "Dive the hills, ride the sunset across Vermont, and outrun the night.",
+      "pitch": "Dive the hills, soar off the tops, outrun the night.",
       "section": "arcade-action",
       "live": true,
-      "leaderboard": true
+      "leaderboard": true,
+      "shot": "assets/games/champlain-glider.jpg",
+      "genre": "Hill glider"
     },
     {
       "slug": "tap-the-maple",
       "name": "Tap the Maple",
       "emoji": "🍁",
-      "pitch": "Knife-Hit sugaring season: tap taps into the maple, don't hit the taps.",
+      "pitch": "Throw taps into a spinning maple. Don’t hit the others.",
       "section": "arcade-action",
       "live": true,
-      "leaderboard": true
+      "leaderboard": true,
+      "shot": "assets/games/tap-the-maple.jpg",
+      "genre": "Timing toss"
     },
     {
       "slug": "creemee-drop",
       "name": "Creemee Drop",
       "emoji": "🍦",
-      "pitch": "Catch falling swirls and stack Vermont soft-serve to the sky.",
+      "pitch": "Catch falling swirls and build a towering creemee.",
       "section": "arcade-action",
       "live": true,
-      "leaderboard": true
+      "leaderboard": true,
+      "shot": "assets/games/creemee-drop.jpg",
+      "genre": "Catch & stack"
     },
     {
       "slug": "pothole-patrol",
       "name": "Pothole Patrol",
       "emoji": "🕳️",
-      "pitch": "Patch Burlington's potholes before mud season swallows the street.",
+      "pitch": "Patch potholes before the street falls apart.",
       "section": "arcade-action",
       "live": true,
-      "leaderboard": true
+      "leaderboard": true,
+      "shot": "assets/games/pothole-patrol.jpg",
+      "genre": "Tap fast"
     },
     {
       "slug": "little-local",
       "name": "Little Local",
       "emoji": "🧺",
-      "pitch": "A cozy Burlington shop with a real puzzle. Move goods between shelves, protect empty spaces, and match triples to unlock stock. 600 untimed shelf puzzles, 600 classic levels, six modes, and offline play.",
+      "pitch": "Sort a cozy shop’s shelves and match goods in threes.",
       "section": "daily-puzzles",
       "live": true,
-      "leaderboard": false
+      "leaderboard": false,
+      "shot": "assets/games/little-local.jpg",
+      "genre": "Shelf puzzle"
     },
     {
       "slug": "btown-hangman",
       "name": "Btown Hangman",
       "emoji": "🪢",
-      "pitch": "One Burlington word a day, six lives — save the little chalk guy.",
+      "pitch": "Guess today’s Burlington word before you run out of lives.",
       "section": "daily-puzzles",
       "live": true,
       "leaderboard": true,
-      "boardHint": "Lives kept ×10,000 + speed bonus — a clean no-miss save tops the board."
+      "boardHint": "Lives kept ×10,000 + speed bonus — a clean no-miss save tops the board.",
+      "shot": "assets/games/btown-hangman.jpg",
+      "genre": "Daily word"
     },
     {
       "slug": "btown-wordle",
       "name": "BTown Wordle",
       "emoji": "🟩",
-      "pitch": "A fresh Burlington-flavored word puzzle every single day.",
+      "pitch": "Six tries to guess today’s Burlington word.",
       "section": "daily-puzzles",
       "live": true,
-      "leaderboard": true
+      "leaderboard": true,
+      "shot": "assets/games/btown-wordle.jpg",
+      "genre": "Daily word"
     },
     {
       "slug": "btown-riddle",
       "name": "Btown Riddle",
       "emoji": "🍁",
-      "pitch": "One Burlington riddle a day. Four maple leaves if you get it without a hint.",
+      "pitch": "One Burlington riddle a day. Solve it without a hint.",
       "section": "daily-puzzles",
       "live": true,
       "leaderboard": true,
-      "boardHint": "Longest daily solving streak this month."
+      "boardHint": "Longest daily solving streak this month.",
+      "shot": "assets/games/btown-riddle.jpg",
+      "genre": "Daily riddle"
     },
     {
       "slug": "trivia-ladder",
       "name": "Trivia Ladder",
       "emoji": "🪜",
-      "pitch": "Climb the Burlington trivia ladder: one wrong rung and you fall.",
+      "pitch": "Five local questions, each harder. Miss one and you fall.",
       "section": "daily-puzzles",
       "live": true,
-      "leaderboard": true
+      "leaderboard": true,
+      "shot": "assets/games/trivia-ladder.jpg",
+      "genre": "Daily trivia"
     },
     {
       "slug": "where-in-btown",
       "name": "Where in BTown?",
       "emoji": "📍",
-      "pitch": "One local photo, one guess: name the Burlington spot.",
+      "pitch": "See a local photo. Drop a pin where it was taken.",
       "section": "daily-puzzles",
       "live": true,
-      "leaderboard": true
+      "leaderboard": true,
+      "shot": "assets/games/where-in-btown.jpg",
+      "genre": "Photo guess"
     },
     {
       "slug": "news-quiz",
       "name": "News Quiz",
       "emoji": "🗞️",
-      "pitch": "How closely did you actually read this week's BTown Brief?",
+      "pitch": "How closely did you read this week’s Brief?",
       "section": "daily-puzzles",
       "live": true,
-      "leaderboard": true
+      "leaderboard": true,
+      "shot": "assets/games/news-quiz.jpg",
+      "genre": "News quiz"
     },
     {
       "slug": "real-or-fake",
       "name": "Real or Fake",
       "emoji": "📰",
-      "pitch": "Actual Burlington headline, or did we make it up? Trust your gut.",
+      "pitch": "Real Burlington headline, or made up?",
       "section": "daily-puzzles",
       "live": true,
-      "leaderboard": true
+      "leaderboard": true,
+      "shot": "assets/games/real-or-fake.jpg",
+      "genre": "Spot the fake"
     },
     {
       "slug": "earlier-or-later",
       "name": "Earlier or Later",
       "emoji": "⏳",
-      "pitch": "Two moments in Burlington history: which one happened first?",
+      "pitch": "Two Burlington moments. Which came first?",
       "section": "daily-puzzles",
       "live": true,
-      "leaderboard": true
+      "leaderboard": true,
+      "shot": "assets/games/earlier-or-later.jpg",
+      "genre": "History guess"
     },
     {
       "slug": "higher-or-lower",
       "name": "Higher or Lower",
       "emoji": "📊",
-      "pitch": "One Burlington stat, then another. Guess higher or lower and keep the streak.",
+      "pitch": "Higher or lower? Keep your streak alive.",
       "section": "daily-puzzles",
       "live": true,
-      "leaderboard": true
+      "leaderboard": true,
+      "shot": "assets/games/higher-or-lower.jpg",
+      "genre": "Stat guess"
     },
     {
       "slug": "rank-what-you-know",
       "name": "Rank What You Know",
       "emoji": "🔢",
-      "pitch": "Put Burlington things in the right order. Sounds easy. It isn't.",
+      "pitch": "Put Burlington things in the right order.",
       "section": "daily-puzzles",
       "live": true,
-      "leaderboard": false
+      "leaderboard": false,
+      "shot": "assets/games/rank-what-you-know.jpg",
+      "genre": "Ranking puzzle"
     },
     {
       "slug": "four-in-a-rowboat",
       "name": "Four in a Rowboat",
       "emoji": "🚣",
-      "pitch": "Drop your buoys and line up four across Lake Champlain — race a friend or take on the Skipper.",
+      "pitch": "Drop buoys and line up four before they do.",
       "section": "board-card",
       "live": true,
       "leaderboard": true,
-      "boardHint": "Fewest buoys to line up four — ⛵ Skipper wins outrank 🛶 Paddler wins."
+      "boardHint": "Fewest buoys to line up four — ⛵ Skipper wins outrank 🛶 Paddler wins.",
+      "shot": "assets/games/four-in-a-rowboat.jpg",
+      "genre": "Four in a row"
     },
     {
       "slug": "queen-city-chess",
       "name": "Queen City Chess",
       "emoji": "♛",
-      "pitch": "Burlington IS the Queen City — full chess: pass the phone, race a friend online, or test the Queen City Club.",
+      "pitch": "Full chess. Pass the phone, play online, or beat the bot.",
       "section": "board-card",
       "live": true,
       "leaderboard": true,
-      "boardHint": "Fastest checkmate — ♛ Queen City Club wins outrank 🧳 Tourist wins."
+      "boardHint": "Fastest checkmate — ♛ Queen City Club wins outrank 🧳 Tourist wins.",
+      "shot": "assets/games/queen-city-chess.jpg",
+      "genre": "Chess"
     },
     {
       "slug": "crazy-eights",
       "name": "Crazy Eights",
       "emoji": "🃏",
-      "pitch": "Eights are wild on the Burlington deck: match it or draw, first empty hand wins.",
+      "pitch": "Match the suit or the rank. Eights are wild.",
       "section": "board-card",
       "live": true,
       "leaderboard": true,
-      "boardHint": "Go out while Champ still holds a fistful — more stranded cards, higher score."
+      "boardHint": "Go out while Champ still holds a fistful — more stranded cards, higher score.",
+      "shot": "assets/games/crazy-eights.jpg",
+      "genre": "Card game"
     },
     {
       "slug": "maple-scramble",
       "name": "Maple Scramble",
       "emoji": "🔠",
-      "pitch": "Sixteen tiles, one connected crossword, every day — get TAPPED fast and top the monthly board.",
+      "pitch": "Build one crossword from today’s 16 tiles.",
       "section": "daily-puzzles",
       "live": true,
-      "leaderboard": true
+      "leaderboard": true,
+      "shot": "assets/games/maple-scramble.jpg",
+      "genre": "Daily word tiles"
     },
     {
       "slug": "church-street-checkers",
       "name": "Church Street Checkers",
       "emoji": "🔴",
-      "pitch": "Checkers on the Marketplace bricks — captures are mandatory, no mercy.",
+      "pitch": "Classic checkers on the Marketplace bricks.",
       "section": "board-card",
       "live": true,
       "leaderboard": true,
-      "boardHint": "Fewest moves to beat the bots — a 🎩 Marketplace Master win outranks every 🍦 Stroller win."
+      "boardHint": "Fewest moves to beat the bots — a 🎩 Marketplace Master win outranks every 🍦 Stroller win.",
+      "shot": "assets/games/church-street-checkers.jpg",
+      "genre": "Checkers"
     },
     {
       "slug": "battle-on-the-lake",
       "name": "Battle on the Lake",
       "emoji": "⛵",
-      "pitch": "Hide your fleet on Lake Champlain, then sink theirs — ferry, schooner, kayak and all.",
+      "pitch": "Hide your boats on the lake, then hunt theirs.",
       "section": "board-card",
       "live": true,
       "leaderboard": true,
-      "boardHint": "Sink the Harbormaster's fleet in the fewest shots — a perfect 17-shot hunt scores 84."
+      "boardHint": "Sink the Harbormaster's fleet in the fewest shots — a perfect 17-shot hunt scores 84.",
+      "shot": "assets/games/battle-on-the-lake.jpg",
+      "genre": "Sink the fleet"
     },
     {
       "slug": "sugarbush-squares",
       "name": "Sugarbush Squares",
       "emoji": "🌳",
-      "pitch": "Claim plots in the sugarbush: close a box, plant a maple, go again.",
+      "pitch": "Draw lines, close boxes, claim the sugarbush.",
       "section": "board-card",
       "live": true,
       "leaderboard": true,
-      "boardHint": "Widest winning margin — a 🔥 Boiler win outranks every Sap Hauler win."
+      "boardHint": "Widest winning margin — a 🔥 Boiler win outranks every Sap Hauler win.",
+      "shot": "assets/games/sugarbush-squares.jpg",
+      "genre": "Dots & boxes"
     },
     {
       "slug": "peak-foliage",
       "name": "Peak Foliage",
       "emoji": "🍂",
-      "pitch": "Flip the forest green or red — whoever hits peak foliage wins the canopy.",
+      "pitch": "Flip leaves to your color and take the forest.",
       "section": "board-card",
       "live": true,
       "leaderboard": true,
-      "boardHint": "Widest leaf margin — 🌲 Forester wins outrank 🍁 Peeper wins."
+      "boardHint": "Widest leaf margin — 🌲 Forester wins outrank 🍁 Peeper wins.",
+      "shot": "assets/games/peak-foliage.jpg",
+      "genre": "Disc flipper"
     },
     {
       "slug": "snowball-slinger",
       "name": "Snowball Slinger",
       "emoji": "☃️",
-      "pitch": "Sling snowballs at squirrel forts across 3D Burlington — win back the maple candy.",
+      "pitch": "Sling snowballs and topple squirrel forts.",
       "section": "arcade-action",
       "live": true,
-      "leaderboard": true
+      "leaderboard": true,
+      "shot": "assets/games/snowball-slinger.jpg",
+      "genre": "Slingshot physics"
     },
     {
       "slug": "stay-awhile",
       "name": "Stay Awhile",
       "emoji": "🎡",
-      "pitch": "Spin the wheel, land on someone, ask them something that isn't small talk.",
+      "pitch": "Questions that skip the small talk.",
       "section": "party-community",
       "live": true,
-      "leaderboard": false
+      "leaderboard": false,
+      "shot": "assets/games/stay-awhile.jpg",
+      "genre": "Conversation deck"
     },
     {
       "slug": "heads-up-btown",
       "name": "Heads Up, Btown!",
       "emoji": "🧠",
-      "pitch": "Familiar cards, bigger decks. 36 general collections and 8 Burlington & Vermont favorites, plus teams, co-op, and 36 challenge levels.",
+      "pitch": "Phone on your forehead. Friends give the clues.",
       "section": "party-community",
       "live": true,
-      "leaderboard": false
+      "leaderboard": false,
+      "shot": "assets/games/heads-up-btown.jpg",
+      "genre": "Party guessing"
     },
     {
       "slug": "burlington-days",
       "name": "Burlington Days",
       "emoji": "🗓️",
-      "pitch": "Days people actually had here. Take one and it's rebuilt for your date — hours, weather and what's on, all checked. Burlington only.",
+      "pitch": "Real Burlington days, rebuilt for your date.",
       "section": "local-more",
       "live": true,
       "leaderboard": false,
-      "where": "out"
+      "where": "out",
+      "shot": "assets/games/burlington-days.jpg",
+      "genre": "Day planner"
     },
     {
       "slug": "whos-playing",
       "name": "Who's Playing",
       "emoji": "🎾",
-      "pitch": "Find someone to play with — or find the game. Partners and pickup sports, Burlington only.",
+      "pitch": "Find pickup games and partners in town.",
       "section": "local-more",
       "live": true,
       "leaderboard": false,
-      "where": "out"
+      "where": "out",
+      "shot": "assets/games/whos-playing.jpg",
+      "genre": "Find a game"
     },
     {
       "slug": "up-for-it",
       "name": "Up For It",
       "emoji": "🙋",
-      "pitch": "Say what you'd go to. Five taps and it tips; a host picks it up and it's on. Burlington only.",
+      "pitch": "Say what you’d go to. Enough yeses and it’s on.",
       "section": "local-more",
       "live": true,
       "leaderboard": false,
-      "where": "out"
+      "where": "out",
+      "shot": "assets/games/up-for-it.jpg",
+      "genre": "Group plans"
     },
     {
       "slug": "lake-breath",
       "name": "Lake Breath",
       "emoji": "🌊",
-      "pitch": "A Lake Champlain meditation: breathe with the motion light, paddle the water, and let it go.",
+      "pitch": "A few calm minutes breathing with the lake.",
       "section": "local-more",
       "live": true,
-      "leaderboard": false
+      "leaderboard": false,
+      "shot": "assets/games/lake-breath.jpg",
+      "genre": "Meditation"
     },
     {
       "slug": "challenges",
       "name": "Btown Challenges",
       "emoji": "🏆",
-      "pitch": "Real Burlington challenges — eat it, climb it, streak it — then put your name on the board.",
+      "pitch": "Eat it, climb it, finish it. Get on the board.",
       "section": "local-more",
       "live": true,
       "leaderboard": false,
-      "where": "out"
+      "where": "out",
+      "shot": "assets/games/challenges.jpg",
+      "genre": "Real-world dares"
     },
     {
       "slug": "archive",
       "name": "The Archives",
       "emoji": "📰",
-      "pitch": "More of a reader? Search every BTown Brief ever written — find that story you half-remember.",
+      "pitch": "Search every BTown Brief ever written.",
       "section": "local-more",
       "live": true,
-      "leaderboard": false
+      "leaderboard": false,
+      "shot": "assets/games/archive.jpg",
+      "genre": "Search the Brief"
     },
     {
       "slug": "btown-party",
       "name": "Btown Party",
       "emoji": "🎪",
-      "pitch": "One room code, five games: read the room, spin tall tales, write together, blend in, finish the chain. Anyone can host.",
+      "pitch": "Five room games. Everyone joins from their phone.",
       "section": "party-night",
       "live": true,
-      "leaderboard": false
+      "leaderboard": false,
+      "shot": "assets/games/btown-party.jpg",
+      "genre": "Party night"
     },
     {
       "slug": "dibs",
       "name": "Dibs",
       "emoji": "🔷",
-      "pitch": "Burlington is 920 blocks. Stand in one, tap, it's yours — until someone takes it back. Hold for points, rep your crew.",
+      "pitch": "Stand on a block, tap, and claim it for your crew.",
       "section": "local-more",
       "live": true,
       "leaderboard": false,
-      "where": "out"
+      "where": "out",
+      "shot": "assets/games/dibs.jpg",
+      "genre": "Map territory"
     }
   ],
   "_comment_hidden": "Hidden Nov 16, 2026 for low traffic (0-3 visits Aug-Nov). They stay playable at their URLs but are off the hub, search and leaderboards. To bring one back, move its entry from 'hidden' into 'games'.",
